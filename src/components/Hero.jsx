@@ -13,6 +13,16 @@ const fadeUp = {
   }),
 };
 
+const charVariant = {
+  hidden: { opacity: 0, y: 50, filter: 'blur(5px)' },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.5, delay: 0.15 + i * 0.028, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 function ScrollIndicator() {
   return (
     <motion.div
@@ -77,32 +87,75 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={1}
+            <h1
               className="font-display font-bold leading-[1.1] tracking-tight mb-6"
-              style={{
-                fontSize: 'clamp(2.2rem, 5vw, 4rem)',
-                color: '#E5E7EB',
-              }}
+              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
             >
-              Building Digital{' '}
-              <span className="gradient-text">Experiences</span>
-              <br />
-              That Feel{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg,#60A5FA,#93C5FD)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Smarter
-              </span>
-            </motion.h1>
+              {/* Line 1: Building Digital Experiences */}
+              <div style={{ marginBottom: '0.05em' }}>
+                <span style={{ display: 'inline-block', marginRight: '0.3em' }}>
+                  {'Building'.split('').map((c, i) => (
+                    <motion.span key={i} custom={i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block', color: '#E5E7EB' }}>{c}</motion.span>
+                  ))}
+                </span>
+                <span style={{ display: 'inline-block', marginRight: '0.3em' }}>
+                  {'Digital'.split('').map((c, i) => (
+                    <motion.span key={i} custom={9 + i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block', color: '#E5E7EB' }}>{c}</motion.span>
+                  ))}
+                </span>
+                <motion.span
+                  style={{
+                    display: 'inline-block',
+                    background: 'linear-gradient(90deg,#E5E7EB 0%,#93C5FD 35%,#60A5FA 50%,#93C5FD 65%,#E5E7EB 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    backgroundSize: '250% 100%',
+                  }}
+                  animate={{ backgroundPosition: ['100% 0%', '-50% 0%'] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'linear', delay: 1.8, repeatDelay: 1.2 }}
+                >
+                  {'Experiences'.split('').map((c, i) => (
+                    <motion.span key={i} custom={17 + i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block' }}>{c}</motion.span>
+                  ))}
+                </motion.span>
+              </div>
+              {/* Line 2: That Feel Smarter */}
+              <div>
+                <span style={{ display: 'inline-block', marginRight: '0.3em' }}>
+                  {'That'.split('').map((c, i) => (
+                    <motion.span key={i} custom={29 + i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block', color: '#E5E7EB' }}>{c}</motion.span>
+                  ))}
+                </span>
+                <span style={{ display: 'inline-block', marginRight: '0.3em' }}>
+                  {'Feel'.split('').map((c, i) => (
+                    <motion.span key={i} custom={34 + i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block', color: '#E5E7EB' }}>{c}</motion.span>
+                  ))}
+                </span>
+                <motion.span
+                  style={{
+                    display: 'inline-block',
+                    background: 'linear-gradient(90deg,#93C5FD 0%,#60A5FA 30%,#3B82F6 50%,#60A5FA 70%,#93C5FD 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    backgroundSize: '250% 100%',
+                  }}
+                  animate={{ backgroundPosition: ['100% 0%', '-50% 0%'] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: 'linear', delay: 2.2, repeatDelay: 1.2 }}
+                >
+                  {'Smarter'.split('').map((c, i) => (
+                    <motion.span key={i} custom={39 + i} variants={charVariant} initial="hidden" animate="show"
+                      style={{ display: 'inline-block' }}>{c}</motion.span>
+                  ))}
+                </motion.span>
+              </div>
+            </h1>
 
             {/* Subheading */}
             <motion.p
