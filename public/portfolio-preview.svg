@@ -1,0 +1,136 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070A"/>
+      <stop offset="100%" stop-color="#0D1521"/>
+    </linearGradient>
+    <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#EDD68A"/>
+    </linearGradient>
+    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDD68A"/>
+      <stop offset="100%" stop-color="#8B5E1A"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#E5E7EB"/>
+      <stop offset="100%" stop-color="#C9A96E"/>
+    </linearGradient>
+    <radialGradient id="glowRight" cx="85%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#7A1A1A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#05070A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowLeft" cx="15%" cy="60%" r="35%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#05070A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B1A00" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#05070A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0L0 0 0 60" fill="none" stroke="#C9A96E" stroke-width="0.25" opacity="0.12"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid -->
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <!-- Glow layers -->
+  <rect width="1200" height="630" fill="url(#glowRight)"/>
+  <rect width="1200" height="630" fill="url(#glowLeft)"/>
+  <rect width="1200" height="630" fill="url(#centerGlow)"/>
+
+  <!-- Top border line -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#goldH)" opacity="0.6"/>
+  <!-- Bottom border line -->
+  <rect x="0" y="627" width="1200" height="3" fill="url(#goldH)" opacity="0.3"/>
+
+  <!-- Left vertical accent bar -->
+  <rect x="72" y="90" width="3.5" height="450" rx="2" fill="url(#goldV)" opacity="0.7"/>
+
+  <!-- Top-right monogram box -->
+  <rect x="1048" y="72" width="80" height="80" rx="14"
+        fill="#0D1521" stroke="#C9A96E" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="1088" y="125" font-family="Georgia, serif" font-size="30" font-weight="bold"
+        fill="#C9A96E" text-anchor="middle" opacity="0.85" filter="url(#glow)">HI</text>
+
+  <!-- PORTFOLIO badge -->
+  <rect x="104" y="110" width="144" height="30" rx="15"
+        fill="#C9A96E" fill-opacity="0.08" stroke="#C9A96E" stroke-width="0.8" stroke-opacity="0.45"/>
+  <text x="176" y="130" font-family="Arial, Helvetica, sans-serif" font-size="11"
+        font-weight="700" fill="#C9A96E" text-anchor="middle" letter-spacing="4" opacity="0.85">PORTFOLIO</text>
+
+  <!-- Main name -->
+  <text x="104" y="255" font-family="Georgia, 'Times New Roman', serif"
+        font-size="76" font-weight="bold" fill="url(#titleGrad)" filter="url(#glow)">Huzaifa Imran</text>
+
+  <!-- Subtitle -->
+  <text x="107" y="305" font-family="Arial, Helvetica, sans-serif" font-size="21"
+        fill="#9CA3AF" letter-spacing="1.5">Web Developer  •  UI/UX Designer  •  AI &amp; Digital Creator</text>
+
+  <!-- Thin divider -->
+  <line x1="104" y1="340" x2="680" y2="340" stroke="url(#goldH)" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- Service pills row -->
+  <!-- Web Development -->
+  <rect x="104" y="362" width="198" height="38" rx="19"
+        fill="#7A1A1A" fill-opacity="0.22" stroke="#8B3030" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="203" y="386" font-family="Arial, Helvetica, sans-serif" font-size="13"
+        fill="#E5E7EB" text-anchor="middle" font-weight="500">Web Development</text>
+
+  <!-- UI/UX Design -->
+  <rect x="314" y="362" width="148" height="38" rx="19"
+        fill="#C9A96E" fill-opacity="0.1" stroke="#C9A96E" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="388" y="386" font-family="Arial, Helvetica, sans-serif" font-size="13"
+        fill="#C9A96E" text-anchor="middle" font-weight="500">UI/UX Design</text>
+
+  <!-- Branding -->
+  <rect x="474" y="362" width="116" height="38" rx="19"
+        fill="#7A1A1A" fill-opacity="0.2" stroke="#8B3030" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="532" y="386" font-family="Arial, Helvetica, sans-serif" font-size="13"
+        fill="#E5E7EB" text-anchor="middle" font-weight="500">Branding</text>
+
+  <!-- AI Solutions -->
+  <rect x="602" y="362" width="128" height="38" rx="19"
+        fill="#C9A96E" fill-opacity="0.1" stroke="#C9A96E" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="666" y="386" font-family="Arial, Helvetica, sans-serif" font-size="13"
+        fill="#C9A96E" text-anchor="middle" font-weight="500">AI Solutions</text>
+
+  <!-- Virginia, US tag -->
+  <text x="107" y="450" font-family="Arial, Helvetica, sans-serif" font-size="15"
+        fill="#6B7280" letter-spacing="1">📍 Virginia, United States  •  Available for Projects</text>
+
+  <!-- URL -->
+  <text x="107" y="500" font-family="Arial, Helvetica, sans-serif" font-size="15"
+        fill="#C9A96E" opacity="0.55" letter-spacing="0.5">huzaifa-portfolio24u.netlify.app</text>
+
+  <!-- Right decorative rings -->
+  <circle cx="990" cy="340" r="200" fill="none" stroke="#7A1A1A" stroke-width="0.8" opacity="0.2"/>
+  <circle cx="990" cy="340" r="155" fill="none" stroke="#C9A96E" stroke-width="0.6" opacity="0.14"/>
+  <circle cx="990" cy="340" r="110" fill="none" stroke="#7A1A1A" stroke-width="1" opacity="0.12"/>
+  <circle cx="990" cy="340" r="65" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.18"/>
+  <circle cx="990" cy="340" r="10" fill="#C9A96E" opacity="0.25" filter="url(#glow)"/>
+  <circle cx="990" cy="340" r="4" fill="#C9A96E" opacity="0.6"/>
+
+  <!-- Scattered accent dots -->
+  <circle cx="870" cy="195" r="3" fill="#C9A96E" opacity="0.35"/>
+  <circle cx="1095" cy="445" r="2.5" fill="#8B3030" opacity="0.45"/>
+  <circle cx="820" cy="490" r="4" fill="#C9A96E" opacity="0.18"/>
+  <circle cx="1140" cy="265" r="2" fill="#C9A96E" opacity="0.3"/>
+  <circle cx="940" cy="150" r="2" fill="#8B3030" opacity="0.4"/>
+  <circle cx="1080" cy="530" r="3" fill="#C9A96E" opacity="0.2"/>
+
+  <!-- Corner decoration top-left -->
+  <line x1="30" y1="30" x2="55" y2="30" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+  <line x1="30" y1="30" x2="30" y2="55" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+  <!-- Corner decoration bottom-right -->
+  <line x1="1170" y1="600" x2="1145" y2="600" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+  <line x1="1170" y1="600" x2="1170" y2="575" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+</svg>
