@@ -307,7 +307,7 @@ export default function ChatBot() {
       `Project Type: ${bookingData.projectType}\n\n` +
       `Please confirm the appointment at your earliest convenience.\n\nThanks!`
     );
-    window.open(`mailto:huzaifaiupk10@gmail.com?subject=${subject}&body=${body}`);
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=huzaifaiupk10@gmail.com&su=${subject}&body=${body}`, '_blank');
 
     setBooking(false);
     setBookingStep(0);

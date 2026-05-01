@@ -118,7 +118,8 @@ export default function Contact() {
                 ),
                 label: 'Email',
                 value: personal.email,
-                href: `mailto:${personal.email}`,
+                href: `https://mail.google.com/mail/?view=cm&fs=1&to=${personal.email}`,
+                target: '_blank',
               },
               {
                 icon: (

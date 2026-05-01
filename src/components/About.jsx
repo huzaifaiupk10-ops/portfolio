@@ -164,7 +164,7 @@ export default function About() {
             {/* CTA */}
             <div className="flex flex-wrap gap-3 pt-2">
               <a
-                href={`mailto:${personal.email}`}
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personal.email}`} target="_blank" rel="noreferrer"
                 className="btn-primary text-sm"
               >
                 Get in Touch

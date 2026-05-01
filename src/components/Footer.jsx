@@ -78,7 +78,9 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`mailto:${personal.email}`}
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personal.email}`}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-brand-muted hover:text-brand-silver transition-colors"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
