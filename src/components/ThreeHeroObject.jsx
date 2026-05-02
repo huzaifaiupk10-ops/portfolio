@@ -27,10 +27,10 @@ function AICore() {
       <mesh ref={coreRef}>
         <sphereGeometry args={[1.0, 128, 128]} />
         <meshStandardMaterial
-          color="#ffffff"
-          metalness={0.45}
+          color="#050D1A"
+          metalness={0.95}
           roughness={0.05}
-          envMapIntensity={2}
+          envMapIntensity={3}
         />
       </mesh>
 
@@ -294,7 +294,7 @@ export default function ThreeHeroObject() {
           <ambientLight intensity={0.12} />
           <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#93C5FD" />
           <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#1E40AF" />
-          <Environment preset="studio" />
+          <Environment preset="night" />
           <AIScene clicked={clicked} />
         </Suspense>
       </Canvas>
