@@ -34,15 +34,15 @@ const RESPONSES = [
   },
   {
     keywords: ['project', 'projects', 'work', 'portfolio', 'built', 'made', 'example', 'case study'],
-    reply: "Here are Huzaifa's featured projects:\n\n• [[Lumière Fashion Web|/project/1]] — Luxury fashion website design\n• [[Lumière Editorial|/project/2]] — Fashion campaign & creative direction\n• [[Lumière Visual System|/project/3]] — Full luxury brand identity\n• [[Sol Slice|/project/4]] — Creative agency landing page\n• [[AI Lead Dashboard|/project/5]] — AI automation & lead gen system\n• [[Virginia Webs|/project/6]] — Branding & website for a web agency\n\nClick any project above to open it!",
+    reply: "Here are Huzaifa's featured projects:\n\n• [[Gold's Gym Redesign|/project/1]] — Premium fitness website redesign concept\n• [[Lumière Fashion Web|/project/2]] — Luxury fashion website design\n• [[Lumière Editorial|/project/3]] — Fashion campaign & creative direction\n• [[Lumière Visual System|/project/4]] — Full luxury brand identity\n• [[Sol Slice|/project/5]] — Creative agency landing page\n• [[AI Lead Dashboard|/project/6]] — AI automation & lead gen system\n• [[Virginia Webs|/project/7]] — Branding & website for a web agency\n\nClick any project above to open it!",
   },
   {
     keywords: ['lumiere', 'lumière', 'fashion', 'luxury', 'editorial'],
-    reply: "The Lumière series is one of Huzaifa's most complete concept projects — all built around the same premium aesthetic:\n\n• [[Lumière Fashion Web|/project/1]] — Luxury fashion website\n• [[Lumière Editorial|/project/2]] — Fashion campaign design\n• [[Lumière Visual System|/project/3]] — Full brand identity",
+    reply: "The Lumière series is one of Huzaifa's most complete concept projects — all built around the same premium aesthetic:\n\n• [[Lumière Fashion Web|/project/2]] — Luxury fashion website\n• [[Lumière Editorial|/project/3]] — Fashion campaign design\n• [[Lumière Visual System|/project/4]] — Full brand identity",
   },
   {
     keywords: ['sol slice', 'virginia webs', 'ai lead', 'dashboard'],
-    reply: "Three great projects worth checking out:\n\n• [[Sol Slice|/project/4]] — Bold creative agency landing page\n• [[AI Lead Dashboard|/project/5]] — AI-powered lead generation system\n• [[Virginia Webs|/project/6]] — Branding & website for a web agency",
+    reply: "Three great projects worth checking out:\n\n• [[Sol Slice|/project/5]] — Bold creative agency landing page\n• [[AI Lead Dashboard|/project/6]] — AI-powered lead generation system\n• [[Virginia Webs|/project/7]] — Branding & website for a web agency",
   },
   {
     keywords: ['skill', 'skills', 'tech', 'technology', 'know', 'stack', 'expertise', 'capable', 'skills & expertise'],
@@ -225,7 +225,7 @@ export default function ChatBot() {
   const [showSuggestions, setShowSuggestions] = useState(true);
 
   // Booking state
-  const [booking, setBooking]       = useState(false); // booking flow active
+  const [booking, setBooking]       = useState(false);
   const [bookingStep, setBookingStep] = useState(0);
   const [bookingData, setBookingData] = useState({});
 
@@ -279,7 +279,6 @@ export default function ChatBot() {
         setBookingStep(nextStep);
         setLoading(false);
       } else {
-        // All steps done — show summary + send email
         const summary =
           `Perfect! Here's your booking summary:\n\n` +
           `**Name:** ${newData.name}\n` +
@@ -361,7 +360,7 @@ export default function ChatBot() {
 
   const isBookingDone    = booking && bookingStep >= BOOKING_STEPS.length;
   const currentStepMeta = booking && bookingStep < BOOKING_STEPS.length ? BOOKING_STEPS[bookingStep] : null;
-  const showProjectPills = booking && bookingStep === 4 && !loading; // projectType step
+  const showProjectPills = booking && bookingStep === 4 && !loading;
 
   return (
     <>
