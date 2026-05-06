@@ -2,18 +2,6 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { testimonials } from '../data/portfolioData';
 
-function QuoteIcon({ color = '#3B82F6' }) {
-  return (
-    <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
-      <path
-        d="M0 22V13.4C0 9.8 1.06667 6.66667 3.2 4C5.33333 1.33333 8.26667 0 12 0V3.6C10.1333 3.6 8.6 4.26667 7.4 5.6C6.2 6.8 5.6 8.26667 5.6 10H11.2V22H0ZM16.8 22V13.4C16.8 9.8 17.8667 6.66667 20 4C22.1333 1.33333 25.0667 0 28.8 0V3.6C26.9333 3.6 25.4 4.26667 24.2 5.6C23 6.8 22.4 8.26667 22.4 10H28V22H16.8Z"
-        fill={color}
-        fillOpacity="0.3"
-      />
-    </svg>
-  );
-}
-
 const accentColors = ['#3B82F6', '#06B6D4', '#A855F7'];
 
 export default function Testimonials() {
@@ -21,97 +9,87 @@ export default function Testimonials() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section
-      id="testimonials"
-      className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#05070A 0%,#0B1220 50%,#05070A 100%)' }}
-    >
-      <div className="container-max">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <div className="section-label mb-4 mx-auto">Testimonials</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
-          >
-            Client Feedback
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
-            What clients say about working together.
-          </p>
-        </motion.div>
+    <section id="testimonials" className="section-pad" style={{ background: '#0B1220' }}>
+      <div className="container-max" ref={ref}>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+          style={{ borderBottom: '1px solid rgba(192,199,209,0.08)', paddingBottom: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="section-label mb-4 block">Testimonials</span>
+            <h2
+              className="font-display font-bold gradient-text"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', letterSpacing: '-0.02em' }}
+            >
+              Client Feedback
+            </h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm max-w-xs"
+            style={{ color: '#64748B' }}
+          >
+            What clients say about working together.
+          </motion.p>
+        </div>
+
+        {/* Testimonial blocks */}
+        <div className="flex flex-col gap-0">
           {testimonials.map((t, i) => {
             const accent = accentColors[i];
             return (
               <motion.div
                 key={t.name}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-                className="relative rounded-2xl p-6 overflow-hidden"
+                transition={{ delay: i * 0.12, duration: 0.55 }}
+                className="grid md:grid-cols-12 gap-8 py-10"
                 style={{
-                  background: 'rgba(11,18,32,0.6)',
-                  border: '1px solid rgba(192,199,209,0.08)',
-                  transition: 'border-color 0.3s, box-shadow 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${accent}30`;
-                  e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 35px ${accent}12`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
-                  e.currentTarget.style.boxShadow = 'none';
+                  borderBottom: i < testimonials.length - 1 ? '1px solid rgba(192,199,209,0.08)' : 'none',
+                  borderLeft: `2px solid ${accent}`,
+                  paddingLeft: '2rem',
                 }}
               >
-                {/* Top accent line */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-px"
-                  style={{ background: `linear-gradient(90deg, transparent, ${accent}50, transparent)` }}
-                />
-
-                {/* Quote icon */}
-                <div className="mb-4">
-                  <QuoteIcon color={accent} />
+                {/* Quote */}
+                <div className="md:col-span-8">
+                  <p
+                    className="font-display leading-relaxed italic mb-0"
+                    style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)', color: '#C0C7D1' }}
+                  >
+                    "{t.quote}"
+                  </p>
                 </div>
-
-                {/* Quote text */}
-                <p className="text-brand-silver text-sm leading-relaxed mb-6 italic">
-                  "{t.quote}"
-                </p>
 
                 {/* Author */}
-                <div className="flex items-center gap-3">
+                <div className="md:col-span-4 flex flex-col justify-center md:items-end gap-3">
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center font-display font-bold text-sm flex-shrink-0"
-                    style={{ background: `${accent}20`, color: accent, border: `1px solid ${accent}30` }}
+                    className="w-10 h-10 flex items-center justify-center font-display font-bold text-sm"
+                    style={{
+                      background: `${accent}15`,
+                      color: accent,
+                      border: `1px solid ${accent}30`,
+                      borderRadius: '3px',
+                    }}
                   >
-                    {t.avatar}
+                    {t.avatar || t.name.charAt(0)}
                   </div>
-                  <div>
-                    <div className="text-sm font-semibold" style={{ color: '#E5E7EB' }}>
-                      {t.name}
-                    </div>
-                    <div className="text-xs text-brand-muted">{t.role}</div>
+                  <div className="md:text-right">
+                    <div className="font-semibold text-sm" style={{ color: '#E5E7EB' }}>{t.name}</div>
+                    <div className="text-xs mt-0.5" style={{ color: '#64748B' }}>{t.role}</div>
                   </div>
-                </div>
-
-                {/* Stars */}
-                <div className="flex gap-0.5 mt-4">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill={accent} opacity="0.8">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <svg key={j} width="12" height="12" viewBox="0 0 24 24" fill={accent} opacity="0.7">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );

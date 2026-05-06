@@ -8,103 +8,90 @@ export default function Process() {
 
   return (
     <section id="process" className="section-pad">
-      <div className="container-max">
+      <div className="container-max" ref={ref}>
+
         {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <div className="section-label mb-4 mx-auto">How I Work</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+          style={{ borderBottom: '1px solid rgba(192,199,209,0.08)', paddingBottom: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
           >
-            My Process
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
+            <span className="section-label mb-4 block">How I Work</span>
+            <h2
+              className="font-display font-bold gradient-text"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', letterSpacing: '-0.02em' }}
+            >
+              My Process
+            </h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm max-w-xs"
+            style={{ color: '#64748B' }}
+          >
             A clear, structured workflow from first conversation to final launch.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
-        {/* Steps — desktop: horizontal, mobile: vertical */}
-        <div className="relative">
-          {/* Connector line (desktop) */}
-          <div
-            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.3) 20%, rgba(59,130,246,0.3) 80%, transparent)' }}
-          />
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {process.map((step, i) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.15, duration: 0.55 }}
-                className="relative"
+        {/* Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-0"
+          style={{ border: '1px solid rgba(192,199,209,0.08)', borderRadius: '4px' }}>
+          {process.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              className="p-8 relative"
+              style={{
+                borderRight: i < process.length - 1 ? '1px solid rgba(192,199,209,0.08)' : 'none',
+              }}
+            >
+              {/* Large number watermark */}
+              <div
+                className="absolute top-4 right-4 font-display font-bold text-6xl pointer-events-none select-none"
+                style={{ color: 'rgba(59,130,246,0.05)', lineHeight: 1 }}
               >
-                {/* Vertical connector (mobile) */}
-                {i < process.length - 1 && (
-                  <div
-                    className="lg:hidden absolute left-6 top-full w-px h-6 z-0"
-                    style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.4), transparent)' }}
-                  />
-                )}
+                {step.step}
+              </div>
 
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  className="rounded-2xl p-6 h-full relative overflow-hidden shine"
-                  style={{
-                    background: 'rgba(11,18,32,0.6)',
-                    border: '1px solid rgba(192,199,209,0.08)',
-                    transition: 'border-color 0.3s, box-shadow 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-                    e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.3), 0 0 30px rgba(59,130,246,0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+              {/* Step number badge */}
+              <div
+                className="inline-flex items-center justify-center w-10 h-10 font-display font-bold text-sm mb-6"
+                style={{
+                  border: '1px solid rgba(59,130,246,0.3)',
+                  color: '#60A5FA',
+                  borderRadius: '3px',
+                  background: 'rgba(59,130,246,0.06)',
+                }}
+              >
+                {step.step}
+              </div>
+
+              <h3 className="font-display font-semibold text-lg mb-3" style={{ color: '#E5E7EB' }}>
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>
+                {step.description}
+              </p>
+
+              {/* Connector arrow (desktop) */}
+              {i < process.length - 1 && (
+                <div
+                  className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 items-center justify-center z-10"
+                  style={{ background: '#05070A' }}
                 >
-                  {/* Step number bubble */}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-sm mb-5 relative z-10"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(30,64,175,0.4), rgba(59,130,246,0.2))',
-                      border: '1px solid rgba(59,130,246,0.35)',
-                      color: '#93C5FD',
-                      boxShadow: '0 0 20px rgba(59,130,246,0.15)',
-                    }}
-                  >
-                    {step.step}
-                  </div>
-
-                  <h3
-                    className="font-display font-semibold text-lg mb-2 relative z-10"
-                    style={{ color: '#E5E7EB' }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-brand-muted text-sm leading-relaxed relative z-10">
-                    {step.description}
-                  </p>
-
-                  {/* Background number watermark */}
-                  <div
-                    className="absolute -bottom-3 -right-2 font-display font-bold text-8xl opacity-[0.04] pointer-events-none select-none"
-                    style={{ color: '#3B82F6' }}
-                  >
-                    {step.step}
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              )}
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

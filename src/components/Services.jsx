@@ -3,25 +3,6 @@ import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { services } from '../data/portfolioData';
 
-const icons = {
-  '⬡': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" />
-      <polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" />
-    </svg>
-  ),
-  '◈': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-    </svg>
-  ),
-  '◇': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
-    </svg>
-  ),
-};
-
 const accentColors = ['#3B82F6', '#06B6D4', '#A855F7'];
 
 export default function Services() {
@@ -30,106 +11,110 @@ export default function Services() {
   const navigate = useNavigate();
 
   return (
-    <section
-      id="services"
-      className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#05070A 0%,#0B1220 50%,#05070A 100%)' }}
-    >
-      <div className="container-max">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <div className="section-label mb-4 mx-auto">Services</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
-          >
-            What I Do
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
-            Focused services that combine design thinking, technical skill, and AI intelligence.
-          </p>
-        </motion.div>
+    <section id="services" className="section-pad" style={{ background: '#0B1220' }}>
+      <div className="container-max" ref={ref}>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16"
+          style={{ borderBottom: '1px solid rgba(192,199,209,0.08)', paddingBottom: '2rem' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="section-label mb-4 block">Services</span>
+            <h2
+              className="font-display font-bold gradient-text"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', letterSpacing: '-0.02em' }}
+            >
+              What I Do
+            </h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm max-w-xs"
+            style={{ color: '#64748B' }}
+          >
+            Focused services combining design thinking, technical skill, and AI intelligence.
+          </motion.p>
+        </div>
+
+        {/* Service rows */}
+        <div className="flex flex-col">
           {services.map((service, i) => {
             const accent = accentColors[i];
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -6 }}
+                transition={{ delay: i * 0.12, duration: 0.55 }}
                 onClick={() => navigate(`/service/${service.id}`)}
-                className="group relative rounded-2xl p-6 shine cursor-pointer"
+                className="group grid md:grid-cols-12 gap-6 py-10 cursor-pointer"
                 style={{
-                  background: 'rgba(11,18,32,0.6)',
-                  border: '1px solid rgba(192,199,209,0.08)',
-                  transition: 'border-color 0.35s ease, box-shadow 0.35s ease',
+                  borderBottom: '1px solid rgba(192,199,209,0.08)',
+                  transition: 'background 0.2s ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${accent}35`;
-                  e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 40px ${accent}15`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(11,18,32,0.6)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
               >
-                {/* Top glow */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(90deg, transparent, ${accent}60, transparent)` }}
-                />
-
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: `${accent}15`, color: accent, border: `1px solid ${accent}25` }}
-                >
-                  {icons[service.icon]}
+                {/* Number */}
+                <div className="md:col-span-1 flex items-start pt-1">
+                  <span
+                    className="font-display font-bold text-sm tabular-nums"
+                    style={{ color: accent }}
+                  >
+                    0{i + 1}
+                  </span>
                 </div>
 
-                <h3
-                  className="font-display font-semibold text-xl mb-3"
-                  style={{ color: '#E5E7EB' }}
-                >
-                  {service.title}
-                </h3>
-                <p className="text-brand-muted text-sm leading-relaxed mb-5">
-                  {service.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-md font-medium"
-                      style={{
-                        background: `${accent}10`,
-                        color: accent,
-                        border: `1px solid ${accent}20`,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                {/* Title */}
+                <div className="md:col-span-3">
+                  <h3
+                    className="font-display font-bold text-xl leading-tight transition-colors duration-200"
+                    style={{ color: '#E5E7EB' }}
+                  >
+                    {service.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {service.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-2 py-0.5 font-medium"
+                        style={{
+                          color: accent,
+                          border: `1px solid ${accent}30`,
+                          borderRadius: '2px',
+                          background: `${accent}0D`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Number watermark */}
-                <div
-                  className="absolute bottom-4 right-5 font-display font-bold text-6xl opacity-5 pointer-events-none select-none"
-                  style={{ color: accent }}
-                >
-                  0{i + 1}
+                {/* Description */}
+                <div className="md:col-span-6">
+                  <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Arrow */}
+                <div className="md:col-span-2 flex items-center justify-end">
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    className="flex items-center gap-2 text-sm font-medium"
+                    style={{ color: accent }}
+                  >
+                    <span className="hidden md:inline">View</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </motion.div>
                 </div>
               </motion.div>
             );
