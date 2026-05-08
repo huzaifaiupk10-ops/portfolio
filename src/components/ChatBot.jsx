@@ -34,7 +34,7 @@ const RESPONSES = [
   },
   {
     keywords: ['project', 'projects', 'work', 'portfolio', 'built', 'made', 'example', 'case study'],
-    reply: "Here are Huzaifa's featured projects:\n\n• [[Gold's Gym Redesign|/project/1]] — Premium fitness website redesign concept\n• [[Lumière Fashion Web|/project/2]] — Luxury fashion website design\n• [[Lumière Editorial|/project/3]] — Fashion campaign & creative direction\n• [[Lumière Visual System|/project/4]] — Full luxury brand identity\n• [[Sol Slice|/project/5]] — Creative agency landing page\n• [[AI Lead Dashboard|/project/6]] — AI automation & lead gen system\n• [[Virginia Webs|/project/7]] — Branding & website for a web agency\n\nClick any project above to open it!",
+    reply: "Here are Huzaifa's featured projects:\n\n• [[Gold's Gym Redesign|/project/1]] — Premium fitness website redesign concept\n• [[Lumière Fashion Web|/project/2]] — Luxury fashion website design\n• [[Lumière Editorial|/project/3]] — Fashion campaign & creative direction\n• [[Lumière Visual System|/project/4]] — Full luxury brand identity\n• [[Sol Slice|/project/5]] — Creative agency landing page\n• [[AI Lead Dashboard|/project/6]] — AI automation & lead gen system\n• [[Virginia Webs|/project/7]] — Branding & website for a web agency\n• [[AI Assistant|/project/8]] — Intelligent conversational AI system\n\nClick any project above to open it!",
   },
   {
     keywords: ['lumiere', 'lumière', 'fashion', 'luxury', 'editorial'],
