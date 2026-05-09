@@ -263,13 +263,17 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-24 right-5 z-50 w-[340px] sm:w-[380px] flex flex-col rounded-2xl overflow-hidden"
+            className="fixed z-50 flex flex-col rounded-2xl overflow-hidden"
             style={{
+              bottom: '88px',
+              right: '1rem',
+              left: '1rem',
+              maxWidth: '380px',
+              marginLeft: 'auto',
               background: '#0B1220',
               border: '1px solid rgba(59,130,246,0.25)',
               boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(59,130,246,0.08)',
-              maxHeight: 'min(560px, calc(100vh - 110px))',
-              height: 'min(560px, calc(100vh - 110px))',
+              maxHeight: 'calc(100dvh - 110px)',
             }}
           >
             {/* Header */}
