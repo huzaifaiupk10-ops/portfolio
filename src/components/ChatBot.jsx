@@ -270,7 +270,7 @@ export default function ChatBot() {
               left: '1rem',
               maxWidth: '380px',
               marginLeft: 'auto',
-              background: '#0B1220',
+              background: '#000000',
               border: '1px solid rgba(59,130,246,0.25)',
               boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(59,130,246,0.08)',
               maxHeight: 'calc(100dvh - 110px)',
@@ -278,7 +278,7 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 flex-shrink-0"
-              style={{ background: 'rgba(11,18,32,0.95)', borderBottom: '1px solid rgba(192,199,209,0.08)' }}>
+              style={{ background: 'rgba(0,0,0,0.98)', borderBottom: '1px solid rgba(192,199,209,0.08)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
                   style={{ background: 'linear-gradient(135deg,#1E40AF,#3B82F6)', color: 'white' }}>H</div>
