@@ -2,131 +2,13 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ── Keyword response engine ───────────────────────────────────
-const RESPONSES = [
-  {
-    keywords: ['hello', 'hi', 'hey', 'sup', 'greetings', 'good morning', 'good afternoon', 'good evening', 'howdy'],
-    reply: "Hey! 👋 Great to have you here. I'm Huzaifa's assistant — I can tell you about his work, background, services, or help you book a call. What's on your mind?",
-  },
-  {
-    keywords: ['who is', 'who are', 'about huzaifa', 'tell me about', 'introduce', 'bio', 'background', 'story', 'huzaifa imran'],
-    reply: "Huzaifa Imran is a Virginia-based web developer, UI/UX designer, and digital creator. He got into this field because he's always loved the combination of technology and creativity — building things that look great and actually work.\n\nHe combines **web development, branding, design, and AI** to create premium digital experiences for personal brands, businesses, and creators. He's a student and also self-taught in many areas — constantly learning, building, and experimenting with new tools and technologies.",
-  },
-  {
-    keywords: ['where', 'location', 'based', 'country', 'city', 'virginia', 'remote', 'local'],
-    reply: "Huzaifa is based in **Virginia, United States**. He works mainly online, so he can collaborate with clients locally and from anywhere in the world — timezone differences are no problem!",
-  },
-  {
-    keywords: ['service', 'services', 'offer', 'what do you do', 'what can you do', 'help me with', 'provide'],
-    reply: "Huzaifa offers three core services:\n\n• [[Web Development|/service/1]] — Modern, responsive websites with smooth animations\n• [[AI Agents & Automation|/service/2]] — Custom AI systems and workflow automation\n• [[Branding & Identity|/service/3]] — Logos, color systems, and full brand packages\n\nClick any service above to see full details. Which one interests you?",
-  },
-  {
-    keywords: ['web', 'website', 'web development', 'web design', 'landing page', 'frontend', 'react', 'html', 'responsive'],
-    reply: "Web development is one of Huzaifa's core strengths. He builds modern, responsive sites using **React, Vite, Tailwind CSS, and Framer Motion** — with smooth animations, 3D elements, and clean UI that works beautifully on any device.\n\n[[View Web Development Service|/service/1]]",
-  },
-  {
-    keywords: ['ai', 'agent', 'automation', 'workflow', 'prompt', 'agentic', 'artificial intelligence', 'chatbot', 'gpt', 'claude'],
-    reply: "AI is something Huzaifa is actively building with every day. He works with tools like **Claude Code, ChatGPT, and agentic AI workflows** to design systems that automate repetitive tasks, speed up creative work, and add real intelligence to digital products.\n\n[[View AI Agents & Automation Service|/service/2]]",
-  },
-  {
-    keywords: ['brand', 'branding', 'logo', 'identity', 'typography', 'color', 'visual identity', 'brand design'],
-    reply: "Huzaifa approaches branding as a full visual language — not just a logo. He creates **logos, color palettes, type systems, and brand guidelines** that feel premium, consistent, and built to stand out.\n\n[[View Branding & Identity Service|/service/3]]",
-  },
-  {
-    keywords: ['project', 'projects', 'work', 'portfolio', 'built', 'made', 'example', 'case study'],
-    reply: "Here are Huzaifa's featured projects:\n\n• [[Gold's Gym Redesign|/project/1]] — Premium fitness website redesign concept\n• [[Virginia Webs|/project/2]] — Branding & website for a web agency\n• [[AI Assistant|/project/3]] — VirginiaWebs AI-powered chatbot UI\n• [[AI Lead Dashboard|/project/4]] — AI automation & lead gen system\n• [[Lumière Fashion Web|/project/5]] — Luxury fashion website design\n• [[Lumière Editorial|/project/6]] — Fashion campaign & creative direction\n• [[Lumière Visual System|/project/7]] — Full luxury brand identity\n• [[Sol Slice|/project/8]] — Creative agency landing page\n\nClick any project above to open it!",
-  },
-  {
-    keywords: ['lumiere', 'lumière', 'fashion', 'luxury', 'editorial'],
-    reply: "The Lumière series is one of Huzaifa's most complete concept projects — all built around the same premium aesthetic:\n\n• [[Lumière Fashion Web|/project/2]] — Luxury fashion website\n• [[Lumière Editorial|/project/3]] — Fashion campaign design\n• [[Lumière Visual System|/project/4]] — Full brand identity",
-  },
-  {
-    keywords: ['sol slice', 'virginia webs', 'ai lead', 'dashboard'],
-    reply: "Three great projects worth checking out:\n\n• [[Virginia Webs|/project/2]] — Branding & website for a web agency\n• [[AI Lead Dashboard|/project/4]] — AI-powered lead generation system\n• [[Sol Slice|/project/8]] — Bold creative agency landing page",
-  },
-  {
-    keywords: ['skill', 'skills', 'tech', 'technology', 'know', 'stack', 'expertise', 'capable', 'skills & expertise'],
-    reply: "Here's a full breakdown of Huzaifa's skills & expertise:\n\n🖥️ **Web Development**\nReact, Vite, HTML, CSS, Tailwind CSS, Responsive Design, Framer Motion, Three.js, UI/UX Design\n\n🤖 **AI & Automation**\nAI Agents, Agentic AI Development, Prompt Engineering, Workflow Automation, Claude Code, ChatGPT\n\n🎨 **Branding & Design**\nLogo Design, Brand Identity, Typography, Color Theory, Visual Design, Creative Direction, Figma, Canva\n\n🛠️ **Tools & Platforms**\nVS Code, GitHub, Netlify, Vercel, Wix, CapCut, AutoDS\n\n[[View Full Skills Section|#skills]]",
-  },
-  {
-    keywords: ['tool', 'tools', 'software', 'figma', 'canva', 'vscode', 'tailwind', 'framer', 'netlify', 'vercel', 'github'],
-    reply: "Huzaifa's go-to toolkit includes:\n\n**Dev:** React, Vite, Tailwind CSS, Framer Motion, Three.js, VS Code\n**AI:** Claude Code, ChatGPT, AI prompt workflows\n**Design:** Figma, Canva, CapCut\n**Deployment:** Netlify, Vercel, GitHub\n**Other:** Wix, AutoDS\n\nHe picks the right tool for each job — not just the trendy one.",
-  },
-  {
-    keywords: ['different', 'unique', 'stand out', 'why you', 'why huzaifa', 'better', 'special', 'why choose'],
-    reply: "What makes Huzaifa different is the **combination** — most people focus on one thing. He brings web development, UI/UX design, branding, and AI together in one person.\n\nHe doesn't just build websites that work — he makes sure they look premium, feel smooth, load fast, and represent the brand properly. That attention to design detail and user experience is what clients notice first.",
-  },
-  {
-    keywords: ['education', 'degree', 'college', 'university', 'study', 'learn', 'self-taught', 'student', 'school'],
-    reply: "Huzaifa is currently a **student** who also self-teaches extensively. He learns through college coursework, hands-on projects, and a lot of real practice — building websites, experimenting with AI tools, and working on creative projects.\n\nHe's a firm believer that the best way to learn is to actually build things.",
-  },
-  {
-    keywords: ['experience', 'years', 'how long have', 'how experienced', 'junior', 'senior', 'level'],
-    reply: "Huzaifa is an **emerging professional** — he's still growing but already building real projects with modern tools. His experience spans web development, UI/UX design, branding, AI prompt engineering, and agentic workflows.\n\nHe brings fresh energy, modern knowledge, and a strong eye for detail to every project.",
-  },
-  {
-    keywords: ['language', 'languages', 'speak', 'english', 'urdu', 'hindi'],
-    reply: "Huzaifa speaks **English, Urdu, and Hindi** — so if you're more comfortable communicating in any of those, that works perfectly!",
-  },
-  {
-    keywords: ['worldwide', 'international', 'global', 'country', 'timezone', 'remote work', 'online'],
-    reply: "Huzaifa works with clients **worldwide**. He's based in Virginia, USA, but collaborates fully online — so location and timezone aren't an issue. Whether you're in the US, UK, Middle East, or South Asia, he can work with you.",
-  },
-  {
-    keywords: ['hobby', 'hobbies', 'fun', 'personal', 'outside work', 'free time', 'workout', 'gym', 'interest'],
-    reply: "Outside of work, Huzaifa enjoys **working out** — it keeps him disciplined, focused, and motivated (which honestly shows in the quality of his work). He also spends a lot of time experimenting with new AI tools, web design ideas, animations, and creative digital workflows. He genuinely enjoys building things, even when no one's paying him to.",
-  },
-  {
-    keywords: ['style', 'work style', 'process style', 'personality', 'approach', 'how you work'],
-    reply: "Huzaifa's work style is **focused, creative, and detail-oriented**. He cares a lot about clean layouts, strong visual hierarchy, smooth animations, and designs that look just as good on mobile as they do on desktop.\n\nHe communicates clearly, takes feedback well, and likes to make sure the final product actually reflects the client's vision — not just what looks good on a template.",
-  },
-  {
-    keywords: ['price', 'pricing', 'cost', 'charge', 'rate', 'how much', 'budget', 'fee', 'quote', 'affordable'],
-    reply: "Pricing depends on the scope and complexity of the project. A simple landing page is going to cost less than a full animated website with custom branding and AI features.\n\nThe best move is to book a quick call or send a message — Huzaifa will give you a clear quote based on exactly what you need.\n\n📧 huzaifaiupk10@gmail.com\n📞 +1 571 477 4920",
-  },
-  {
-    keywords: ['how long', 'timeline', 'time', 'turnaround', 'deadline', 'fast', 'quick', 'delivery', 'when'],
-    reply: "Timeline depends on the project:\n\n• **Simple landing page** — a few days to a week\n• **Multi-section animated website** — 1 to 3 weeks\n• **Brand identity package** — 1 to 2 weeks\n• **AI automation system** — varies by complexity\n\nRevisions, content, and feature requests can affect timing. Book a call to get a realistic estimate for your specific project.",
-  },
-  {
-    keywords: ['hire', 'work with', 'collaborate', 'get started', 'start a project', 'available', 'availability', 'open', 'working'],
-    reply: "Huzaifa is **currently open to new projects!** Whether it's a website, brand, or AI system — he'd love to hear about what you're building.\n\nHit the **Book a Call** button below, or reach out directly:\n📧 huzaifaiupk10@gmail.com\n📞 +1 571 477 4920",
-  },
-  {
-    keywords: ['contact', 'email', 'phone', 'reach', 'message', 'get in touch', 'touch', 'connect'],
-    reply: "Here's how to reach Huzaifa directly:\n\n📧 huzaifaiupk10@gmail.com\n📞 +1 571 477 4920\n💼 linkedin.com/in/huzaifa-imran-6a132b330\n\nOr scroll down to the Contact section and send a message right from this page.",
-  },
-  {
-    keywords: ['linkedin', 'social', 'social media', 'instagram', 'twitter', 'profile'],
-    reply: "You can find and connect with Huzaifa on LinkedIn:\n💼 linkedin.com/in/huzaifa-imran-6a132b330\n\nFeel free to reach out there too — he's active and responds.",
-  },
-  {
-    keywords: ['thank', 'thanks', 'awesome', 'great', 'nice', 'cool', 'perfect', 'helpful', 'appreciate', 'love it'],
-    reply: "Really glad I could help! 😊 If you ever want to chat about a project or just have more questions, I'm always here. You can also reach Huzaifa directly at huzaifaiupk10@gmail.com",
-  },
-  {
-    keywords: ['bye', 'goodbye', 'see you', 'later', 'cya', 'take care'],
-    reply: "Take care! 👋 Come back anytime — and if you decide you want to work with Huzaifa, the Book a Call button is right here whenever you're ready.",
-  },
-];
-
-const FALLBACK = "That's a good question — I might not have a specific answer for that one. Your best bet is to reach out to Huzaifa directly at huzaifaiupk10@gmail.com or +1 571 477 4920. He's pretty responsive and happy to chat!";
-
-function getReply(input) {
-  const lower = input.toLowerCase();
-  for (const item of RESPONSES) {
-    if (item.keywords.some((kw) => lower.includes(kw))) return item.reply;
-  }
-  return FALLBACK;
-}
-
 // ── Booking flow steps ────────────────────────────────────────
 const BOOKING_STEPS = [
-  { key: 'name',        prompt: "What's your name?",                              placeholder: 'Your full name' },
-  { key: 'email',       prompt: "What's your email address?",                     placeholder: 'you@example.com' },
-  { key: 'date',        prompt: "What date works best for you?",                  placeholder: 'e.g. Monday May 5th, or any weekday' },
-  { key: 'time',        prompt: "Preferred time? (include your timezone)",        placeholder: 'e.g. 3pm EST' },
-  { key: 'projectType', prompt: "What type of project do you need help with?",    placeholder: 'e.g. Website, AI system, Branding...' },
+  { key: 'name',        prompt: "What's your name?",                           placeholder: 'Your full name' },
+  { key: 'email',       prompt: "What's your email address?",                  placeholder: 'you@example.com' },
+  { key: 'date',        prompt: "What date works best for you?",               placeholder: 'e.g. Monday May 5th, or any weekday' },
+  { key: 'time',        prompt: "Preferred time? (include your timezone)",     placeholder: 'e.g. 3pm EST' },
+  { key: 'projectType', prompt: "What type of project do you need help with?", placeholder: 'e.g. Website, AI system, Branding...' },
 ];
 
 const PROJECT_TYPE_OPTIONS = [
@@ -218,14 +100,14 @@ export default function ChatBot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([{
     role: 'assistant',
-    content: "Hey! 👋 I'm Huzaifa's assistant. Ask me about his work, background, services, or pricing — or hit the button below to book a call directly.",
+    content: "Hey! 👋 I'm Huzaifa's assistant. Ask me anything — about his work, services, pricing, or anything else. I'm here to help!",
   }]);
   const [input, setInput]           = useState('');
   const [loading, setLoading]       = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
 
   // Booking state
-  const [booking, setBooking]       = useState(false);
+  const [booking, setBooking]         = useState(false);
   const [bookingStep, setBookingStep] = useState(0);
   const [bookingData, setBookingData] = useState({});
 
@@ -265,14 +147,12 @@ export default function ChatBot() {
 
   // ── Handle booking step input ───────────────────────────────
   const handleBookingInput = (value) => {
-    const step   = BOOKING_STEPS[bookingStep];
+    const step    = BOOKING_STEPS[bookingStep];
     const newData = { ...bookingData, [step.key]: value };
     setBookingData(newData);
     pushMsg('user', value);
     setLoading(true);
-
     const nextStep = bookingStep + 1;
-
     setTimeout(() => {
       if (nextStep < BOOKING_STEPS.length) {
         pushMsg('assistant', BOOKING_STEPS[nextStep].prompt);
@@ -294,7 +174,7 @@ export default function ChatBot() {
     }, 600);
   };
 
-  // ── Confirm booking — opens mailto ──────────────────────────
+  // ── Confirm booking ─────────────────────────────────────────
   const confirmBooking = () => {
     const subject = encodeURIComponent(`Appointment Request from ${bookingData.name}`);
     const body = encodeURIComponent(
@@ -307,7 +187,6 @@ export default function ChatBot() {
       `Please confirm the appointment at your earliest convenience.\n\nThanks!`
     );
     window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=huzaifaiupk10@gmail.com&su=${subject}&body=${body}`, '_blank');
-
     setBooking(false);
     setBookingStep(0);
     setLoading(true);
@@ -325,18 +204,30 @@ export default function ChatBot() {
     pushMsg('assistant', "No problem! Feel free to ask me anything else or book a call whenever you're ready.");
   };
 
-  // ── Normal chat send ────────────────────────────────────────
-  const send = (text) => {
+  // ── AI chat send ────────────────────────────────────────────
+  const send = async (text) => {
     const content = (text ?? input).trim();
     if (!content || loading) return;
     setInput('');
     setShowSuggestions(false);
+
+    const history = messages.filter((m) => m.role !== 'system');
     pushMsg('user', content);
     setLoading(true);
-    setTimeout(() => {
-      pushMsg('assistant', getReply(content));
-      setLoading(false);
-    }, 600 + Math.random() * 400);
+
+    try {
+      const res = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: content, history }),
+      });
+      const data = await res.json();
+      pushMsg('assistant', data.reply || "I had trouble responding — please reach out to Huzaifa directly at huzaifaiupk10@gmail.com");
+    } catch {
+      pushMsg('assistant', "I'm having connection issues right now. You can reach Huzaifa directly at huzaifaiupk10@gmail.com or +1 571 477 4920");
+    }
+
+    setLoading(false);
   };
 
   const handleKey = (e) => {
@@ -391,7 +282,7 @@ export default function ChatBot() {
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
                     <span className="text-xs" style={{ color: '#94A3B8' }}>
-                      {booking ? `Booking — Step ${Math.min(bookingStep + 1, BOOKING_STEPS.length)} of ${BOOKING_STEPS.length}` : 'Online'}
+                      {booking ? `Booking — Step ${Math.min(bookingStep + 1, BOOKING_STEPS.length)} of ${BOOKING_STEPS.length}` : 'Online · AI Powered'}
                     </span>
                   </div>
                 </div>
@@ -430,7 +321,7 @@ export default function ChatBot() {
                 </div>
               )}
 
-              {/* Quick suggestions (first open) */}
+              {/* Quick suggestions */}
               {showSuggestions && messages.length === 1 && !loading && (
                 <div className="space-y-2 pt-1">
                   {SUGGESTIONS.map((s) => (
@@ -449,7 +340,7 @@ export default function ChatBot() {
               {showProjectPills && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {PROJECT_TYPE_OPTIONS.map((opt) => (
-                    <button key={opt} onClick={() => { handleBookingInput(opt); }}
+                    <button key={opt} onClick={() => handleBookingInput(opt)}
                       className="text-xs px-3 py-1.5 rounded-xl transition-all"
                       style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#93C5FD' }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.15)')}
@@ -481,7 +372,7 @@ export default function ChatBot() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Book a Call banner (only when not in booking flow) */}
+            {/* Book a Call banner */}
             {!booking && (
               <div className="px-3 pb-2 flex-shrink-0">
                 <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }} onClick={startBooking}
@@ -498,7 +389,7 @@ export default function ChatBot() {
             )}
 
             {/* Input */}
-            {(!isBookingDone) && (
+            {!isBookingDone && (
               <div className="flex items-center gap-2 px-3 py-3 flex-shrink-0"
                 style={{ borderTop: '1px solid rgba(192,199,209,0.07)' }}>
                 <input ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)}
