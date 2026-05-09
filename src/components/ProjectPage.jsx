@@ -24,7 +24,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: '#05070A' }}>
+    <div key={id} className="min-h-screen" style={{ background: '#05070A' }}>
 
       {/* ── Curtain entrance overlay ── */}
       <motion.div
