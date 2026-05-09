@@ -83,61 +83,6 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Lumière Fashion Web',
-    subtitle: 'Luxury Fashion Website Design',
-    description:
-      'A luxury fashion website concept designed to feel elegant, premium, and immersive while staying modern and responsive.',
-    tags: ['Web Development', 'Web Design', 'HTML', 'Product Development'],
-    image: '/images/project6.jpg',
-    gradient: 'from-rose-900/60 via-red-900/40 to-brand-navy',
-    accent: '#F43F5E',
-  },
-  {
-    id: 3,
-    title: 'Lumière Editorial',
-    subtitle: 'Fashion Campaign Design',
-    description:
-      'A visually driven fashion campaign concept combining editorial aesthetics, creative direction, and premium digital presentation.',
-    tags: ['Content Creation', 'Creative Direction', 'Visual Design'],
-    image: '/images/project3.jpg',
-    gradient: 'from-purple-900/60 via-pink-900/40 to-brand-navy',
-    accent: '#A855F7',
-  },
-  {
-    id: 4,
-    title: 'Lumière Visual System',
-    subtitle: 'Luxury Brand Identity Design',
-    description:
-      'A luxury brand identity concept featuring logo design, typography, color systems, and visual branding for a high-end aesthetic.',
-    tags: ['Brand Identity', 'Logo Design', 'Typography', 'Color Theory'],
-    image: '/images/project5.jpg',
-    gradient: 'from-amber-900/60 via-yellow-900/40 to-brand-navy',
-    accent: '#F59E0B',
-  },
-  {
-    id: 5,
-    title: 'Sol Slice',
-    subtitle: 'Creative Agency Landing Page',
-    description:
-      'A creative agency landing page concept focused on bold visuals, modern structure, and a sleek user experience.',
-    tags: ['Web Design', 'Front-End', 'UI/UX'],
-    image: '/images/project1.jpg',
-    gradient: 'from-blue-900/60 via-indigo-900/40 to-brand-navy',
-    accent: '#3B82F6',
-  },
-  {
-    id: 6,
-    title: 'AI Lead Dashboard',
-    subtitle: 'AI Lead Generation & Automation',
-    description:
-      'A smart dashboard concept focused on automation, AI workflows, lead generation, and agentic systems for business efficiency.',
-    tags: ['AI', 'Automation', 'AI Agents', 'Product Design'],
-    image: '/images/project2.jpg',
-    gradient: 'from-cyan-900/60 via-teal-900/40 to-brand-navy',
-    accent: '#06B6D4',
-  },
-  {
-    id: 7,
     title: 'Virginia Webs',
     subtitle: 'Branding & Website Design',
     description:
@@ -149,7 +94,7 @@ export const projects = [
     accent: '#10B981',
   },
   {
-    id: 8,
+    id: 3,
     title: 'AI Assistant',
     subtitle: 'VirginiaWebs AI-Powered Chatbot UI',
     description:
@@ -158,6 +103,61 @@ export const projects = [
     image: '/images/project8.png',
     gradient: 'from-violet-900/60 via-indigo-900/40 to-brand-navy',
     accent: '#8B5CF6',
+  },
+  {
+    id: 4,
+    title: 'AI Lead Dashboard',
+    subtitle: 'AI Lead Generation & Automation',
+    description:
+      'A smart dashboard concept focused on automation, AI workflows, lead generation, and agentic systems for business efficiency.',
+    tags: ['AI', 'Automation', 'AI Agents', 'Product Design'],
+    image: '/images/project2.jpg',
+    gradient: 'from-cyan-900/60 via-teal-900/40 to-brand-navy',
+    accent: '#06B6D4',
+  },
+  {
+    id: 5,
+    title: 'Lumière Fashion Web',
+    subtitle: 'Luxury Fashion Website Design',
+    description:
+      'A luxury fashion website concept designed to feel elegant, premium, and immersive while staying modern and responsive.',
+    tags: ['Web Development', 'Web Design', 'HTML', 'Product Development'],
+    image: '/images/project6.jpg',
+    gradient: 'from-rose-900/60 via-red-900/40 to-brand-navy',
+    accent: '#F43F5E',
+  },
+  {
+    id: 6,
+    title: 'Lumière Editorial',
+    subtitle: 'Fashion Campaign Design',
+    description:
+      'A visually driven fashion campaign concept combining editorial aesthetics, creative direction, and premium digital presentation.',
+    tags: ['Content Creation', 'Creative Direction', 'Visual Design'],
+    image: '/images/project3.jpg',
+    gradient: 'from-purple-900/60 via-pink-900/40 to-brand-navy',
+    accent: '#A855F7',
+  },
+  {
+    id: 7,
+    title: 'Lumière Visual System',
+    subtitle: 'Luxury Brand Identity Design',
+    description:
+      'A luxury brand identity concept featuring logo design, typography, color systems, and visual branding for a high-end aesthetic.',
+    tags: ['Brand Identity', 'Logo Design', 'Typography', 'Color Theory'],
+    image: '/images/project5.jpg',
+    gradient: 'from-amber-900/60 via-yellow-900/40 to-brand-navy',
+    accent: '#F59E0B',
+  },
+  {
+    id: 8,
+    title: 'Sol Slice',
+    subtitle: 'Creative Agency Landing Page',
+    description:
+      'A creative agency landing page concept focused on bold visuals, modern structure, and a sleek user experience.',
+    tags: ['Web Design', 'Front-End', 'UI/UX'],
+    image: '/images/project1.jpg',
+    gradient: 'from-blue-900/60 via-indigo-900/40 to-brand-navy',
+    accent: '#3B82F6',
   },
 ];
 
