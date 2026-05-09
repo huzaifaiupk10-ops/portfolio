@@ -268,7 +268,8 @@ export default function ChatBot() {
               background: '#0B1220',
               border: '1px solid rgba(59,130,246,0.25)',
               boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(59,130,246,0.08)',
-              maxHeight: '560px',
+              maxHeight: 'min(560px, calc(100vh - 110px))',
+              height: 'min(560px, calc(100vh - 110px))',
             }}
           >
             {/* Header */}
