@@ -98,7 +98,7 @@ export const projects = [
     title: 'AI Assistant',
     subtitle: 'VirginiaWebs AI-Powered Chatbot UI',
     description:
-      'VirginiaWebs AI Assistant is a premium AI-powered chatbot UI designed to help businesses automate customer conversations, capture leads, answer service questions, and guide visitors toward booking appointments or requesting estimates. The project combines modern UI/UX design, branding, and AI automation with a futuristic black, gold, and teal visual style that matches the VirginiaWebs brand identity. It showcases smart conversation flows, quick-action service buttons, lead capture prompts, and a professional assistant experience built for a web development and digital services agency.',
+      'VirginiaWebs AI Assistant is a premium AI chatbot UI designed to capture leads and answer customer questions. It helps visitors explore services, pricing, and bookings through a modern branded automation experience.',
     tags: ['AI', 'AI Agents', 'Chatbot UI', 'UI/UX Design', 'Automation', 'Branding', 'Lead Generation'],
     image: '/images/project8.png',
     gradient: 'from-violet-900/60 via-indigo-900/40 to-brand-navy',
