@@ -33,7 +33,7 @@ export default function Services() {
     <section
       id="services"
       className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#05070A 0%,#0B1220 50%,#05070A 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 50%,#000000 100%)' }}
     >
       <div className="container-max">
         {/* Header */}

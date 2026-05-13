@@ -289,11 +289,11 @@ export default function Contact() {
                         e.currentTarget.style.borderColor = 'rgba(192,199,209,0.1)';
                       }}
                     >
-                      <option value="" disabled style={{ background: '#0B1220' }}>
+                      <option value="" disabled style={{ background: '#0A0A0A' }}>
                         Select a project type
                       </option>
                       {projectTypes.map((t) => (
-                        <option key={t} value={t} style={{ background: '#0B1220' }}>
+                        <option key={t} value={t} style={{ background: '#0A0A0A' }}>
                           {t}
                         </option>
                       ))}

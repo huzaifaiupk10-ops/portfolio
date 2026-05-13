@@ -59,7 +59,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(180deg,#05070A 0%,#0B1220 60%,#05070A 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 60%,#000000 100%)' }}
     >
       {/* Glow blobs */}
       <div

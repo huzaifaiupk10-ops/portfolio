@@ -14,7 +14,7 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#05070A' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#000000' }}>
         <div className="text-center">
           <p className="text-brand-muted text-lg mb-4">Project not found.</p>
           <button onClick={() => navigate('/')} className="btn-primary">Go Back</button>
@@ -24,7 +24,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div key={id} className="min-h-screen" style={{ background: '#05070A' }}>
+    <div key={id} className="min-h-screen" style={{ background: '#000000' }}>
 
       {/* ── Curtain entrance overlay ── */}
       <motion.div
@@ -34,7 +34,7 @@ export default function ProjectPage() {
         style={{
           position: 'fixed',
           inset: 0,
-          background: '#05070A',
+          background: '#000000',
           transformOrigin: 'top',
           zIndex: 9999,
           pointerEvents: 'none',
@@ -173,7 +173,7 @@ export default function ProjectPage() {
               src={project.image}
               alt={project.title}
               className="absolute inset-0 w-full h-full"
-              style={{ objectFit: project.objectFit || 'cover', background: '#0B1220' }}
+              style={{ objectFit: project.objectFit || 'cover', background: '#0A0A0A' }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextSibling.style.display = 'flex';

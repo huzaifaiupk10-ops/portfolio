@@ -21,7 +21,7 @@ export default function Footer() {
     <footer
       className="relative pt-16 pb-8 px-4 md:px-8"
       style={{
-        background: '#05070A',
+        background: '#000000',
         borderTop: '1px solid rgba(192,199,209,0.07)',
       }}
     >

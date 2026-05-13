@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  background-color: #05070A;
+  background-color: #000000;
   color: #C0C7D1;
   font-family: 'Inter', 'Manrope', sans-serif;
   overflow-x: hidden;
@@ -28,7 +28,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #05070A; }
+::-webkit-scrollbar-track { background: #000000; }
 ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2d5a8a; }
 

@@ -58,7 +58,7 @@ export default function About() {
               <div
                 className="w-80 h-80 rounded-2xl flex items-center justify-center relative overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg,#0B1220,#111827)',
+                  background: 'linear-gradient(135deg,#0A0A0A,#111827)',
                   border: '1px solid rgba(192,199,209,0.12)',
                   boxShadow: '0 0 60px rgba(59,130,246,0.12)',
                 }}
