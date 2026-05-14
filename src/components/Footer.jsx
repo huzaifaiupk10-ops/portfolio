@@ -22,7 +22,7 @@ export default function Footer() {
       className="relative pt-16 pb-8 px-4 md:px-8"
       style={{
         background: '#000000',
-        borderTop: '1px solid rgba(192,199,209,0.07)',
+        borderTop: '1px solid rgba(37,99,235,0.08)',
       }}
     >
       {/* Top glow */}
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Divider */}
         <div
           className="w-full h-px mb-6"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(192,199,209,0.1), transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(37,99,235,0.12), transparent)' }}
         />
 
         {/* Bottom bar */}

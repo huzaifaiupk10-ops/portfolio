@@ -99,7 +99,7 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               className="font-display font-bold leading-[1.1] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#E5E7EB' }}
+              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9' }}
             >
               {['Building', 'Digital'].map((word) => (
                 <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
@@ -183,9 +183,9 @@ export default function Hero() {
                   key={tag}
                   className="text-xs px-3 py-1 rounded-full font-medium"
                   style={{
-                    background: 'rgba(17,24,39,0.8)',
+                    background: 'rgba(5,13,26,0.85)',
                     border: '1px solid rgba(192,199,209,0.12)',
-                    color: '#94A3B8',
+                    color: '#64748B',
                   }}
                 >
                   {tag}
@@ -231,7 +231,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(192,199,209,0.07)' }}
+          style={{ borderTop: '1px solid rgba(37,99,235,0.08)' }}
         >
           {[
             { value: '20+', label: 'Projects Built' },

@@ -47,7 +47,7 @@ export default function Navbar() {
           : 'rgba(5,7,10,0)',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(192,199,209,0.07)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(37,99,235,0.08)' : 'none',
         transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border 0.4s ease',
       }}
     >
@@ -60,7 +60,7 @@ export default function Navbar() {
         >
           <span
             className="font-display font-semibold text-[15px] tracking-tight"
-            style={{ color: '#E5E7EB' }}
+            style={{ color: '#F1F5F9' }}
           >
             Huzaifa <span style={{ color: '#60A5FA' }}>Portfolio</span>
           </span>
@@ -74,14 +74,14 @@ export default function Navbar() {
               onClick={() => handleNav(l.href)}
               className="relative px-3.5 py-1.5 text-sm font-medium rounded-md transition-colors"
               style={{
-                color: active === l.href ? '#E5E7EB' : '#94A3B8',
+                color: active === l.href ? '#F1F5F9' : '#64748B',
                 background: active === l.href ? 'rgba(59,130,246,0.12)' : 'transparent',
               }}
               onMouseEnter={(e) => {
-                if (active !== l.href) e.currentTarget.style.color = '#C0C7D1';
+                if (active !== l.href) e.currentTarget.style.color = '#CBD5E1';
               }}
               onMouseLeave={(e) => {
-                if (active !== l.href) e.currentTarget.style.color = '#94A3B8';
+                if (active !== l.href) e.currentTarget.style.color = '#64748B';
               }}
             >
               {l.label}
@@ -135,7 +135,7 @@ export default function Navbar() {
             style={{
               background: 'rgba(5,7,10,0.95)',
               backdropFilter: 'blur(20px)',
-              borderBottom: '1px solid rgba(192,199,209,0.08)',
+              borderBottom: '1px solid rgba(37,99,235,0.1)',
             }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
@@ -145,7 +145,7 @@ export default function Navbar() {
                   onClick={() => handleNav(l.href)}
                   className="text-left px-4 py-3 text-sm font-medium rounded-lg transition-colors"
                   style={{
-                    color: active === l.href ? '#E5E7EB' : '#94A3B8',
+                    color: active === l.href ? '#F1F5F9' : '#64748B',
                     background: active === l.href ? 'rgba(59,130,246,0.1)' : 'transparent',
                   }}
                 >

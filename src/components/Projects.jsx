@@ -40,8 +40,8 @@ function ProjectCard({ project, i }) {
       <div
         className="relative h-full shine"
         style={{
-          background: 'rgba(11,18,32,0.6)',
-          border: '1px solid rgba(192,199,209,0.08)',
+          background: 'rgba(5,13,26,0.65)',
+          border: '1px solid rgba(37,99,235,0.1)',
           borderRadius: '1rem',
           transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
         }}
@@ -50,7 +50,7 @@ function ProjectCard({ project, i }) {
           e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.4), 0 0 30px ${project.accent}18`;
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
+          e.currentTarget.style.borderColor = 'rgba(37,99,235,0.1)';
           e.currentTarget.style.boxShadow = 'none';
         }}
       >

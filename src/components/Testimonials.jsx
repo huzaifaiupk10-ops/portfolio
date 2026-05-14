@@ -24,7 +24,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 50%,#000000 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#000000 0%,#050d1a 50%,#000000 100%)' }}
     >
       <div className="container-max">
         {/* Header */}
@@ -60,8 +60,8 @@ export default function Testimonials() {
                 whileHover={{ y: -5 }}
                 className="relative rounded-2xl p-6 overflow-hidden"
                 style={{
-                  background: 'rgba(11,18,32,0.6)',
-                  border: '1px solid rgba(192,199,209,0.08)',
+                  background: 'rgba(5,13,26,0.65)',
+                  border: '1px solid rgba(37,99,235,0.1)',
                   transition: 'border-color 0.3s, box-shadow 0.3s',
                 }}
                 onMouseEnter={(e) => {
@@ -69,7 +69,7 @@ export default function Testimonials() {
                   e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 35px ${accent}12`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(37,99,235,0.1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
@@ -98,7 +98,7 @@ export default function Testimonials() {
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold" style={{ color: '#E5E7EB' }}>
+                    <div className="text-sm font-semibold" style={{ color: '#F1F5F9' }}>
                       {t.name}
                     </div>
                     <div className="text-xs text-brand-muted">{t.role}</div>

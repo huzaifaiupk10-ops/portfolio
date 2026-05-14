@@ -58,8 +58,8 @@ export default function Process() {
                   whileHover={{ y: -4, scale: 1.01 }}
                   className="rounded-2xl p-6 h-full relative overflow-hidden shine"
                   style={{
-                    background: 'rgba(11,18,32,0.6)',
-                    border: '1px solid rgba(192,199,209,0.08)',
+                    background: 'rgba(5,13,26,0.65)',
+                    border: '1px solid rgba(37,99,235,0.1)',
                     transition: 'border-color 0.3s, box-shadow 0.3s',
                   }}
                   onMouseEnter={(e) => {
@@ -67,7 +67,7 @@ export default function Process() {
                     e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.3), 0 0 30px rgba(59,130,246,0.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
+                    e.currentTarget.style.borderColor = 'rgba(37,99,235,0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
@@ -77,7 +77,7 @@ export default function Process() {
                     style={{
                       background: 'linear-gradient(135deg, rgba(30,64,175,0.4), rgba(59,130,246,0.2))',
                       border: '1px solid rgba(59,130,246,0.35)',
-                      color: '#93C5FD',
+                      color: '#60A5FA',
                       boxShadow: '0 0 20px rgba(59,130,246,0.15)',
                     }}
                   >
@@ -86,7 +86,7 @@ export default function Process() {
 
                   <h3
                     className="font-display font-semibold text-lg mb-2 relative z-10"
-                    style={{ color: '#E5E7EB' }}
+                    style={{ color: '#F1F5F9' }}
                   >
                     {step.title}
                   </h3>

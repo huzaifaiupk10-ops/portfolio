@@ -100,7 +100,7 @@ export default function About() {
                 style={{
                   background: 'rgba(5,7,10,0.9)',
                   border: '1px solid rgba(59,130,246,0.3)',
-                  color: '#93C5FD',
+                  color: '#60A5FA',
                   backdropFilter: 'blur(10px)',
                 }}
               >
@@ -127,7 +127,7 @@ export default function About() {
             <div>
               <h3
                 className="font-display font-bold mb-3"
-                style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', color: '#E5E7EB' }}
+                style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', color: '#F1F5F9' }}
               >
                 {personal.name}
               </h3>
@@ -152,7 +152,7 @@ export default function About() {
                   className="flex items-start gap-3 p-3 rounded-xl"
                   style={{
                     background: 'rgba(17,24,39,0.5)',
-                    border: '1px solid rgba(192,199,209,0.07)',
+                    border: '1px solid rgba(37,99,235,0.08)',
                   }}
                 >
                   <span className="text-blue-400 text-lg leading-none mt-0.5">{item.icon}</span>

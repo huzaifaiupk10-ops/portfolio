@@ -87,7 +87,7 @@ export default function ServicePage() {
         style={{
           background: 'rgba(5,7,10,0.88)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(192,199,209,0.07)',
+          borderBottom: '1px solid rgba(37,99,235,0.08)',
         }}
       >
         <div className="max-w-5xl mx-auto w-full flex items-center justify-between">
@@ -95,9 +95,9 @@ export default function ServicePage() {
             whileHover={{ x: -3 }}
             onClick={() => navigate('/')}
             className="flex items-center gap-2 text-sm font-medium transition-colors"
-            style={{ color: '#94A3B8' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#E5E7EB')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}
+            style={{ color: '#64748B' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#F1F5F9')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 5l-7 7 7 7" />
@@ -169,9 +169,9 @@ export default function ServicePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.6, ease }}
             className="md:col-span-2 rounded-2xl p-6 md:p-8"
-            style={{ background: 'rgba(11,18,32,0.6)', border: '1px solid rgba(192,199,209,0.08)' }}
+            style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(37,99,235,0.1)' }}
           >
-            <h2 className="font-display font-semibold text-lg mb-6" style={{ color: '#E5E7EB' }}>
+            <h2 className="font-display font-semibold text-lg mb-6" style={{ color: '#F1F5F9' }}>
               What's Included
             </h2>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -204,7 +204,7 @@ export default function ServicePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6, ease }}
               className="rounded-2xl p-5"
-              style={{ background: 'rgba(11,18,32,0.6)', border: `1px solid ${service.accent}20` }}
+              style={{ background: 'rgba(5,13,26,0.65)', border: `1px solid ${service.accent}20` }}
             >
               <h3 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: service.accent }}>
                 Technologies
@@ -266,7 +266,7 @@ export default function ServicePage() {
           transition={{ delay: 1.1, duration: 0.6, ease }}
           className="mb-14"
         >
-          <h2 className="font-display font-semibold text-xl mb-6" style={{ color: '#E5E7EB' }}>
+          <h2 className="font-display font-semibold text-xl mb-6" style={{ color: '#F1F5F9' }}>
             How It Works
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -277,7 +277,7 @@ export default function ServicePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 + i * 0.1, duration: 0.5, ease }}
                 className="rounded-2xl p-5 text-center"
-                style={{ background: 'rgba(11,18,32,0.6)', border: '1px solid rgba(192,199,209,0.08)' }}
+                style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(37,99,235,0.1)' }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold text-sm mx-auto mb-3"
@@ -289,7 +289,7 @@ export default function ServicePage() {
                 >
                   0{i + 1}
                 </div>
-                <p className="text-sm font-medium" style={{ color: '#E5E7EB' }}>{step}</p>
+                <p className="text-sm font-medium" style={{ color: '#F1F5F9' }}>{step}</p>
               </motion.div>
             ))}
           </div>
@@ -303,7 +303,7 @@ export default function ServicePage() {
         >
           <h2
             className="font-display font-semibold text-xl mb-6"
-            style={{ color: '#E5E7EB', borderTop: '1px solid rgba(192,199,209,0.07)', paddingTop: '2rem' }}
+            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(37,99,235,0.08)', paddingTop: '2rem' }}
           >
             Other Services
           </h2>
@@ -322,13 +322,13 @@ export default function ServicePage() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="text-left rounded-xl p-5 transition-all flex items-start gap-4"
-                  style={{ background: 'rgba(11,18,32,0.6)', border: '1px solid rgba(192,199,209,0.08)' }}
+                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(37,99,235,0.1)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = `${s.accent}35`;
                     e.currentTarget.style.boxShadow = `0 10px 30px rgba(0,0,0,0.3)`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
+                    e.currentTarget.style.borderColor = 'rgba(37,99,235,0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
@@ -339,7 +339,7 @@ export default function ServicePage() {
                     {icons[s.icon]}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold mb-1" style={{ color: '#E5E7EB' }}>{s.title}</p>
+                    <p className="text-sm font-semibold mb-1" style={{ color: '#F1F5F9' }}>{s.title}</p>
                     <p className="text-xs text-brand-muted leading-relaxed">{s.description}</p>
                   </div>
                 </motion.button>

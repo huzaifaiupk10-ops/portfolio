@@ -137,7 +137,7 @@ function NodeSphere({ position, index }) {
       ref.current.scale.setScalar(sc);
     }
   });
-  const colors = ['#3B82F6', '#60A5FA', '#93C5FD', '#00BFFF', '#C0C7D1'];
+  const colors = ['#3B82F6', '#60A5FA', '#60A5FA', '#00BFFF', '#CBD5E1'];
   const color  = colors[index % colors.length];
   return (
     <mesh ref={ref} position={position}>
@@ -209,11 +209,11 @@ function OrbitalRings() {
       </mesh>
       <mesh ref={r2} rotation={[Math.PI / 3, Math.PI / 4, 0]}>
         <torusGeometry args={[2.15, 0.010, 16, 120]} />
-        <meshStandardMaterial color="#93C5FD" emissive="#60A5FA" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
+        <meshStandardMaterial color="#60A5FA" emissive="#60A5FA" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
       </mesh>
       <mesh ref={r3} rotation={[-Math.PI / 5, Math.PI / 3, 0]}>
         <torusGeometry args={[2.40, 0.007, 12, 100]} />
-        <meshStandardMaterial color="#C0C7D1" emissive="#94A3B8" emissiveIntensity={0.2} metalness={1} roughness={0} transparent opacity={0.35} />
+        <meshStandardMaterial color="#CBD5E1" emissive="#64748B" emissiveIntensity={0.2} metalness={1} roughness={0} transparent opacity={0.35} />
       </mesh>
     </>
   );
@@ -292,7 +292,7 @@ export default function ThreeHeroObject() {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.12} />
-          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#93C5FD" />
+          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#60A5FA" />
           <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#1E40AF" />
           <Environment preset="night" />
           <AIScene clicked={clicked} />

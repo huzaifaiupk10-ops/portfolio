@@ -23,7 +23,7 @@ function parseInline(text, onNavigate) {
   const parts = text.split(/(\*\*.*?\*\*|\[\[.*?\]\])/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={i} style={{ color: '#E5E7EB', fontWeight: 600 }}>{part.slice(2, -2)}</strong>;
+      return <strong key={i} style={{ color: '#F1F5F9', fontWeight: 600 }}>{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith('[[') && part.endsWith(']]')) {
       const inner = part.slice(2, -2);
@@ -57,7 +57,7 @@ function RenderText({ text, onNavigate }) {
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1 px-4 py-3 rounded-2xl rounded-bl-sm w-fit"
-      style={{ background: 'rgba(17,24,39,0.8)', border: '1px solid rgba(192,199,209,0.1)' }}>
+      style={{ background: 'rgba(5,13,26,0.85)', border: '1px solid rgba(37,99,235,0.12)' }}>
       {[0, 1, 2].map((i) => (
         <motion.span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#60A5FA' }}
           animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }} />
@@ -78,7 +78,7 @@ function Message({ msg, onNavigate }) {
       <div className="max-w-[80%] px-4 py-2.5 text-sm leading-relaxed"
         style={isUser
           ? { background: 'linear-gradient(135deg,#1E40AF,#3B82F6)', color: 'white', borderRadius: '1rem 1rem 0.25rem 1rem' }
-          : { background: 'rgba(17,24,39,0.8)', border: '1px solid rgba(192,199,209,0.1)', color: '#C0C7D1', borderRadius: '1rem 1rem 1rem 0.25rem' }
+          : { background: 'rgba(5,13,26,0.85)', border: '1px solid rgba(37,99,235,0.12)', color: '#CBD5E1', borderRadius: '1rem 1rem 1rem 0.25rem' }
         }>
         <RenderText text={msg.content} onNavigate={onNavigate} />
       </div>
@@ -278,15 +278,15 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 flex-shrink-0"
-              style={{ background: 'rgba(0,0,0,0.98)', borderBottom: '1px solid rgba(192,199,209,0.08)' }}>
+              style={{ background: 'rgba(0,0,0,0.98)', borderBottom: '1px solid rgba(37,99,235,0.1)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
                   style={{ background: 'linear-gradient(135deg,#1E40AF,#3B82F6)', color: 'white' }}>H</div>
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: '#E5E7EB' }}>Huzaifa's Assistant</p>
+                  <p className="text-sm font-semibold" style={{ color: '#F1F5F9' }}>Huzaifa's Assistant</p>
                   <div className="flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                    <span className="text-xs" style={{ color: '#94A3B8' }}>
+                    <span className="text-xs" style={{ color: '#64748B' }}>
                       {booking ? `Booking — Step ${Math.min(bookingStep + 1, BOOKING_STEPS.length)} of ${BOOKING_STEPS.length}` : 'Online · AI Powered'}
                     </span>
                   </div>
@@ -296,16 +296,16 @@ export default function ChatBot() {
                 {booking && (
                   <button onClick={cancelBooking}
                     className="text-xs px-2 py-1 rounded-md mr-1 transition-colors"
-                    style={{ color: '#94A3B8', border: '1px solid rgba(192,199,209,0.1)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#E5E7EB')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#94A3B8')}>
+                    style={{ color: '#64748B', border: '1px solid rgba(37,99,235,0.12)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#F1F5F9')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}>
                     Cancel
                   </button>
                 )}
                 <button onClick={() => setOpen(false)}
                   className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
-                  style={{ color: '#94A3B8' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(192,199,209,0.1)')}
+                  style={{ color: '#64748B' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(37,99,235,0.12)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -332,7 +332,7 @@ export default function ChatBot() {
                   {SUGGESTIONS.map((s) => (
                     <button key={s} onClick={() => send(s)}
                       className="w-full text-left text-xs px-3 py-2 rounded-xl transition-all"
-                      style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#93C5FD' }}
+                      style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.15)')}
                       onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.08)')}>
                       {s}
@@ -347,7 +347,7 @@ export default function ChatBot() {
                   {PROJECT_TYPE_OPTIONS.map((opt) => (
                     <button key={opt} onClick={() => handleBookingInput(opt)}
                       className="text-xs px-3 py-1.5 rounded-xl transition-all"
-                      style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#93C5FD' }}
+                      style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.15)')}
                       onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.08)')}>
                       {opt}
@@ -368,7 +368,7 @@ export default function ChatBot() {
                   </motion.button>
                   <motion.button whileTap={{ scale: 0.96 }} onClick={cancelBooking}
                     className="px-4 text-sm py-2.5 rounded-xl font-medium transition-all"
-                    style={{ background: 'rgba(17,24,39,0.8)', border: '1px solid rgba(192,199,209,0.12)', color: '#94A3B8' }}>
+                    style={{ background: 'rgba(5,13,26,0.85)', border: '1px solid rgba(192,199,209,0.12)', color: '#64748B' }}>
                     Edit
                   </motion.button>
                 </div>
@@ -382,7 +382,7 @@ export default function ChatBot() {
               <div className="px-3 pb-2 flex-shrink-0">
                 <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }} onClick={startBooking}
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all"
-                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.25)', color: '#93C5FD' }}
+                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.25)', color: '#60A5FA' }}
                   onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.18)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.1)')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -396,21 +396,21 @@ export default function ChatBot() {
             {/* Input */}
             {!isBookingDone && (
               <div className="flex items-center gap-2 px-3 py-3 flex-shrink-0"
-                style={{ borderTop: '1px solid rgba(192,199,209,0.07)' }}>
+                style={{ borderTop: '1px solid rgba(37,99,235,0.08)' }}>
                 <input ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKey} disabled={loading}
                   placeholder={currentStepMeta ? currentStepMeta.placeholder : 'Ask me anything...'}
                   className="flex-1 px-3 py-2 rounded-xl text-sm outline-none"
-                  style={{ background: 'rgba(17,24,39,0.8)', border: '1px solid rgba(192,199,209,0.1)', color: '#E5E7EB' }}
+                  style={{ background: 'rgba(5,13,26,0.85)', border: '1px solid rgba(37,99,235,0.12)', color: '#F1F5F9' }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(59,130,246,0.4)')}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(192,199,209,0.1)')} />
+                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(37,99,235,0.12)')} />
                 <motion.button whileTap={{ scale: 0.92 }} onClick={handleSend}
                   disabled={!input.trim() || loading}
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
                   style={{
-                    background: input.trim() && !loading ? 'linear-gradient(135deg,#1E40AF,#3B82F6)' : 'rgba(17,24,39,0.6)',
-                    color: input.trim() && !loading ? 'white' : '#4B5563',
-                    border: '1px solid rgba(192,199,209,0.1)',
+                    background: input.trim() && !loading ? 'linear-gradient(135deg,#1E40AF,#3B82F6)' : 'rgba(5,13,26,0.7)',
+                    color: input.trim() && !loading ? 'white' : '#374151',
+                    border: '1px solid rgba(37,99,235,0.12)',
                   }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>

@@ -4,18 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-black': '#05070A',
-        'brand-navy': '#0B1220',
-        'brand-navy-2': '#111827',
-        'brand-silver': '#C0C7D1',
-        'brand-silver-light': '#E5E7EB',
-        'brand-muted': '#94A3B8',
-        'brand-blue': '#3B82F6',
-        'brand-blue-dark': '#1E40AF',
+        'brand-black': '#000000',
+        'brand-navy': '#050d1a',
+        'brand-navy-2': '#070f1e',
+        'brand-silver': '#CBD5E1',
+        'brand-silver-light': '#F1F5F9',
+        'brand-muted': '#64748B',
+        'brand-blue': '#2563EB',
+        'brand-blue-light': '#60A5FA',
+        'brand-blue-dark': '#1D4ED8',
+        'brand-ice': '#BAE6FD',
       },
       fontFamily: {
-        display: ['Sora', 'Space Grotesk', 'sans-serif'],
-        body: ['Inter', 'Manrope', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['"DM Sans"', 'Space Grotesk', 'sans-serif'],
       },
       animation: {
         float: 'float 6s ease-in-out infinite',

@@ -11,20 +11,20 @@ function SkillPill({ label, i }) {
       whileHover={{ scale: 1.06, y: -2 }}
       className="inline-block px-3 py-1.5 rounded-lg text-sm font-medium cursor-default"
       style={{
-        background: 'rgba(17,24,39,0.7)',
-        border: '1px solid rgba(192,199,209,0.1)',
-        color: '#C0C7D1',
+        background: 'rgba(5,13,26,0.75)',
+        border: '1px solid rgba(37,99,235,0.12)',
+        color: '#CBD5E1',
         transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = 'rgba(59,130,246,0.35)';
         e.currentTarget.style.boxShadow = '0 0 14px rgba(59,130,246,0.15)';
-        e.currentTarget.style.color = '#E5E7EB';
+        e.currentTarget.style.color = '#F1F5F9';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(192,199,209,0.1)';
+        e.currentTarget.style.borderColor = 'rgba(37,99,235,0.12)';
         e.currentTarget.style.boxShadow = 'none';
-        e.currentTarget.style.color = '#C0C7D1';
+        e.currentTarget.style.color = '#CBD5E1';
       }}
     >
       {label}
@@ -43,7 +43,7 @@ export default function Skills() {
     <section
       id="skills"
       className="section-pad relative"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 50%,#000000 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#000000 0%,#050d1a 50%,#000000 100%)' }}
     >
       <div className="container-max">
         {/* Header */}
@@ -80,12 +80,12 @@ export default function Skills() {
               className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-25"
               style={{
                 background:
-                  activeTab === i ? 'rgba(59,130,246,0.15)' : 'rgba(11,18,32,0.6)',
+                  activeTab === i ? 'rgba(59,130,246,0.15)' : 'rgba(5,13,26,0.65)',
                 border:
                   activeTab === i
                     ? '1px solid rgba(59,130,246,0.4)'
-                    : '1px solid rgba(192,199,209,0.08)',
-                color: activeTab === i ? '#93C5FD' : '#94A3B8',
+                    : '1px solid rgba(37,99,235,0.1)',
+                color: activeTab === i ? '#60A5FA' : '#64748B',
               }}
             >
               <span className="mr-1.5">{cat.icon}</span>

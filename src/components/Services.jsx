@@ -33,7 +33,7 @@ export default function Services() {
     <section
       id="services"
       className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 50%,#000000 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#000000 0%,#050d1a 50%,#000000 100%)' }}
     >
       <div className="container-max">
         {/* Header */}
@@ -70,8 +70,8 @@ export default function Services() {
                 onClick={() => navigate(`/service/${service.id}`)}
                 className="group relative rounded-2xl p-6 shine cursor-pointer"
                 style={{
-                  background: 'rgba(11,18,32,0.6)',
-                  border: '1px solid rgba(192,199,209,0.08)',
+                  background: 'rgba(5,13,26,0.65)',
+                  border: '1px solid rgba(37,99,235,0.1)',
                   transition: 'border-color 0.35s ease, box-shadow 0.35s ease',
                 }}
                 onMouseEnter={(e) => {
@@ -79,7 +79,7 @@ export default function Services() {
                   e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 40px ${accent}15`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(192,199,209,0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(37,99,235,0.1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
@@ -99,7 +99,7 @@ export default function Services() {
 
                 <h3
                   className="font-display font-semibold text-xl mb-3"
-                  style={{ color: '#E5E7EB' }}
+                  style={{ color: '#F1F5F9' }}
                 >
                   {service.title}
                 </h3>
