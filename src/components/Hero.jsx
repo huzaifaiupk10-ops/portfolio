@@ -21,11 +21,10 @@ const headlineContainer = {
 };
 
 const wordReveal = {
-  hidden: { opacity: 0, y: 48, skewY: 4 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    skewY: 0,
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
 };
@@ -102,20 +101,20 @@ export default function Hero() {
               style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9' }}
             >
               {['Building', 'Digital'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
+                <span key={word} style={{ display: 'inline-block', marginRight: '0.28em' }}>
                   <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
                 </span>
               ))}
-              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
+              <span style={{ display: 'inline-block' }}>
                 <motion.span variants={wordReveal} className="gradient-text" style={{ display: 'inline-block' }}>Experiences</motion.span>
               </span>
               <br />
               {['That', 'Feel'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
+                <span key={word} style={{ display: 'inline-block', marginRight: '0.28em' }}>
                   <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
                 </span>
               ))}
-              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
+              <span style={{ display: 'inline-block' }}>
                 <motion.span
                   variants={wordReveal}
                   style={{
