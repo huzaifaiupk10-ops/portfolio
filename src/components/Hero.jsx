@@ -97,8 +97,8 @@ export default function Hero() {
               variants={headlineContainer}
               initial="hidden"
               animate="show"
-              className="font-display font-bold leading-[1.1] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9' }}
+              className="font-display font-bold tracking-tight mb-6"
+              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9', lineHeight: 1.35 }}
             >
               {['Building', 'Digital'].map((word) => (
                 <span key={word} style={{ display: 'inline-block', marginRight: '0.28em' }}>
