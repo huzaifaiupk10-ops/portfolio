@@ -102,20 +102,20 @@ export default function Hero() {
               style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9' }}
             >
               {['Building', 'Digital'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
+                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
                   <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
                 </span>
               ))}
-              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
+              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
                 <motion.span variants={wordReveal} className="gradient-text" style={{ display: 'inline-block' }}>Experiences</motion.span>
               </span>
               <br />
               {['That', 'Feel'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom' }}>
+                <span key={word} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.28em', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
                   <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
                 </span>
               ))}
-              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom' }}>
+              <span style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.15em', marginBottom: '-0.15em' }}>
                 <motion.span
                   variants={wordReveal}
                   style={{
