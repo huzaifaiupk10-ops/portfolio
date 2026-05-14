@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, Suspense } from 'react';
+import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -270,10 +270,17 @@ function AIScene({ clicked }) {
   );
 }
 
+// Signals when the scene has fully mounted inside Suspense
+function ReadySignal({ onReady }) {
+  useEffect(() => { onReady(); }, []);
+  return null;
+}
+
 // ── Main export ──────────────────────────────────────────────
 export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [ready, setReady]     = useState(false);
 
   return (
     <div
@@ -284,13 +291,14 @@ export default function ThreeHeroObject() {
       <Canvas
         camera={{ position: [0, 0, 6.0], fov: 42 }}
         gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', opacity: ready ? 1 : 0, transition: 'opacity 0.8s ease' }}
         dpr={[1, 1.5]}
         onClick={() => { setClicked(true); setTimeout(() => setClicked(false), 900); }}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
         <Suspense fallback={null}>
+          <ReadySignal onReady={() => setReady(true)} />
           <ambientLight intensity={0.12} />
           <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#60A5FA" />
           <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#1E40AF" />
