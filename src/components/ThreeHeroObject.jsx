@@ -25,7 +25,7 @@ function AICore() {
     <group>
       {/* Outer clean metallic sphere */}
       <mesh ref={coreRef}>
-        <sphereGeometry args={[0.72, 128, 128]} />
+        <sphereGeometry args={[0.88, 128, 128]} />
         <meshStandardMaterial
           color="#050D1A"
           metalness={0.95}
@@ -36,7 +36,7 @@ function AICore() {
 
       {/* Inner glowing core */}
       <mesh ref={innerRef}>
-        <sphereGeometry args={[0.45, 48, 48]} />
+        <sphereGeometry args={[0.55, 48, 48]} />
         <meshStandardMaterial
           color="#0D2040"
           emissive="#3B82F6"
@@ -204,15 +204,15 @@ function OrbitalRings() {
   return (
     <>
       <mesh ref={r1} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[1.35, 0.012, 16, 120]} />
+        <torusGeometry args={[1.6, 0.013, 16, 120]} />
         <meshStandardMaterial color="#3B82F6" emissive="#1D4ED8" emissiveIntensity={0.7} metalness={1} roughness={0} />
       </mesh>
       <mesh ref={r2} rotation={[Math.PI / 3, Math.PI / 4, 0]}>
-        <torusGeometry args={[1.55, 0.008, 16, 120]} />
+        <torusGeometry args={[1.85, 0.009, 16, 120]} />
         <meshStandardMaterial color="#60A5FA" emissive="#60A5FA" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
       </mesh>
       <mesh ref={r3} rotation={[-Math.PI / 5, Math.PI / 3, 0]}>
-        <torusGeometry args={[1.75, 0.006, 12, 100]} />
+        <torusGeometry args={[2.1, 0.007, 12, 100]} />
         <meshStandardMaterial color="#CBD5E1" emissive="#64748B" emissiveIntensity={0.2} metalness={1} roughness={0} transparent opacity={0.35} />
       </mesh>
     </>
