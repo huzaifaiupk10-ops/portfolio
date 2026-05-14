@@ -16,7 +16,7 @@ export default {
         'brand-ice': '#BAE6FD',
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
         body: ['"DM Sans"', 'Space Grotesk', 'sans-serif'],
       },
       animation: {

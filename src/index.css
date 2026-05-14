@@ -16,6 +16,7 @@ body {
   background-color: #000000;
   color: #CBD5E1;
   font-family: 'DM Sans', 'Space Grotesk', sans-serif;
+  font-feature-settings: 'kern' 1;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
