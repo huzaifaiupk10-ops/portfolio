@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { testimonials } from '../data/portfolioData';
 
-function QuoteIcon({ color = '#C8956A' }) {
+function QuoteIcon({ color = '#C8A898' }) {
   return (
     <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
       <path
@@ -14,7 +14,7 @@ function QuoteIcon({ color = '#C8956A' }) {
   );
 }
 
-const accentColors = ['#C8956A', '#06B6D4', '#A855F7'];
+const accentColors = ['#C8A898', '#06B6D4', '#A855F7'];
 
 export default function Testimonials() {
   const ref = useRef(null);
@@ -61,7 +61,7 @@ export default function Testimonials() {
                 className="relative rounded-2xl p-6 overflow-hidden"
                 style={{
                   background: 'rgba(5,13,26,0.65)',
-                  border: '1px solid rgba(200,149,106,0.1)',
+                  border: '1px solid rgba(200,168,152,0.1)',
                   transition: 'border-color 0.3s, box-shadow 0.3s',
                 }}
                 onMouseEnter={(e) => {
@@ -69,7 +69,7 @@ export default function Testimonials() {
                   e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 35px ${accent}12`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(200,149,106,0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(200,168,152,0.1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >

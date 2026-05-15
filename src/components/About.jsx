@@ -60,7 +60,7 @@ export default function About() {
                 style={{
                   background: 'linear-gradient(135deg,#0A0A0A,#111827)',
                   border: '1px solid rgba(192,199,209,0.12)',
-                  boxShadow: '0 0 60px rgba(200,149,106,0.12)',
+                  boxShadow: '0 0 60px rgba(200,168,152,0.12)',
                 }}
               >
                 {/* Profile photo — drop your image at public/images/profile.jpg */}
@@ -76,7 +76,7 @@ export default function About() {
                   <span
                     className="font-display font-bold text-5xl"
                     style={{
-                      background: 'linear-gradient(135deg,#C8956A,#E0B898,#C0C7D1)',
+                      background: 'linear-gradient(135deg,#C8A898,#DEC0B0,#C0C7D1)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -100,7 +100,7 @@ export default function About() {
                 style={{
                   background: 'rgba(5,7,10,0.9)',
                   border: '1px solid rgba(59,130,246,0.3)',
-                  color: '#C8956A',
+                  color: '#C8A898',
                   backdropFilter: 'blur(10px)',
                 }}
               >
@@ -133,7 +133,7 @@ export default function About() {
               </h3>
               <p
                 className="text-sm font-medium mb-4"
-                style={{ color: '#C8956A', letterSpacing: '0.04em' }}
+                style={{ color: '#C8A898', letterSpacing: '0.04em' }}
               >
                 {personal.title}
               </p>
@@ -152,7 +152,7 @@ export default function About() {
                   className="flex items-start gap-3 p-3 rounded-xl"
                   style={{
                     background: 'rgba(17,24,39,0.5)',
-                    border: '1px solid rgba(200,149,106,0.08)',
+                    border: '1px solid rgba(200,168,152,0.08)',
                   }}
                 >
                   <span className="text-blue-400 text-lg leading-none mt-0.5">{item.icon}</span>

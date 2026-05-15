@@ -14,7 +14,7 @@ html {
 
 body {
   background-color: #00030A;
-  color: #E0B898;
+  color: #DEC0B0;
   font-family: 'DM Sans', 'Space Grotesk', sans-serif;
   font-feature-settings: 'kern' 1;
   overflow-x: hidden;
@@ -31,8 +31,8 @@ body {
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #00030A; }
-::-webkit-scrollbar-thumb { background: #C8956A; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #E0B898; }
+::-webkit-scrollbar-thumb { background: #C8A898; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #DEC0B0; }
 
 @layer components {
   /* Glassmorphism */
@@ -52,14 +52,14 @@ body {
 
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, #F8F4EE 0%, #E0B898 40%, #C8956A 100%);
+    background: linear-gradient(135deg, #F8F4EE 0%, #DEC0B0 40%, #C8A898 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .gradient-text-blue {
-    background: linear-gradient(135deg, #C8956A 0%, #E0B898 60%, #F8F4EE 100%);
+    background: linear-gradient(135deg, #C8A898 0%, #DEC0B0 60%, #F8F4EE 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -95,7 +95,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #9A6840 0%, #C8956A 50%, #E0B898 100%);
+    background: linear-gradient(135deg, #8C6A5E 0%, #C8A898 50%, #DEC0B0 100%);
     color: #050D1E;
     padding: 0.75rem 1.75rem;
     border-radius: 0.5rem;
@@ -121,7 +121,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     background: transparent;
-    color: #E0B898;
+    color: #DEC0B0;
     padding: 0.75rem 1.75rem;
     border-radius: 0.5rem;
     font-family: 'DM Sans', sans-serif;
@@ -147,7 +147,7 @@ body {
     gap: 0.5rem;
     background: rgba(201, 168, 128, 0.08);
     border: 1px solid rgba(201, 168, 128, 0.3);
-    color: #C8956A;
+    color: #C8A898;
     padding: 0.35rem 1rem;
     border-radius: 999px;
     font-family: 'DM Sans', sans-serif;

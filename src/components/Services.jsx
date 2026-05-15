@@ -22,7 +22,7 @@ const icons = {
   ),
 };
 
-const accentColors = ['#C8956A', '#06B6D4', '#A855F7'];
+const accentColors = ['#C8A898', '#06B6D4', '#A855F7'];
 
 export default function Services() {
   const ref = useRef(null);
@@ -71,7 +71,7 @@ export default function Services() {
                 className="group relative rounded-2xl p-6 shine cursor-pointer"
                 style={{
                   background: 'rgba(5,13,26,0.65)',
-                  border: '1px solid rgba(200,149,106,0.1)',
+                  border: '1px solid rgba(200,168,152,0.1)',
                   transition: 'border-color 0.35s ease, box-shadow 0.35s ease',
                 }}
                 onMouseEnter={(e) => {
@@ -79,7 +79,7 @@ export default function Services() {
                   e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 40px ${accent}15`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(200,149,106,0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(200,168,152,0.1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
