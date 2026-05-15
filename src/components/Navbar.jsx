@@ -51,7 +51,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => handleNav('#hero')} className="flex items-center group" aria-label="Go to top">
-          <span className="font-display font-semibold text-[15px] tracking-tight" style={{ color: '#F8F4EE' }}>
+          <span className="font-display font-semibold text-[19px] tracking-tight" style={{ color: '#F8F4EE' }}>
             Huzaifa <span style={{ color: '#C9A880' }}>Portfolio</span>
           </span>
         </button>
