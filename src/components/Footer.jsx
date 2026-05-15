@@ -22,7 +22,7 @@ export default function Footer() {
       className="relative pt-16 pb-8 px-4 md:px-8"
       style={{
         background: '#000000',
-        borderTop: '1px solid rgba(37,99,235,0.08)',
+        borderTop: '1px solid rgba(201,168,128,0.08)',
       }}
     >
       {/* Top glow */}
@@ -38,12 +38,12 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-3">
               <span
                 className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white font-display"
-                style={{ background: 'linear-gradient(135deg,#1E40AF,#3B82F6)' }}
+                style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)' }}
               >
                 HI
               </span>
               <span className="font-display font-semibold text-brand-silver-light">
-                Huzaifa<span style={{ color: '#60A5FA' }}>.</span>
+                Huzaifa<span style={{ color: '#C9A880' }}>.</span>
               </span>
             </div>
             <p className="text-sm text-brand-muted leading-relaxed max-w-xs">
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Divider */}
         <div
           className="w-full h-px mb-6"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(37,99,235,0.12), transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,128,0.12), transparent)' }}
         />
 
         {/* Bottom bar */}

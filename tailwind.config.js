@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'brand-black': '#050D1E',
-        'brand-navy': '#07111F',
-        'brand-navy-2': '#0C1A2E',
-        'brand-navy-3': '#152340',
+        'brand-black': '#020810',
+        'brand-navy': '#040C1A',
+        'brand-navy-2': '#071220',
+        'brand-navy-3': '#0D1B32',
         'brand-silver': '#E8D5B7',
         'brand-silver-light': '#F8F4EE',
         'brand-muted': '#7A8BA8',

@@ -42,7 +42,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center"
-      style={{ background: 'linear-gradient(180deg,#050D1E 0%,#07111F 60%,#050D1E 100%)' }}
+      style={{ background: 'linear-gradient(180deg,#020810 0%,#040C1A 60%,#020810 100%)' }}
     >
       {/* Glow blobs — contained in their own clipping layer so they don't affect text */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
