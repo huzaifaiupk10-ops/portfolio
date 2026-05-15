@@ -20,7 +20,7 @@ export default {
         'brand-beige-dark': '#A0814D',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"DM Sans"', 'Space Grotesk', 'sans-serif'],
         body: ['"DM Sans"', 'Space Grotesk', 'sans-serif'],
       },
       animation: {
