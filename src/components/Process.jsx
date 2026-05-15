@@ -59,15 +59,15 @@ export default function Process() {
                   className="rounded-2xl p-6 h-full relative overflow-hidden shine"
                   style={{
                     background: 'rgba(5,13,26,0.65)',
-                    border: '1px solid rgba(201,168,128,0.1)',
+                    border: '1px solid rgba(212,168,67,0.1)',
                     transition: 'border-color 0.3s, box-shadow 0.3s',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-                    e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.3), 0 0 30px rgba(201,168,128,0.1)';
+                    e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.3), 0 0 30px rgba(212,168,67,0.1)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(201,168,128,0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(212,168,67,0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
@@ -75,10 +75,10 @@ export default function Process() {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-sm mb-5 relative z-10"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(30,64,175,0.4), rgba(201,168,128,0.2))',
+                      background: 'linear-gradient(135deg, rgba(30,64,175,0.4), rgba(212,168,67,0.2))',
                       border: '1px solid rgba(59,130,246,0.35)',
-                      color: '#C9A880',
-                      boxShadow: '0 0 20px rgba(201,168,128,0.15)',
+                      color: '#D4A843',
+                      boxShadow: '0 0 20px rgba(212,168,67,0.15)',
                     }}
                   >
                     {step.step}
@@ -97,7 +97,7 @@ export default function Process() {
                   {/* Background number watermark */}
                   <div
                     className="absolute -bottom-3 -right-2 font-display font-bold text-8xl opacity-[0.04] pointer-events-none select-none"
-                    style={{ color: '#C9A880' }}
+                    style={{ color: '#D4A843' }}
                   >
                     {step.step}
                   </div>

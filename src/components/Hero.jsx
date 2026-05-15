@@ -26,7 +26,7 @@ function ScrollIndicator() {
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         className="w-px h-8 rounded-full"
-        style={{ background: 'linear-gradient(to bottom, #C9A880, transparent)' }}
+        style={{ background: 'linear-gradient(to bottom, #D4A843, transparent)' }}
       />
     </motion.div>
   );
@@ -49,14 +49,14 @@ export default function Hero() {
         <div
           className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(201,168,128,0.1) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(212,168,67,0.1) 0%, transparent 70%)',
             filter: 'blur(60px)',
           }}
         />
         <div
           className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(201,168,128,0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(212,168,67,0.06) 0%, transparent 70%)',
             filter: 'blur(80px)',
           }}
         />
@@ -74,7 +74,7 @@ export default function Hero() {
               custom={0}
               className="section-label mb-6"
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#C9A880' }} />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4A843' }} />
               Available for Work
             </motion.div>
 
@@ -97,7 +97,7 @@ export default function Hero() {
               <br />
               That Feel{' '}
               <span style={{
-                background: 'linear-gradient(135deg,#C9A880,#F8F4EE)',
+                background: 'linear-gradient(135deg,#D4A843,#F8F4EE)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -159,7 +159,7 @@ export default function Hero() {
                   className="text-xs px-3 py-1 rounded-full font-medium"
                   style={{
                     background: 'rgba(1,6,15,0.85)',
-                    border: '1px solid rgba(201,168,128,0.15)',
+                    border: '1px solid rgba(212,168,67,0.15)',
                     color: '#7A8BA8',
                   }}
                 >
@@ -180,7 +180,7 @@ export default function Hero() {
             <div
               className="absolute inset-8 rounded-full pointer-events-none"
               style={{
-                background: 'radial-gradient(circle, rgba(201,168,128,0.15) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%)',
                 filter: 'blur(20px)',
                 animation: 'glowPulse 3s ease-in-out infinite alternate',
               }}
@@ -206,7 +206,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(201,168,128,0.1)' }}
+          style={{ borderTop: '1px solid rgba(212,168,67,0.1)' }}
         >
           {[
             { value: '20+', label: 'Projects Built' },

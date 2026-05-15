@@ -44,7 +44,7 @@ export default function Navbar() {
         background: scrolled ? 'rgba(0,3,10,0.9)' : 'rgba(0,3,10,0)',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(201,168,128,0.1)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(212,168,67,0.1)' : 'none',
         transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border 0.4s ease',
       }}
     >
@@ -52,7 +52,7 @@ export default function Navbar() {
         {/* Logo */}
         <button onClick={() => handleNav('#hero')} className="flex items-center group" aria-label="Go to top">
           <span className="font-display font-semibold text-[19px] tracking-tight" style={{ color: '#F8F4EE' }}>
-            Huzaifa <span style={{ color: '#C9A880' }}>Portfolio</span>
+            Huzaifa <span style={{ color: '#D4A843' }}>Portfolio</span>
           </span>
         </button>
 
@@ -65,9 +65,9 @@ export default function Navbar() {
               className="relative px-3.5 py-1.5 text-sm font-medium rounded-md transition-colors"
               style={{
                 color: active === l.href ? '#F8F4EE' : '#7A8BA8',
-                background: active === l.href ? 'rgba(201,168,128,0.12)' : 'transparent',
+                background: active === l.href ? 'rgba(212,168,67,0.12)' : 'transparent',
               }}
-              onMouseEnter={(e) => { if (active !== l.href) e.currentTarget.style.color = '#E8D5B7'; }}
+              onMouseEnter={(e) => { if (active !== l.href) e.currentTarget.style.color = '#EDD07A'; }}
               onMouseLeave={(e) => { if (active !== l.href) e.currentTarget.style.color = '#7A8BA8'; }}
             >
               {l.label}
@@ -85,11 +85,11 @@ export default function Navbar() {
         {/* Hamburger */}
         <button className="md:hidden flex flex-col gap-1.5 p-1.5" onClick={() => setOpen(!open)} aria-label="Toggle menu">
           <motion.span animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }}
-            className="block w-5 h-0.5 rounded" style={{ background: '#E8D5B7' }} />
+            className="block w-5 h-0.5 rounded" style={{ background: '#EDD07A' }} />
           <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.2 }}
-            className="block w-5 h-0.5 rounded" style={{ background: '#E8D5B7' }} />
+            className="block w-5 h-0.5 rounded" style={{ background: '#EDD07A' }} />
           <motion.span animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} transition={{ duration: 0.25 }}
-            className="block w-5 h-0.5 rounded" style={{ background: '#E8D5B7' }} />
+            className="block w-5 h-0.5 rounded" style={{ background: '#EDD07A' }} />
         </button>
       </div>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
             className="md:hidden"
-            style={{ background: 'rgba(0,3,10,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(201,168,128,0.1)' }}
+            style={{ background: 'rgba(0,3,10,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(212,168,67,0.1)' }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {links.map((l) => (
@@ -110,7 +110,7 @@ export default function Navbar() {
                   className="text-left px-4 py-3 text-sm font-medium rounded-lg transition-colors"
                   style={{
                     color: active === l.href ? '#F8F4EE' : '#7A8BA8',
-                    background: active === l.href ? 'rgba(201,168,128,0.1)' : 'transparent',
+                    background: active === l.href ? 'rgba(212,168,67,0.1)' : 'transparent',
                   }}>
                   {l.label}
                 </button>

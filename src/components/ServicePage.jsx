@@ -87,7 +87,7 @@ export default function ServicePage() {
         style={{
           background: 'rgba(5,7,10,0.88)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(201,168,128,0.08)',
+          borderBottom: '1px solid rgba(212,168,67,0.08)',
         }}
       >
         <div className="max-w-5xl mx-auto w-full flex items-center justify-between">
@@ -137,7 +137,7 @@ export default function ServicePage() {
               className="font-display font-bold mb-4 leading-tight"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-                background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #E8D5B7 100%)',
+                background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #EDD07A 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -169,7 +169,7 @@ export default function ServicePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.6, ease }}
             className="md:col-span-2 rounded-2xl p-6 md:p-8"
-            style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(201,168,128,0.1)' }}
+            style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
           >
             <h2 className="font-display font-semibold text-lg mb-6" style={{ color: '#F1F5F9' }}>
               What's Included
@@ -277,7 +277,7 @@ export default function ServicePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 + i * 0.1, duration: 0.5, ease }}
                 className="rounded-2xl p-5 text-center"
-                style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(201,168,128,0.1)' }}
+                style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold text-sm mx-auto mb-3"
@@ -303,7 +303,7 @@ export default function ServicePage() {
         >
           <h2
             className="font-display font-semibold text-xl mb-6"
-            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(201,168,128,0.08)', paddingTop: '2rem' }}
+            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(212,168,67,0.08)', paddingTop: '2rem' }}
           >
             Other Services
           </h2>
@@ -322,13 +322,13 @@ export default function ServicePage() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="text-left rounded-xl p-5 transition-all flex items-start gap-4"
-                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(201,168,128,0.1)' }}
+                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = `${s.accent}35`;
                     e.currentTarget.style.boxShadow = `0 10px 30px rgba(0,0,0,0.3)`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(201,168,128,0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(212,168,67,0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >

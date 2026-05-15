@@ -39,7 +39,7 @@ function AICore() {
         <sphereGeometry args={[0.55, 48, 48]} />
         <meshStandardMaterial
           color="#1A100A"
-          emissive="#C9A880"
+          emissive="#D4A843"
           emissiveIntensity={0.7}
           metalness={0.4}
           roughness={0.1}
@@ -49,7 +49,7 @@ function AICore() {
       </mesh>
 
       {/* Core point light — warm beige */}
-      <pointLight color="#C9A880" intensity={2.2} distance={5} />
+      <pointLight color="#D4A843" intensity={2.2} distance={5} />
     </group>
   );
 }
@@ -106,7 +106,7 @@ function NeuralNetwork() {
     <group ref={groupRef}>
       {/* Connection lines — warm beige */}
       <lineSegments ref={linesRef} geometry={lineGeometry}>
-        <lineBasicMaterial color="#C9A880" transparent opacity={0.22} linewidth={1} />
+        <lineBasicMaterial color="#D4A843" transparent opacity={0.22} linewidth={1} />
       </lineSegments>
 
       {nodes.map((pos, i) => (
@@ -126,7 +126,7 @@ function NodeSphere({ position, index }) {
       ref.current.scale.setScalar(sc);
     }
   });
-  const colors = ['#C9A880', '#E8D5B7', '#D4B896', '#F5EDD9', '#A0814D'];
+  const colors = ['#D4A843', '#EDD07A', '#D4A843', '#F8E8C0', '#A87828'];
   const color  = colors[index % colors.length];
   return (
     <mesh ref={ref} position={position}>
@@ -168,8 +168,8 @@ function DataFlow({ edges }) {
         <mesh key={i} ref={(el) => (refs.current[i] = el)}>
           <sphereGeometry args={[0.028, 8, 8]} />
           <meshStandardMaterial
-            color="#F5EDD9"
-            emissive="#E8D5B7"
+            color="#F8E8C0"
+            emissive="#EDD07A"
             emissiveIntensity={1.2}
             transparent
             opacity={0.8}
@@ -193,15 +193,15 @@ function OrbitalRings() {
     <>
       <mesh ref={r1} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.6, 0.013, 16, 120]} />
-        <meshStandardMaterial color="#C9A880" emissive="#A0814D" emissiveIntensity={0.7} metalness={1} roughness={0} />
+        <meshStandardMaterial color="#D4A843" emissive="#A87828" emissiveIntensity={0.7} metalness={1} roughness={0} />
       </mesh>
       <mesh ref={r2} rotation={[Math.PI / 3, Math.PI / 4, 0]}>
         <torusGeometry args={[1.85, 0.009, 16, 120]} />
-        <meshStandardMaterial color="#E8D5B7" emissive="#C9A880" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
+        <meshStandardMaterial color="#EDD07A" emissive="#D4A843" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
       </mesh>
       <mesh ref={r3} rotation={[-Math.PI / 5, Math.PI / 3, 0]}>
         <torusGeometry args={[2.1, 0.007, 12, 100]} />
-        <meshStandardMaterial color="#F5EDD9" emissive="#C9A880" emissiveIntensity={0.15} metalness={1} roughness={0} transparent opacity={0.3} />
+        <meshStandardMaterial color="#F8E8C0" emissive="#D4A843" emissiveIntensity={0.15} metalness={1} roughness={0} transparent opacity={0.3} />
       </mesh>
     </>
   );
@@ -281,8 +281,8 @@ export default function ThreeHeroObject() {
         <Suspense fallback={null}>
           <ReadySignal onReady={() => setReady(true)} />
           <ambientLight intensity={0.1} />
-          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#E8D5B7" />
-          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#A0814D" />
+          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#EDD07A" />
+          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#A87828" />
           <Environment preset="night" />
           <AIScene clicked={clicked} />
         </Suspense>
@@ -292,8 +292,8 @@ export default function ThreeHeroObject() {
         position:'absolute', bottom:'10px', left:'50%',
         transform:'translateX(-50%)',
         opacity: hovered ? 1 : 0, transition:'opacity 0.25s ease',
-        background:'rgba(2,8,16,0.85)', border:'1px solid rgba(201,168,128,0.3)',
-        color:'#C9A880', fontSize:'11px', fontWeight:500,
+        background:'rgba(2,8,16,0.85)', border:'1px solid rgba(212,168,67,0.3)',
+        color:'#D4A843', fontSize:'11px', fontWeight:500,
         padding:'4px 14px', borderRadius:'999px', backdropFilter:'blur(8px)',
         whiteSpace:'nowrap', pointerEvents:'none', zIndex:10,
       }}>
