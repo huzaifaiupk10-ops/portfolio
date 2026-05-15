@@ -15,7 +15,7 @@ function InputField({ label, type = 'text', name, value, onChange, placeholder, 
   return (
     <div className="flex flex-col gap-1.5">
       <label className="text-sm font-medium" style={{ color: '#CBD5E1' }}>
-        {label} {required && <span style={{ color: '#D4A843' }}>*</span>}
+        {label} {required && <span style={{ color: '#C8956A' }}>*</span>}
       </label>
       <input
         type={type}
@@ -27,15 +27,15 @@ function InputField({ label, type = 'text', name, value, onChange, placeholder, 
         className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
         style={{
           background: 'rgba(11,18,32,0.7)',
-          border: '1px solid rgba(212,168,67,0.12)',
+          border: '1px solid rgba(200,149,106,0.12)',
           color: '#F1F5F9',
         }}
         onFocus={(e) => {
           e.currentTarget.style.borderColor = 'rgba(59,130,246,0.45)';
-          e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,168,67,0.08)';
+          e.currentTarget.style.boxShadow = '0 0 0 3px rgba(200,149,106,0.08)';
         }}
         onBlur={(e) => {
-          e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+          e.currentTarget.style.borderColor = 'rgba(200,149,106,0.12)';
           e.currentTarget.style.boxShadow = 'none';
         }}
       />
@@ -150,20 +150,20 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 rounded-xl group transition-all"
                 style={{
                   background: 'rgba(5,13,26,0.65)',
-                  border: '1px solid rgba(212,168,67,0.1)',
+                  border: '1px solid rgba(200,149,106,0.1)',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
                   e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.2)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(212,168,67,0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(200,149,106,0.1)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
-                  style={{ background: 'rgba(212,168,67,0.12)', color: '#D4A843', border: '1px solid rgba(212,168,67,0.2)' }}
+                  style={{ background: 'rgba(200,149,106,0.12)', color: '#C8956A', border: '1px solid rgba(200,149,106,0.2)' }}
                 >
                   {item.icon}
                 </div>
@@ -181,7 +181,7 @@ export default function Contact() {
               className="p-5 rounded-2xl"
               style={{
                 background: 'rgba(5,13,26,0.65)',
-                border: '1px solid rgba(212,168,67,0.1)',
+                border: '1px solid rgba(200,149,106,0.1)',
               }}
             >
               <div className="flex items-center gap-2 mb-2">
@@ -209,14 +209,14 @@ export default function Contact() {
                   className="rounded-2xl p-10 text-center"
                   style={{
                     background: 'rgba(5,13,26,0.65)',
-                    border: '1px solid rgba(212,168,67,0.25)',
+                    border: '1px solid rgba(200,149,106,0.25)',
                   }}
                 >
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
-                    style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}
+                    style={{ background: 'rgba(200,149,106,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}
                   >
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A843" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C8956A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
@@ -237,7 +237,7 @@ export default function Contact() {
                   className="rounded-2xl p-6 md:p-8 space-y-5"
                   style={{
                     background: 'rgba(5,13,26,0.65)',
-                    border: '1px solid rgba(212,168,67,0.1)',
+                    border: '1px solid rgba(200,149,106,0.1)',
                     backdropFilter: 'blur(16px)',
                   }}
                 >
@@ -279,14 +279,14 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all appearance-none cursor-pointer"
                       style={{
                         background: 'rgba(11,18,32,0.7)',
-                        border: '1px solid rgba(212,168,67,0.12)',
+                        border: '1px solid rgba(200,149,106,0.12)',
                         color: form.projectType ? '#F1F5F9' : '#64748B',
                       }}
                       onFocus={(e) => {
                         e.currentTarget.style.borderColor = 'rgba(59,130,246,0.45)';
                       }}
                       onBlur={(e) => {
-                        e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+                        e.currentTarget.style.borderColor = 'rgba(200,149,106,0.12)';
                       }}
                     >
                       <option value="" disabled style={{ background: '#0A0A0A' }}>
@@ -303,7 +303,7 @@ export default function Contact() {
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium" style={{ color: '#CBD5E1' }}>
-                      Message <span style={{ color: '#D4A843' }}>*</span>
+                      Message <span style={{ color: '#C8956A' }}>*</span>
                     </label>
                     <textarea
                       name="message"
@@ -315,15 +315,15 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all resize-none"
                       style={{
                         background: 'rgba(11,18,32,0.7)',
-                        border: '1px solid rgba(212,168,67,0.12)',
+                        border: '1px solid rgba(200,149,106,0.12)',
                         color: '#F1F5F9',
                       }}
                       onFocus={(e) => {
                         e.currentTarget.style.borderColor = 'rgba(59,130,246,0.45)';
-                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,168,67,0.08)';
+                        e.currentTarget.style.boxShadow = '0 0 0 3px rgba(200,149,106,0.08)';
                       }}
                       onBlur={(e) => {
-                        e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+                        e.currentTarget.style.borderColor = 'rgba(200,149,106,0.12)';
                         e.currentTarget.style.boxShadow = 'none';
                       }}
                     />

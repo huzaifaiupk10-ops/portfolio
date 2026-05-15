@@ -68,7 +68,7 @@ export default function ProjectPage() {
         style={{
           background: 'rgba(5,7,10,0.88)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(212,168,67,0.08)',
+          borderBottom: '1px solid rgba(200,149,106,0.08)',
         }}
       >
         <div className="max-w-5xl mx-auto w-full flex items-center justify-between">
@@ -121,7 +121,7 @@ export default function ProjectPage() {
             className="font-display font-bold mb-3 leading-tight"
             style={{
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-              background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #EDD07A 100%)',
+              background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #E0B898 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -216,7 +216,7 @@ export default function ProjectPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.6, ease }}
               className="rounded-2xl p-6"
-              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
+              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,149,106,0.1)' }}
             >
               <h2 className="font-display font-semibold text-lg mb-3" style={{ color: '#F1F5F9' }}>
                 About This Project
@@ -229,7 +229,7 @@ export default function ProjectPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.6, ease }}
               className="rounded-2xl p-6"
-              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
+              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,149,106,0.1)' }}
             >
               <h2 className="font-display font-semibold text-lg mb-3" style={{ color: '#F1F5F9' }}>
                 What Was Delivered
@@ -315,7 +315,7 @@ export default function ProjectPage() {
         >
           <h2
             className="font-display font-semibold text-xl mb-6"
-            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(212,168,67,0.08)', paddingTop: '2rem' }}
+            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(200,149,106,0.08)', paddingTop: '2rem' }}
           >
             Other Projects
           </h2>
@@ -335,13 +335,13 @@ export default function ProjectPage() {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="text-left rounded-xl p-4 transition-all"
-                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(212,168,67,0.1)' }}
+                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,149,106,0.1)' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = `${p.accent}35`;
                     e.currentTarget.style.boxShadow = `0 10px 30px rgba(0,0,0,0.3)`;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(212,168,67,0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(200,149,106,0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >

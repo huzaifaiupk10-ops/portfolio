@@ -12,17 +12,17 @@ function SkillPill({ label, i }) {
       className="inline-block px-3 py-1.5 rounded-lg text-sm font-medium cursor-default"
       style={{
         background: 'rgba(5,13,26,0.75)',
-        border: '1px solid rgba(212,168,67,0.12)',
+        border: '1px solid rgba(200,149,106,0.12)',
         color: '#CBD5E1',
         transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = 'rgba(59,130,246,0.35)';
-        e.currentTarget.style.boxShadow = '0 0 14px rgba(212,168,67,0.15)';
+        e.currentTarget.style.boxShadow = '0 0 14px rgba(200,149,106,0.15)';
         e.currentTarget.style.color = '#F1F5F9';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(212,168,67,0.12)';
+        e.currentTarget.style.borderColor = 'rgba(200,149,106,0.12)';
         e.currentTarget.style.boxShadow = 'none';
         e.currentTarget.style.color = '#CBD5E1';
       }}
@@ -80,12 +80,12 @@ export default function Skills() {
               className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-25"
               style={{
                 background:
-                  activeTab === i ? 'rgba(212,168,67,0.15)' : 'rgba(5,13,26,0.65)',
+                  activeTab === i ? 'rgba(200,149,106,0.15)' : 'rgba(5,13,26,0.65)',
                 border:
                   activeTab === i
                     ? '1px solid rgba(59,130,246,0.4)'
-                    : '1px solid rgba(212,168,67,0.1)',
-                color: activeTab === i ? '#D4A843' : '#64748B',
+                    : '1px solid rgba(200,149,106,0.1)',
+                color: activeTab === i ? '#C8956A' : '#64748B',
               }}
             >
               <span className="mr-1.5">{cat.icon}</span>
@@ -105,7 +105,7 @@ export default function Skills() {
           <div className="flex items-center gap-3 mb-6">
             <span
               className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-              style={{ background: 'rgba(212,168,67,0.12)', border: '1px solid rgba(212,168,67,0.2)' }}
+              style={{ background: 'rgba(200,149,106,0.12)', border: '1px solid rgba(200,149,106,0.2)' }}
             >
               {current.icon}
             </span>
