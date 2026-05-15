@@ -57,7 +57,7 @@ function RenderText({ text, onNavigate }) {
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1 px-4 py-3 rounded-2xl rounded-bl-sm w-fit"
-      style={{ background: 'rgba(4,12,26,0.85)', border: '1px solid rgba(201,168,128,0.14)' }}>
+      style={{ background: 'rgba(2,10,20,0.85)', border: '1px solid rgba(201,168,128,0.14)' }}>
       {[0, 1, 2].map((i) => (
         <motion.span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A880' }}
           animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }} />
@@ -73,12 +73,12 @@ function Message({ msg, onNavigate }) {
       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
         <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mr-2 flex-shrink-0 mt-0.5"
-          style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#020810' }}>H</div>
+          style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#010508' }}>H</div>
       )}
       <div className="max-w-[80%] px-4 py-2.5 text-sm leading-relaxed"
         style={isUser
-          ? { background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#020810', borderRadius: '1rem 1rem 0.25rem 1rem', fontWeight: 500 }
-          : { background: 'rgba(4,12,26,0.85)', border: '1px solid rgba(201,168,128,0.14)', color: '#E8D5B7', borderRadius: '1rem 1rem 1rem 0.25rem' }
+          ? { background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#010508', borderRadius: '1rem 1rem 0.25rem 1rem', fontWeight: 500 }
+          : { background: 'rgba(2,10,20,0.85)', border: '1px solid rgba(201,168,128,0.14)', color: '#E8D5B7', borderRadius: '1rem 1rem 1rem 0.25rem' }
         }>
         <RenderText text={msg.content} onNavigate={onNavigate} />
       </div>
@@ -261,7 +261,7 @@ export default function ChatBot() {
             style={{
               bottom: '88px', right: '1rem', left: '1rem',
               maxWidth: '380px', marginLeft: 'auto',
-              background: '#020810',
+              background: '#010508',
               border: '1px solid rgba(201,168,128,0.2)',
               boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,128,0.06)',
               maxHeight: 'calc(100dvh - 110px)',
@@ -269,10 +269,10 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 flex-shrink-0"
-              style={{ background: 'rgba(2,8,16,0.98)', borderBottom: '1px solid rgba(201,168,128,0.1)' }}>
+              style={{ background: 'rgba(1,5,8,0.98)', borderBottom: '1px solid rgba(201,168,128,0.1)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
-                  style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#020810' }}>H</div>
+                  style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#010508' }}>H</div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: '#F8F4EE' }}>Huzaifa's Assistant</p>
                   <div className="flex items-center gap-1.5">
@@ -312,7 +312,7 @@ export default function ChatBot() {
               {loading && (
                 <div className="flex justify-start">
                   <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mr-2 flex-shrink-0 mt-0.5"
-                    style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#020810' }}>H</div>
+                    style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#010508' }}>H</div>
                   <TypingIndicator />
                 </div>
               )}
@@ -352,14 +352,14 @@ export default function ChatBot() {
                 <div className="flex gap-2 pt-1">
                   <motion.button whileTap={{ scale: 0.96 }} onClick={confirmBooking}
                     className="flex-1 text-sm py-2.5 rounded-xl font-medium transition-all"
-                    style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#020810' }}
+                    style={{ background: 'linear-gradient(135deg,#A0814D,#C9A880)', color: '#010508' }}
                     onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
                     onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}>
                     Confirm & Send ✓
                   </motion.button>
                   <motion.button whileTap={{ scale: 0.96 }} onClick={cancelBooking}
                     className="px-4 text-sm py-2.5 rounded-xl font-medium transition-all"
-                    style={{ background: 'rgba(4,12,26,0.85)', border: '1px solid rgba(201,168,128,0.15)', color: '#7A8BA8' }}>
+                    style={{ background: 'rgba(2,10,20,0.85)', border: '1px solid rgba(201,168,128,0.15)', color: '#7A8BA8' }}>
                     Edit
                   </motion.button>
                 </div>
@@ -392,15 +392,15 @@ export default function ChatBot() {
                   onKeyDown={handleKey} disabled={loading}
                   placeholder={currentStepMeta ? currentStepMeta.placeholder : 'Ask me anything...'}
                   className="flex-1 px-3 py-2 rounded-xl text-sm outline-none"
-                  style={{ background: 'rgba(4,12,26,0.85)', border: '1px solid rgba(201,168,128,0.14)', color: '#F8F4EE' }}
+                  style={{ background: 'rgba(2,10,20,0.85)', border: '1px solid rgba(201,168,128,0.14)', color: '#F8F4EE' }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(201,168,128,0.4)')}
                   onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(201,168,128,0.14)')} />
                 <motion.button whileTap={{ scale: 0.92 }} onClick={handleSend}
                   disabled={!input.trim() || loading}
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
                   style={{
-                    background: input.trim() && !loading ? 'linear-gradient(135deg,#A0814D,#C9A880)' : 'rgba(4,12,26,0.7)',
-                    color: input.trim() && !loading ? '#020810' : '#374151',
+                    background: input.trim() && !loading ? 'linear-gradient(135deg,#A0814D,#C9A880)' : 'rgba(2,10,20,0.7)',
+                    color: input.trim() && !loading ? '#010508' : '#374151',
                     border: '1px solid rgba(201,168,128,0.14)',
                   }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -418,10 +418,10 @@ export default function ChatBot() {
         onClick={() => setOpen((o) => !o)}
         className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center"
         style={{
-          background: open ? 'rgba(2,8,16,0.95)' : 'linear-gradient(135deg,#A0814D,#C9A880)',
+          background: open ? 'rgba(1,5,8,0.95)' : 'linear-gradient(135deg,#A0814D,#C9A880)',
           border: open ? '1px solid rgba(201,168,128,0.35)' : 'none',
           boxShadow: open ? '0 8px 30px rgba(0,0,0,0.4)' : '0 8px 30px rgba(201,168,128,0.3)',
-          color: open ? '#C9A880' : '#020810',
+          color: open ? '#C9A880' : '#010508',
         }} aria-label="Open chat">
         <AnimatePresence mode="wait">
           {open ? (

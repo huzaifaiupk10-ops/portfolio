@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  background-color: #020810;
+  background-color: #010508;
   color: #E8D5B7;
   font-family: 'DM Sans', 'Space Grotesk', sans-serif;
   font-feature-settings: 'kern' 1;
@@ -30,7 +30,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #020810; }
+::-webkit-scrollbar-track { background: #010508; }
 ::-webkit-scrollbar-thumb { background: #C9A880; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: #E8D5B7; }
 

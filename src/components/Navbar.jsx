@@ -41,7 +41,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? 'rgba(2,8,16,0.9)' : 'rgba(2,8,16,0)',
+        background: scrolled ? 'rgba(1,5,8,0.9)' : 'rgba(1,5,8,0)',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(201,168,128,0.1)' : 'none',
@@ -102,7 +102,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
             className="md:hidden"
-            style={{ background: 'rgba(2,8,16,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(201,168,128,0.1)' }}
+            style={{ background: 'rgba(1,5,8,0.97)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(201,168,128,0.1)' }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {links.map((l) => (
