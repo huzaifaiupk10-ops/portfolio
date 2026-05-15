@@ -180,7 +180,7 @@ export default function Hero() {
             <div
               className="absolute inset-8 rounded-full pointer-events-none"
               style={{
-                background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(201,168,128,0.15) 0%, transparent 70%)',
                 filter: 'blur(20px)',
                 animation: 'glowPulse 3s ease-in-out infinite alternate',
               }}

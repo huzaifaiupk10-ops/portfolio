@@ -13,17 +13,17 @@ function AICore() {
     if (coreRef.current) {
       coreRef.current.rotation.y = t * 0.12;
       coreRef.current.rotation.x = Math.sin(t * 0.3) * 0.15;
-}
+    }
     if (innerRef.current) {
       innerRef.current.material.emissiveIntensity =
-        0.8 + Math.sin(t * 2.0) * 0.4;
+        0.6 + Math.sin(t * 2.0) * 0.3;
       innerRef.current.rotation.y = -t * 0.2;
     }
   });
 
   return (
     <group>
-      {/* Outer clean metallic sphere */}
+      {/* Outer clean black metallic sphere — kept black */}
       <mesh ref={coreRef}>
         <sphereGeometry args={[0.88, 128, 128]} />
         <meshStandardMaterial
@@ -34,22 +34,22 @@ function AICore() {
         />
       </mesh>
 
-      {/* Inner glowing core */}
+      {/* Inner glowing core — beige warmth */}
       <mesh ref={innerRef}>
         <sphereGeometry args={[0.55, 48, 48]} />
         <meshStandardMaterial
-          color="#0D2040"
-          emissive="#3B82F6"
-          emissiveIntensity={1.0}
+          color="#1A100A"
+          emissive="#C9A880"
+          emissiveIntensity={0.7}
           metalness={0.4}
           roughness={0.1}
           transparent
-          opacity={0.55}
+          opacity={0.5}
         />
       </mesh>
 
-      {/* Core point light */}
-      <pointLight color="#3B82F6" intensity={2.8} distance={5} />
+      {/* Core point light — warm beige */}
+      <pointLight color="#C9A880" intensity={2.2} distance={5} />
     </group>
   );
 }
@@ -59,7 +59,6 @@ function NeuralNetwork() {
   const groupRef = useRef();
   const linesRef = useRef();
 
-  // Generate nodes on a sphere surface
   const nodes = useMemo(() => {
     const pts = [];
     for (let i = 0; i < 28; i++) {
@@ -74,7 +73,6 @@ function NeuralNetwork() {
     return pts;
   }, []);
 
-  // Build edges between nearby nodes
   const edges = useMemo(() => {
     const lines = [];
     for (let i = 0; i < nodes.length; i++) {
@@ -87,12 +85,10 @@ function NeuralNetwork() {
     return lines;
   }, [nodes]);
 
-  // Build line geometry
   const lineGeometry = useMemo(() => {
     const pts = [];
     edges.forEach(([a, b]) => { pts.push(a, b); });
-    const geo = new THREE.BufferGeometry().setFromPoints(pts);
-    return geo;
+    return new THREE.BufferGeometry().setFromPoints(pts);
   }, [edges]);
 
   useFrame((s) => {
@@ -108,17 +104,11 @@ function NeuralNetwork() {
 
   return (
     <group ref={groupRef}>
-      {/* Connection lines */}
+      {/* Connection lines — warm beige */}
       <lineSegments ref={linesRef} geometry={lineGeometry}>
-        <lineBasicMaterial
-          color="#3B82F6"
-          transparent
-          opacity={0.22}
-          linewidth={1}
-        />
+        <lineBasicMaterial color="#C9A880" transparent opacity={0.22} linewidth={1} />
       </lineSegments>
 
-      {/* Node spheres */}
       {nodes.map((pos, i) => (
         <NodeSphere key={i} position={pos} index={i} />
       ))}
@@ -126,7 +116,6 @@ function NeuralNetwork() {
   );
 }
 
-// Individual pulsing node
 function NodeSphere({ position, index }) {
   const ref = useRef();
   useFrame((s) => {
@@ -137,7 +126,7 @@ function NodeSphere({ position, index }) {
       ref.current.scale.setScalar(sc);
     }
   });
-  const colors = ['#3B82F6', '#60A5FA', '#60A5FA', '#00BFFF', '#CBD5E1'];
+  const colors = ['#C9A880', '#E8D5B7', '#D4B896', '#F5EDD9', '#A0814D'];
   const color  = colors[index % colors.length];
   return (
     <mesh ref={ref} position={position}>
@@ -158,7 +147,6 @@ function DataFlow({ edges }) {
   const refs = useRef([]);
   const PACKETS = 18;
 
-  // Each packet follows one edge
   const assignments = useMemo(() =>
     Array.from({ length: PACKETS }, (_, i) => edges[i % edges.length]),
   [edges]);
@@ -180,8 +168,8 @@ function DataFlow({ edges }) {
         <mesh key={i} ref={(el) => (refs.current[i] = el)}>
           <sphereGeometry args={[0.028, 8, 8]} />
           <meshStandardMaterial
-            color="#00BFFF"
-            emissive="#00BFFF"
+            color="#F5EDD9"
+            emissive="#E8D5B7"
             emissiveIntensity={1.2}
             transparent
             opacity={0.8}
@@ -205,15 +193,15 @@ function OrbitalRings() {
     <>
       <mesh ref={r1} rotation={[Math.PI / 2, 0, 0]}>
         <torusGeometry args={[1.6, 0.013, 16, 120]} />
-        <meshStandardMaterial color="#3B82F6" emissive="#1D4ED8" emissiveIntensity={0.7} metalness={1} roughness={0} />
+        <meshStandardMaterial color="#C9A880" emissive="#A0814D" emissiveIntensity={0.7} metalness={1} roughness={0} />
       </mesh>
       <mesh ref={r2} rotation={[Math.PI / 3, Math.PI / 4, 0]}>
         <torusGeometry args={[1.85, 0.009, 16, 120]} />
-        <meshStandardMaterial color="#60A5FA" emissive="#60A5FA" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
+        <meshStandardMaterial color="#E8D5B7" emissive="#C9A880" emissiveIntensity={0.4} metalness={1} roughness={0} transparent opacity={0.6} />
       </mesh>
       <mesh ref={r3} rotation={[-Math.PI / 5, Math.PI / 3, 0]}>
         <torusGeometry args={[2.1, 0.007, 12, 100]} />
-        <meshStandardMaterial color="#CBD5E1" emissive="#64748B" emissiveIntensity={0.2} metalness={1} roughness={0} transparent opacity={0.35} />
+        <meshStandardMaterial color="#F5EDD9" emissive="#C9A880" emissiveIntensity={0.15} metalness={1} roughness={0} transparent opacity={0.3} />
       </mesh>
     </>
   );
@@ -223,7 +211,6 @@ function OrbitalRings() {
 function AIScene({ clicked }) {
   const groupRef = useRef();
 
-  // Build edges for DataFlow (same logic as NeuralNetwork)
   const nodes = useMemo(() => {
     const pts = [];
     for (let i = 0; i < 28; i++) {
@@ -249,12 +236,10 @@ function AIScene({ clicked }) {
 
   useFrame((s) => {
     if (!groupRef.current) return;
-    // Whole scene follows mouse
     groupRef.current.rotation.y +=
       (s.pointer.x * 0.5 - groupRef.current.rotation.y) * 0.04;
     groupRef.current.rotation.x +=
       (-s.pointer.y * 0.25 - groupRef.current.rotation.x) * 0.04;
-    // Click — fast spin burst
     if (clicked) groupRef.current.rotation.y += 0.06;
   });
 
@@ -270,7 +255,6 @@ function AIScene({ clicked }) {
   );
 }
 
-// Signals when the scene has fully mounted inside Suspense
 function ReadySignal({ onReady }) {
   useEffect(() => { onReady(); }, []);
   return null;
@@ -283,11 +267,8 @@ export default function ThreeHeroObject() {
   const [ready, setReady]     = useState(false);
 
   return (
-    <div
-      className="w-full h-full relative"
-      aria-hidden="true"
-      style={{ cursor: hovered ? 'pointer' : 'default' }}
-    >
+    <div className="w-full h-full relative" aria-hidden="true"
+      style={{ cursor: hovered ? 'pointer' : 'default' }}>
       <Canvas
         camera={{ position: [0, 0, 6.0], fov: 42 }}
         gl={{ antialias: true, alpha: true }}
@@ -299,9 +280,9 @@ export default function ThreeHeroObject() {
       >
         <Suspense fallback={null}>
           <ReadySignal onReady={() => setReady(true)} />
-          <ambientLight intensity={0.12} />
-          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#60A5FA" />
-          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#1E40AF" />
+          <ambientLight intensity={0.1} />
+          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#E8D5B7" />
+          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#A0814D" />
           <Environment preset="night" />
           <AIScene clicked={clicked} />
         </Suspense>
@@ -311,8 +292,8 @@ export default function ThreeHeroObject() {
         position:'absolute', bottom:'10px', left:'50%',
         transform:'translateX(-50%)',
         opacity: hovered ? 1 : 0, transition:'opacity 0.25s ease',
-        background:'rgba(11,18,32,0.85)', border:'1px solid rgba(59,130,246,0.3)',
-        color:'#60A5FA', fontSize:'11px', fontWeight:500,
+        background:'rgba(2,8,16,0.85)', border:'1px solid rgba(201,168,128,0.3)',
+        color:'#C9A880', fontSize:'11px', fontWeight:500,
         padding:'4px 14px', borderRadius:'999px', backdropFilter:'blur(8px)',
         whiteSpace:'nowrap', pointerEvents:'none', zIndex:10,
       }}>
