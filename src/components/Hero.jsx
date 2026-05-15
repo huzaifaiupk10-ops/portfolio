@@ -13,22 +13,6 @@ const fadeUp = {
   }),
 };
 
-const headlineContainer = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.15 },
-  },
-};
-
-const wordReveal = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 function ScrollIndicator() {
   return (
     <motion.div
@@ -42,7 +26,7 @@ function ScrollIndicator() {
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         className="w-px h-8 rounded-full"
-        style={{ background: 'linear-gradient(to bottom, #3B82F6, transparent)' }}
+        style={{ background: 'linear-gradient(to bottom, #C9A880, transparent)' }}
       />
     </motion.div>
   );
@@ -57,24 +41,26 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#0A0A0A 60%,#000000 100%)' }}
+      className="relative min-h-screen flex items-center"
+      style={{ background: 'linear-gradient(180deg,#050D1E 0%,#07111F 60%,#050D1E 100%)' }}
     >
-      {/* Glow blobs */}
-      <div
-        className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(30,64,175,0.15) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-      />
-      <div
-        className="absolute bottom-1/3 left-1/3 w-64 h-64 rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(11,18,32,0.3) 0%, transparent 70%)',
-          filter: 'blur(60px)',
-        }}
-      />
+      {/* Glow blobs — contained in their own clipping layer so they don't affect text */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(201,168,128,0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+        />
+        <div
+          className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(201,168,128,0.06) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+        />
+      </div>
 
       <div className="relative z-10 container-max w-full px-4 md:px-8 pt-24 pb-20">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-0">
@@ -88,44 +74,34 @@ export default function Hero() {
               custom={0}
               className="section-label mb-6"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#C9A880' }} />
               Available for Work
             </motion.div>
 
             {/* Headline */}
             <motion.h1
-              variants={headlineContainer}
-              initial="hidden"
-              animate="show"
-              className="font-display font-bold tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: '#F1F5F9', lineHeight: 1.35 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-bold mb-6"
+              style={{
+                fontFamily: '"DM Sans", sans-serif',
+                fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
+                color: '#F1F5F9',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+              }}
             >
-              {['Building', 'Digital'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', marginRight: '0.28em' }}>
-                  <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
-                </span>
-              ))}
-              <span style={{ display: 'inline-block' }}>
-                <motion.span variants={wordReveal} className="gradient-text" style={{ display: 'inline-block' }}>Experiences</motion.span>
-              </span>
+              Building Digital{' '}
+              <span className="gradient-text">Experiences</span>
               <br />
-              {['That', 'Feel'].map((word) => (
-                <span key={word} style={{ display: 'inline-block', marginRight: '0.28em' }}>
-                  <motion.span variants={wordReveal} style={{ display: 'inline-block' }}>{word}</motion.span>
-                </span>
-              ))}
-              <span style={{ display: 'inline-block' }}>
-                <motion.span
-                  variants={wordReveal}
-                  style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg,#60A5FA,#93C5FD)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >Smarter</motion.span>
-              </span>
+              That Feel{' '}
+              <span style={{
+                background: 'linear-gradient(135deg,#C9A880,#F8F4EE)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>Smarter</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -182,9 +158,9 @@ export default function Hero() {
                   key={tag}
                   className="text-xs px-3 py-1 rounded-full font-medium"
                   style={{
-                    background: 'rgba(5,13,26,0.85)',
-                    border: '1px solid rgba(192,199,209,0.12)',
-                    color: '#64748B',
+                    background: 'rgba(7,17,33,0.85)',
+                    border: '1px solid rgba(201,168,128,0.15)',
+                    color: '#7A8BA8',
                   }}
                 >
                   {tag}
@@ -230,7 +206,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7 }}
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(37,99,235,0.08)' }}
+          style={{ borderTop: '1px solid rgba(201,168,128,0.1)' }}
         >
           {[
             { value: '20+', label: 'Projects Built' },

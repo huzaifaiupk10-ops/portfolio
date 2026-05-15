@@ -16,7 +16,7 @@ import ChatBot from './components/ChatBot';
 
 function Home() {
   return (
-    <div className="relative min-h-screen" style={{ background: '#000000' }}>
+    <div className="relative min-h-screen" style={{ background: '#050D1E' }}>
       <BackgroundEffects />
       <div className="relative z-10">
         <Navbar />
