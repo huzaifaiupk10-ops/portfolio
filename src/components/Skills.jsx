@@ -129,7 +129,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6"
         >
           {skills.map((cat, i) => (
             <motion.button
