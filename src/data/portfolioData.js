@@ -125,15 +125,14 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Virginia Webs',
-    subtitle: 'Branding & Website Design',
+    title: 'Gala Gents',
+    subtitle: 'Luxury Menswear Website Design',
     description:
-      'A branding and website design project built for a web development agency, with focus on identity, clarity, and professional presence.',
-    tags: ['Branding', 'Website Design', 'Image Editing'],
-    image: '/images/project4.jpg',
-    objectFit: 'contain',
-    gradient: 'from-emerald-900/60 via-green-900/40 to-brand-navy',
-    accent: '#10B981',
+      'Gala Gents is a premium menswear brand concept designed around elegance, confidence, and purpose. The website showcases a bold luxury aesthetic with a dark, cinematic layout, gold typography, and refined visual details that reflect high-end tailoring and timeless style. The design focuses on creating a powerful first impression through sophisticated branding, strong hero imagery, and a polished user experience. Every element — from the navigation to the logo placement and visual hierarchy — was crafted to communicate exclusivity, class, and modern masculinity. This project highlights my ability to build premium brand visuals, create luxury-focused web layouts, and design digital experiences that feel professional, memorable, and visually impactful.',
+    tags: ['UI/UX', 'React', 'Node.js', 'Branding', 'Web Design'],
+    image: '/images/gala-gents.png',
+    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
+    accent: '#D4AF37',
   },
   {
     id: 3,
