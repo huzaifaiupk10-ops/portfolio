@@ -60,7 +60,7 @@ function ProjectCard({ project, i }) {
             src={project.image}
             alt={project.title}
             className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-            style={{ objectFit: project.objectFit || 'cover', background: '#0A0A0A' }}
+            style={{ objectFit: project.objectFit || 'cover', objectPosition: project.objectPosition || 'center', background: '#0A0A0A' }}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               e.currentTarget.nextSibling.style.display = 'flex';
