@@ -55,7 +55,7 @@ function ProjectCard({ project, i }) {
         }}
       >
         {/* Preview image / gradient placeholder */}
-        <div className="relative h-48 overflow-hidden rounded-t-2xl">
+        <div className={`relative overflow-hidden rounded-t-2xl ${project.objectFit === 'contain' ? 'h-64' : 'h-48'}`}>
           <img
             src={project.image}
             alt={project.title}
