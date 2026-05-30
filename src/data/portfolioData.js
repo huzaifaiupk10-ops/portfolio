@@ -128,7 +128,7 @@ export const projects = [
     title: 'Gala Gents',
     subtitle: 'Luxury Menswear Website Design',
     description:
-      'Gala Gents is a premium menswear brand concept designed around elegance, confidence, and purpose. The website showcases a bold luxury aesthetic with a dark, cinematic layout, gold typography, and refined visual details that reflect high-end tailoring and timeless style. The design focuses on creating a powerful first impression through sophisticated branding, strong hero imagery, and a polished user experience. Every element — from the navigation to the logo placement and visual hierarchy — was crafted to communicate exclusivity, class, and modern masculinity. This project highlights my ability to build premium brand visuals, create luxury-focused web layouts, and design digital experiences that feel professional, memorable, and visually impactful.',
+      'Gala Gents is a premium menswear website concept built around elegance, confidence, and high-end tailoring. The design uses a dark cinematic style, gold typography, and strong brand visuals to create a luxurious and memorable first impression. This project showcases my ability to create refined, professional web designs with a strong focus on branding, visual hierarchy, and premium user experience.',
     tags: ['UI/UX', 'React', 'Node.js', 'Branding', 'Web Design'],
     image: '/images/gala-gents.png',
     gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
