@@ -114,14 +114,14 @@ export const skills = [
 export const projects = [
   {
     id: 1,
-    title: "Gold's Gym Redesign",
-    subtitle: 'Premium Fitness Website Concept',
+    title: 'Sol Slice',
+    subtitle: 'Creative Agency Landing Page',
     description:
-      "A premium website redesign concept for Gold's Gym Woodbridge/Lake Ridge, focused on improving digital presence, visual branding, and membership conversion with a bold luxury fitness aesthetic.",
-    tags: ['Web Design', 'Website Redesign', 'UI/UX Design', 'React', 'Framer Motion', 'Branding', 'Landing Page'],
-    image: '/images/project7.png',
-    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#EAB308',
+      'A creative agency landing page concept focused on bold visuals, modern structure, and a sleek user experience.',
+    tags: ['Web Design', 'Front-End', 'UI/UX'],
+    image: '/images/project1.jpg',
+    gradient: 'from-blue-900/60 via-indigo-900/40 to-brand-navy',
+    accent: '#3B82F6',
   },
   {
     id: 2,
@@ -192,14 +192,14 @@ export const projects = [
   },
   {
     id: 8,
-    title: 'Sol Slice',
-    subtitle: 'Creative Agency Landing Page',
+    title: "Gold's Gym Redesign",
+    subtitle: 'Premium Fitness Website Concept',
     description:
-      'A creative agency landing page concept focused on bold visuals, modern structure, and a sleek user experience.',
-    tags: ['Web Design', 'Front-End', 'UI/UX'],
-    image: '/images/project1.jpg',
-    gradient: 'from-blue-900/60 via-indigo-900/40 to-brand-navy',
-    accent: '#3B82F6',
+      "A premium website redesign concept for Gold's Gym Woodbridge/Lake Ridge, focused on improving digital presence, visual branding, and membership conversion with a bold luxury fitness aesthetic.",
+    tags: ['Web Design', 'Website Redesign', 'UI/UX Design', 'React', 'Framer Motion', 'Branding', 'Landing Page'],
+    image: '/images/project7.png',
+    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
+    accent: '#EAB308',
   },
 ];
 
