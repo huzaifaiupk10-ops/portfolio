@@ -201,6 +201,17 @@ export const projects = [
     gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
     accent: '#EAB308',
   },
+  {
+    id: 9,
+    title: 'SOLVRA AI Studio',
+    subtitle: 'Brand Identity & Website Branding',
+    description:
+      'Created a premium brand identity system for SOLVRA AI Studio, my official AI and web development studio. The branding was designed to match the website\'s luxury-tech aesthetic, combining deep black tones, champagne gold accents, futuristic AI-inspired visuals, elegant typography, and clean UI elements. The brand system includes a refined logo direction, color palette, typography style, brand keywords, UI components, and visual design guidelines. The goal was to build a strong, high-end identity that communicates innovation, trust, elegance, and intelligent digital solutions.',
+    tags: ['Brand Identity', 'Luxury Branding', 'AI Branding', 'Web Design', 'UI/UX Design', 'Visual Identity', 'Logo System', 'Color Palette', 'Typography'],
+    image: '/images/solvra-brand.png',
+    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
+    accent: '#C4965A',
+  },
 ];
 
 export const services = [
