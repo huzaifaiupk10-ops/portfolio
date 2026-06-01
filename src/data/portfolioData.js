@@ -125,15 +125,15 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'Gala Gents',
-    subtitle: 'Luxury Menswear Website Design',
+    title: 'SOLVRA AI Studio',
+    subtitle: 'Brand Identity & Website Branding',
     description:
-      'Gala Gents is a premium menswear website concept built around elegance, confidence, and high-end tailoring. The design uses a dark cinematic style, gold typography, and strong brand visuals to create a luxurious and memorable first impression. This project showcases my ability to create refined, professional web designs with a strong focus on branding, visual hierarchy, and premium user experience.',
-    tags: ['UI/UX', 'React', 'Node.js', 'Branding', 'Web Design'],
-    image: '/images/gala-gents.png',
+      'Created a premium brand identity system for SOLVRA AI Studio, my official AI and web development studio. The branding was designed to match the website\'s luxury-tech aesthetic, combining deep black tones, champagne gold accents, futuristic AI-inspired visuals, elegant typography, and clean UI elements. The brand system includes a refined logo direction, color palette, typography style, brand keywords, UI components, and visual design guidelines. The goal was to build a strong, high-end identity that communicates innovation, trust, elegance, and intelligent digital solutions.',
+    tags: ['Brand Identity', 'Luxury Branding', 'AI Branding', 'Web Design', 'UI/UX Design', 'Visual Identity', 'Logo System', 'Color Palette', 'Typography'],
+    image: '/images/solvra-brand.png',
     objectFit: 'contain',
     gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#D4AF37',
+    accent: '#C4965A',
   },
   {
     id: 3,
@@ -170,14 +170,15 @@ export const projects = [
   },
   {
     id: 6,
-    title: 'Lumière Editorial',
-    subtitle: 'Fashion Campaign Design',
+    title: 'Gala Gents',
+    subtitle: 'Luxury Menswear Website Design',
     description:
-      'A visually driven fashion campaign concept combining editorial aesthetics, creative direction, and premium digital presentation.',
-    tags: ['Content Creation', 'Creative Direction', 'Visual Design'],
-    image: '/images/project3.jpg',
-    gradient: 'from-purple-900/60 via-pink-900/40 to-brand-navy',
-    accent: '#A855F7',
+      'Gala Gents is a premium menswear website concept built around elegance, confidence, and high-end tailoring. The design uses a dark cinematic style, gold typography, and strong brand visuals to create a luxurious and memorable first impression. This project showcases my ability to create refined, professional web designs with a strong focus on branding, visual hierarchy, and premium user experience.',
+    tags: ['UI/UX', 'React', 'Node.js', 'Branding', 'Web Design'],
+    image: '/images/gala-gents.png',
+    objectFit: 'contain',
+    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
+    accent: '#D4AF37',
   },
   {
     id: 7,
@@ -203,15 +204,14 @@ export const projects = [
   },
   {
     id: 9,
-    title: 'SOLVRA AI Studio',
-    subtitle: 'Brand Identity & Website Branding',
+    title: 'Lumière Editorial',
+    subtitle: 'Fashion Campaign Design',
     description:
-      'Created a premium brand identity system for SOLVRA AI Studio, my official AI and web development studio. The branding was designed to match the website\'s luxury-tech aesthetic, combining deep black tones, champagne gold accents, futuristic AI-inspired visuals, elegant typography, and clean UI elements. The brand system includes a refined logo direction, color palette, typography style, brand keywords, UI components, and visual design guidelines. The goal was to build a strong, high-end identity that communicates innovation, trust, elegance, and intelligent digital solutions.',
-    tags: ['Brand Identity', 'Luxury Branding', 'AI Branding', 'Web Design', 'UI/UX Design', 'Visual Identity', 'Logo System', 'Color Palette', 'Typography'],
-    image: '/images/solvra-brand.png',
-    objectFit: 'contain',
-    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#C4965A',
+      'A visually driven fashion campaign concept combining editorial aesthetics, creative direction, and premium digital presentation.',
+    tags: ['Content Creation', 'Creative Direction', 'Visual Design'],
+    image: '/images/project3.jpg',
+    gradient: 'from-purple-900/60 via-pink-900/40 to-brand-navy',
+    accent: '#A855F7',
   },
 ];
 
