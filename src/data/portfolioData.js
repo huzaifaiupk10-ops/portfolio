@@ -114,14 +114,16 @@ export const skills = [
 export const projects = [
   {
     id: 1,
-    title: 'Sol Slice',
-    subtitle: 'Creative Agency Landing Page',
+    title: 'SOLVRA AI Studio',
+    subtitle: 'Official Website',
     description:
-      'A creative agency landing page concept focused on bold visuals, modern structure, and a sleek user experience.',
-    tags: ['Web Design', 'Front-End', 'UI/UX'],
-    image: '/images/project1.jpg',
-    gradient: 'from-blue-900/60 via-indigo-900/40 to-brand-navy',
-    accent: '#3B82F6',
+      'Created the official website for SOLVRA AI Studio, a premium AI and web development studio focused on building modern websites, AI automation systems, AI agents, branding, and digital product experiences. The site was designed to present the brand with a high-end, professional, and futuristic identity while clearly showcasing services, projects, testimonials, and contact options. The goal of this website is to establish SOLVRA AI Studio as a trusted digital partner for businesses looking for elegant design, intelligent automation, and powerful online solutions.',
+    tags: ['HTML', 'UI/UX Design', 'React', 'Node.js'],
+    image: '/images/solvra.png',
+    objectFit: 'contain',
+    objectPosition: 'top',
+    gradient: 'from-slate-900/60 via-gray-900/40 to-brand-navy',
+    accent: '#C4965A',
   },
   {
     id: 2,
