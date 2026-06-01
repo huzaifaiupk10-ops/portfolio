@@ -159,14 +159,14 @@ export const projects = [
   },
   {
     id: 5,
-    title: 'Lumière Fashion Web',
-    subtitle: 'Luxury Fashion Website Design',
+    title: 'Lumen',
+    subtitle: 'Lead Generation SaaS UI Design',
     description:
-      'A luxury fashion website concept designed to feel elegant, premium, and immersive while staying modern and responsive.',
-    tags: ['Web Development', 'Web Design', 'HTML', 'Product Development'],
-    image: '/images/project6.jpg',
-    gradient: 'from-rose-900/60 via-red-900/40 to-brand-navy',
-    accent: '#F43F5E',
+      'Designed a clean and modern SaaS dashboard for Lumen, a B2B lead generation platform. The UI helps users discover leads, view contact profiles, track activity, save prospects, and generate AI-powered outreach emails. The design focuses on a professional dashboard experience with clear data cards, organized lead tables, smooth navigation, and a soft purple-accented visual style.',
+    tags: ['Figma Design', 'Product Design', 'SaaS', 'UI Design', 'B2B Platform', 'Lead Management'],
+    image: '/images/lumen.png',
+    gradient: 'from-violet-900/60 via-purple-900/40 to-brand-navy',
+    accent: '#A855F7',
   },
   {
     id: 6,
