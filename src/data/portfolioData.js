@@ -148,6 +148,17 @@ export const projects = [
   },
   {
     id: 4,
+    title: 'Brand Oasis',
+    subtitle: 'Premium Brand Identity Design',
+    description:
+      'A premium branding concept for a strategy, design, and growth studio focused on clarity, elegance, and trust. Includes logo design, color palette, typography, brand icons, stationery mockups, brand applications, and social media visuals.',
+    tags: ['Brand Identity', 'Visual Design', 'Logo Design', 'Typography', 'Mockups', 'Social Media'],
+    image: '/images/brand-oasis.png',
+    gradient: 'from-teal-900/60 via-emerald-900/40 to-brand-navy',
+    accent: '#14B8A6',
+  },
+  {
+    id: 5,
     title: 'AI Lead Dashboard',
     subtitle: 'AI Lead Generation & Automation',
     description:
@@ -158,7 +169,7 @@ export const projects = [
     accent: '#06B6D4',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Lumen',
     subtitle: 'Lead Generation SaaS UI Design',
     description:
@@ -169,7 +180,7 @@ export const projects = [
     accent: '#A855F7',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Gala Gents',
     subtitle: 'Luxury Menswear Website Design',
     description:
@@ -181,7 +192,7 @@ export const projects = [
     accent: '#D4AF37',
   },
   {
-    id: 7,
+    id: 8,
     title: 'Lumière Visual System',
     subtitle: 'Luxury Brand Identity Design',
     description:
@@ -192,7 +203,7 @@ export const projects = [
     accent: '#F59E0B',
   },
   {
-    id: 8,
+    id: 9,
     title: "Gold's Gym Redesign",
     subtitle: 'Premium Fitness Website Concept',
     description:
@@ -203,7 +214,7 @@ export const projects = [
     accent: '#EAB308',
   },
   {
-    id: 9,
+    id: 10,
     title: 'Lumière Editorial',
     subtitle: 'Fashion Campaign Design',
     description:
