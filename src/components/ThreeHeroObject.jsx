@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
+import { useRef, useState, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -258,12 +258,6 @@ function AIScene({ clicked }) {
 export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [ready, setReady]     = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setReady(true), 600);
-    return () => clearTimeout(t);
-  }, []);
 
   return (
     <div className="w-full h-full relative" aria-hidden="true"
@@ -271,7 +265,7 @@ export default function ThreeHeroObject() {
       <Canvas
         camera={{ position: [0, 0, 6.0], fov: 42 }}
         gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent', opacity: ready ? 1 : 0, transition: 'opacity 0.8s ease' }}
+        style={{ background: 'transparent' }}
         dpr={[1, 1.5]}
         onClick={() => { setClicked(true); setTimeout(() => setClicked(false), 900); }}
         onPointerOver={() => setHovered(true)}
