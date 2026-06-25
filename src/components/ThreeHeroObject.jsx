@@ -1,6 +1,6 @@
-import { useRef, useState, useMemo, Suspense } from 'react';
+import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment } from '@react-three/drei';
+import { Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 // ── Central AI Brain Core ────────────────────────────────────
@@ -23,6 +23,7 @@ function AICore() {
 
   return (
     <group>
+      {/* Outer clean black metallic sphere — kept black */}
       <mesh ref={coreRef}>
         <sphereGeometry args={[0.88, 128, 128]} />
         <meshStandardMaterial
@@ -254,10 +255,16 @@ function AIScene({ clicked }) {
   );
 }
 
+function ReadySignal({ onReady }) {
+  useEffect(() => { onReady(); }, []);
+  return null;
+}
+
 // ── Main export ──────────────────────────────────────────────
 export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [ready, setReady]     = useState(false);
 
   return (
     <div className="w-full h-full relative" aria-hidden="true"
@@ -265,20 +272,18 @@ export default function ThreeHeroObject() {
       <Canvas
         camera={{ position: [0, 0, 6.0], fov: 42 }}
         gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', opacity: ready ? 1 : 0, transition: 'opacity 0.8s ease' }}
         dpr={[1, 1.5]}
         onClick={() => { setClicked(true); setTimeout(() => setClicked(false), 900); }}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
+        <ReadySignal onReady={() => setReady(true)} />
         <ambientLight intensity={0.1} />
         <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
         <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
-        {/* Environment loads async in its own boundary — never blocks the scene */}
         <Suspense fallback={null}>
           <Environment preset="night" />
-        </Suspense>
-        <Suspense fallback={null}>
           <AIScene clicked={clicked} />
         </Suspense>
       </Canvas>
