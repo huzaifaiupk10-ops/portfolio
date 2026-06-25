@@ -284,6 +284,8 @@ export default function ThreeHeroObject() {
         <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
         <Suspense fallback={null}>
           <Environment preset="night" />
+        </Suspense>
+        <Suspense fallback={null}>
           <AIScene clicked={clicked} />
         </Suspense>
       </Canvas>
