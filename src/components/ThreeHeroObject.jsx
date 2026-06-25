@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
+import React, { useRef, useState, useMemo, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -260,6 +260,12 @@ function ReadySignal({ onReady }) {
   return null;
 }
 
+class CanvasErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { failed: false }; }
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? null : this.props.children; }
+}
+
 // ── Main export ──────────────────────────────────────────────
 export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
@@ -269,24 +275,26 @@ export default function ThreeHeroObject() {
   return (
     <div className="w-full h-full relative" aria-hidden="true"
       style={{ cursor: hovered ? 'pointer' : 'default' }}>
-      <Canvas
-        camera={{ position: [0, 0, 6.0], fov: 42 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent', opacity: ready ? 1 : 0, transition: 'opacity 0.8s ease' }}
-        dpr={[1, 1.5]}
-        onClick={() => { setClicked(true); setTimeout(() => setClicked(false), 900); }}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <ReadySignal onReady={() => setReady(true)} />
-        <ambientLight intensity={0.1} />
-        <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
-        <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
-        <Suspense fallback={null}>
-          <Environment preset="night" />
-          <AIScene clicked={clicked} />
-        </Suspense>
-      </Canvas>
+      <CanvasErrorBoundary>
+        <Canvas
+          camera={{ position: [0, 0, 6.0], fov: 42 }}
+          gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false, powerPreference: 'default' }}
+          style={{ background: 'transparent', opacity: ready ? 1 : 0, transition: 'opacity 0.8s ease' }}
+          dpr={[1, 1.5]}
+          onClick={() => { setClicked(true); setTimeout(() => setClicked(false), 900); }}
+          onPointerOver={() => setHovered(true)}
+          onPointerOut={() => setHovered(false)}
+        >
+          <ReadySignal onReady={() => setReady(true)} />
+          <ambientLight intensity={0.1} />
+          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
+          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
+          <Suspense fallback={null}>
+            <Environment preset="night" />
+            <AIScene clicked={clicked} />
+          </Suspense>
+        </Canvas>
+      </CanvasErrorBoundary>
 
       <div style={{
         position:'absolute', bottom:'10px', left:'50%',
