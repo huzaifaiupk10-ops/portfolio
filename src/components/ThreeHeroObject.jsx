@@ -1,6 +1,6 @@
 import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float } from '@react-three/drei';
+import { Float, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
 // ── Central AI Brain Core ────────────────────────────────────
@@ -25,10 +25,11 @@ function AICore() {
     <group>
       <mesh ref={coreRef}>
         <sphereGeometry args={[0.88, 128, 128]} />
-        <meshPhongMaterial
-          color="#0D1520"
-          specular="#C8A898"
-          shininess={60}
+        <meshStandardMaterial
+          color="#050D1A"
+          metalness={0.95}
+          roughness={0.05}
+          envMapIntensity={0.4}
         />
       </mesh>
 
@@ -276,10 +277,13 @@ export default function ThreeHeroObject() {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        <ambientLight intensity={0.3} />
-        <directionalLight position={[5, 5, 5]}   intensity={1.2} color="#DEC0B0" />
-        <directionalLight position={[-5,-3,-5]}   intensity={0.4} color="#8C6A5E" />
-        <pointLight position={[0, 3, 3]} intensity={1.0} color="#C8A898" />
+        <ambientLight intensity={0.1} />
+        <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
+        <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
+        {/* Environment loads async in its own boundary — never blocks the scene */}
+        <Suspense fallback={null}>
+          <Environment preset="night" />
+        </Suspense>
         <Suspense fallback={null}>
           <AIScene clicked={clicked} />
         </Suspense>
