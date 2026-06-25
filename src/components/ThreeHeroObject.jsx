@@ -1,7 +1,21 @@
 import React, { useRef, useState, useMemo, Suspense, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, Float } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+function LocalEnv() {
+  const { gl, scene } = useThree();
+  useEffect(() => {
+    const pmrem = new THREE.PMREMGenerator(gl);
+    pmrem.compileEquirectangularShader();
+    const envMap = pmrem.fromScene(new RoomEnvironment()).texture;
+    scene.environment = envMap;
+    pmrem.dispose();
+    return () => { scene.environment = null; envMap.dispose(); };
+  }, [gl, scene]);
+  return null;
+}
 
 // ── Central AI Brain Core ────────────────────────────────────
 function AICore() {
@@ -286,11 +300,11 @@ export default function ThreeHeroObject() {
           onPointerOut={() => setHovered(false)}
         >
           <ReadySignal onReady={() => setReady(true)} />
+          <LocalEnv />
           <ambientLight intensity={0.1} />
           <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
           <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
           <Suspense fallback={null}>
-            <Environment preset="night" />
             <AIScene clicked={clicked} />
           </Suspense>
         </Canvas>
