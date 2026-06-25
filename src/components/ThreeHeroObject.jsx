@@ -1,6 +1,6 @@
 import { useRef, useState, useMemo, Suspense, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, Float } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 // ── Central AI Brain Core ────────────────────────────────────
@@ -256,7 +256,7 @@ function AIScene({ clicked }) {
 }
 
 function ReadySignal({ onReady }) {
-  useEffect(() => { onReady(); }, []);
+  useEffect(() => { onReady(); }, [onReady]);
   return null;
 }
 
@@ -265,6 +265,11 @@ export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [ready, setReady]     = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="w-full h-full relative" aria-hidden="true"
@@ -280,10 +285,10 @@ export default function ThreeHeroObject() {
       >
         <Suspense fallback={null}>
           <ReadySignal onReady={() => setReady(true)} />
-          <ambientLight intensity={0.1} />
-          <directionalLight position={[5, 5, 5]}   intensity={0.5} color="#DEC0B0" />
-          <directionalLight position={[-5,-3,-5]}   intensity={0.2} color="#8C6A5E" />
-          <Environment preset="night" />
+          <ambientLight intensity={0.15} />
+          <directionalLight position={[5, 5, 5]}   intensity={0.6} color="#DEC0B0" />
+          <directionalLight position={[-5,-3,-5]}   intensity={0.25} color="#8C6A5E" />
+          <pointLight position={[0, 3, 3]} intensity={0.4} color="#C8A898" />
           <AIScene clicked={clicked} />
         </Suspense>
       </Canvas>
