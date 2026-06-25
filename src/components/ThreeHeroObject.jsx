@@ -23,14 +23,12 @@ function AICore() {
 
   return (
     <group>
-      {/* Outer clean black metallic sphere — kept black */}
       <mesh ref={coreRef}>
         <sphereGeometry args={[0.88, 128, 128]} />
-        <meshStandardMaterial
-          color="#050D1A"
-          metalness={0.95}
-          roughness={0.05}
-          envMapIntensity={0.4}
+        <meshPhongMaterial
+          color="#0D1520"
+          specular="#C8A898"
+          shininess={60}
         />
       </mesh>
 
@@ -255,11 +253,6 @@ function AIScene({ clicked }) {
   );
 }
 
-function ReadySignal({ onReady }) {
-  useEffect(() => { onReady(); }, [onReady]);
-  return null;
-}
-
 // ── Main export ──────────────────────────────────────────────
 export default function ThreeHeroObject() {
   const [clicked, setClicked] = useState(false);
@@ -267,7 +260,7 @@ export default function ThreeHeroObject() {
   const [ready, setReady]     = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setReady(true), 2000);
+    const t = setTimeout(() => setReady(true), 600);
     return () => clearTimeout(t);
   }, []);
 
@@ -283,12 +276,11 @@ export default function ThreeHeroObject() {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
+        <ambientLight intensity={0.3} />
+        <directionalLight position={[5, 5, 5]}   intensity={1.2} color="#DEC0B0" />
+        <directionalLight position={[-5,-3,-5]}   intensity={0.4} color="#8C6A5E" />
+        <pointLight position={[0, 3, 3]} intensity={1.0} color="#C8A898" />
         <Suspense fallback={null}>
-          <ReadySignal onReady={() => setReady(true)} />
-          <ambientLight intensity={0.15} />
-          <directionalLight position={[5, 5, 5]}   intensity={0.6} color="#DEC0B0" />
-          <directionalLight position={[-5,-3,-5]}   intensity={0.25} color="#8C6A5E" />
-          <pointLight position={[0, 3, 3]} intensity={0.4} color="#C8A898" />
           <AIScene clicked={clicked} />
         </Suspense>
       </Canvas>
