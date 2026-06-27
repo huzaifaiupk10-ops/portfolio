@@ -3,12 +3,9 @@ import Cursor from './components/Cursor';
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Marquee from './components/Marquee';
-import Stats from './components/Stats';
-import Projects from './components/Projects';
+import Expertise from './components/Expertise';
+import Work from './components/Work';
 import Services from './components/Services';
-import About from './components/About';
-import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectPage from './components/ProjectPage';
@@ -21,12 +18,9 @@ function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Marquee />
-        <Stats />
-        <Projects />
+        <Expertise />
+        <Work />
         <Services />
-        <About />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />

@@ -1,57 +1,39 @@
 ﻿import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { services } from '../data/portfolioData';
 const ease = [0.16,1,0.3,1];
-
+const SERVICES = [
+  {num:'01',title:'Web Development',desc:'Fast, responsive, modern websites and web apps built with React. Every project is optimised for performance, accessibility, and conversion.'},
+  {num:'02',title:'UI/UX Design',desc:'Interfaces that feel effortless. I design in Figma — from wireframes to polished, production-ready component systems.'},
+  {num:'03',title:'AI Agents & Automation',desc:'Custom AI agents, prompt engineering, and n8n automation workflows that eliminate manual work and scale your operations intelligently.'},
+  {num:'04',title:'Brand Identity',desc:'Logo design, typography systems, colour palettes, and full brand guidelines. Visual identities that communicate authority and elegance.'},
+];
 export default function Services() {
   const ref = useRef(null);
   const inView = useInView(ref,{once:true,margin:'-60px'});
-  const [open, setOpen] = useState(null);
+  const [active,setActive] = useState(null);
   return (
-    <section id="services" style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
-      <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
-        <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:'3.5rem', flexWrap:'wrap', gap:'1rem' }}>
-          <h2 className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', letterSpacing:'-0.02em', lineHeight:0.95 }}>What I Do</h2>
-        </motion.div>
-        {services.map((s,i) => (
-          <motion.div key={s.id} initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.6,ease}}>
-            <div
-              onClick={()=>setOpen(open===s.id?null:s.id)}
-              style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'1.75rem 0', borderBottom:'1px solid var(--border)', cursor:'pointer', gap:'2rem' }}
-            >
-              <div style={{ display:'flex', alignItems:'center', gap:'2rem' }}>
-                <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'0.8rem', color:'var(--gold)', letterSpacing:'0.05em', minWidth:'2rem' }}>0{i+1}</span>
-                <h3 style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'clamp(1.3rem,2.5vw,1.9rem)', color: open===s.id ? 'var(--gold)' : 'var(--ink)', letterSpacing:'-0.01em', transition:'color 0.25s' }}>{s.title}</h3>
-              </div>
-              <div style={{ display:'flex', alignItems:'center', gap:'1.5rem' }}>
-                <div style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap', justifyContent:'flex-end' }}>
-                  {s.tags.map(t=>(
-                    <span key={t} style={{ fontFamily:'var(--font-body)', fontSize:'0.7rem', color:'var(--ink-3)', padding:'0.2rem 0.6rem', border:'1px solid var(--border)', borderRadius:20, whiteSpace:'nowrap' }}>{t}</span>
-                  ))}
-                </div>
-                <div style={{ width:36, height:36, borderRadius:'50%', border:'1px solid var(--border)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'transform 0.3s, border-color 0.25s', borderColor: open===s.id ? 'var(--border-gold)' : 'var(--border)', transform: open===s.id ? 'rotate(45deg)' : 'rotate(0deg)' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" strokeWidth="2" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </div>
-              </div>
+    <section id="services" style={{padding:'7rem var(--gutter)',borderTop:'1px solid rgba(255,255,255,0.06)'}}>
+      <div ref={ref} style={{maxWidth:'var(--max-w)',margin:'0 auto'}}>
+        <motion.h2 initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.7,ease}} className="metallic" style={{fontFamily:'var(--font-serif)',fontWeight:700,fontSize:'clamp(3rem,7vw,5.5rem)',letterSpacing:'-0.03em',lineHeight:0.9,marginBottom:'4rem'}}>What I Do.</motion.h2>
+        {SERVICES.map((s,i)=>(
+          <motion.div key={s.num} initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.7,ease}}
+            onMouseEnter={()=>setActive(s.num)} onMouseLeave={()=>setActive(null)}
+            style={{borderTop:'1px solid rgba(255,255,255,0.07)',padding:'2rem 0',display:'grid',gridTemplateColumns:'80px 1fr auto',gap:'2rem',alignItems:'center',cursor:'default',transition:'padding 0.3s',paddingLeft: active===s.num?'0.5rem':'0'}}>
+            <span style={{fontFamily:'var(--font-body)',fontWeight:500,fontSize:'0.75rem',color: active===s.num?'var(--gold)':'var(--ink-3)',letterSpacing:'0.08em',transition:'color 0.25s'}}>{s.num}</span>
+            <div>
+              <h3 className={active===s.num?'metallic':''} style={{fontFamily:'var(--font-serif)',fontWeight:700,fontSize:'clamp(1.8rem,3.5vw,3rem)',color: active===s.num?'transparent':'var(--ink)',letterSpacing:'-0.025em',lineHeight:1,marginBottom: active===s.num?'0.75rem':0,transition:'color 0.25s, margin 0.3s'}}>{s.title}</h3>
+              <AnimatePresence>
+                {active===s.num && (
+                  <motion.p key="desc" initial={{opacity:0,height:0}} animate={{opacity:1,height:'auto'}} exit={{opacity:0,height:0}} transition={{duration:0.35}} style={{fontFamily:'var(--font-body)',fontSize:'0.875rem',color:'var(--ink-3)',lineHeight:1.75,maxWidth:'55ch',overflow:'hidden'}}>{s.desc}</motion.p>
+                )}
+              </AnimatePresence>
             </div>
-            <AnimatePresence>
-              {open===s.id && (
-                <motion.div key="content" initial={{height:0,opacity:0}} animate={{height:'auto',opacity:1}} exit={{height:0,opacity:0}} transition={{duration:0.4,ease}} style={{ overflow:'hidden' }}>
-                  <div style={{ padding:'1.5rem 0 2rem 4rem', display:'grid', gridTemplateColumns:'1fr 1fr', gap:'2rem', alignItems:'start' }}>
-                    <p style={{ fontFamily:'var(--font-body)', fontSize:'0.9rem', color:'var(--ink-3)', lineHeight:1.8 }}>{s.longDescription}</p>
-                    <ul style={{ listStyle:'none', padding:0, margin:0 }}>
-                      {s.features.map(f=>(
-                        <li key={f} style={{ fontFamily:'var(--font-body)', fontSize:'0.85rem', color:'var(--ink-2)', padding:'0.5rem 0', borderBottom:'1px solid var(--border)', display:'flex', alignItems:'center', gap:'0.75rem' }}>
-                          <span style={{ color:'var(--gold)', fontSize:'0.6rem' }}>◆</span>{f}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div animate={{x: active===s.num?0:8,opacity: active===s.num?1:0.3}} transition={{duration:0.25}} style={{width:44,height:44,borderRadius:'50%',border:'1px solid',borderColor: active===s.num?'var(--gold)':'rgba(255,255,255,0.12)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,background: active===s.num?'var(--gold)':'transparent',transition:'background 0.25s, border-color 0.25s'}}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={active===s.num?'#0A0A0A':'var(--ink-3)'} strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </motion.div>
           </motion.div>
         ))}
+        <div style={{borderTop:'1px solid rgba(255,255,255,0.07)'}} />
       </div>
     </section>
   );
