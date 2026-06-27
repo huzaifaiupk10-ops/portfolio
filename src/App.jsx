@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import Expertise from './components/Expertise';
 import Work from './components/Work';
 import Services from './components/Services';
+import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectPage from './components/ProjectPage';
@@ -21,6 +22,7 @@ function Home() {
         <Expertise />
         <Work />
         <Services />
+        <Process />
         <Contact />
       </main>
       <Footer />

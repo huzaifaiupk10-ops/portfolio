@@ -2,109 +2,66 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { process } from '../data/portfolioData';
 
+const ease = [0.16, 1, 0.3, 1];
+
 export default function Process() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section id="process" className="section-pad">
-      <div className="container-max">
+    <section id="process" style={{ padding: '7rem var(--gutter)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+
         {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+        <motion.p
+          initial={{ opacity: 0, y: 8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease }}
+          style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.72rem', color: 'var(--gold)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '1.5rem' }}
         >
-          <div className="section-label mb-4 mx-auto">How I Work</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
+          My Process
+        </motion.p>
+
+        <div style={{ overflow: 'hidden', marginBottom: '1rem' }}>
+          <motion.div
+            initial={{ y: '108%' }} animate={inView ? { y: '0%' } : {}}
+            transition={{ duration: 0.9, ease }}
+            className="metallic"
+            style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(3rem,7vw,5.5rem)', letterSpacing: '-0.03em', lineHeight: 0.9 }}
           >
-            My Process
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
-            A clear, structured workflow from first conversation to final launch.
-          </p>
-        </motion.div>
+            How I Work.
+          </motion.div>
+        </div>
 
-        {/* Steps — desktop: horizontal, mobile: vertical */}
-        <div className="relative">
-          {/* Connector line (desktop) */}
-          <div
-            className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.3) 20%, rgba(59,130,246,0.3) 80%, transparent)' }}
-          />
+        <motion.p
+          initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.7, ease }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--ink-3)', lineHeight: 1.8, maxWidth: '50ch', marginBottom: '4rem' }}
+        >
+          A clear, structured workflow from first conversation to final launch.
+        </motion.p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {process.map((step, i) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.15, duration: 0.55 }}
-                className="relative"
-              >
-                {/* Vertical connector (mobile) */}
-                {i < process.length - 1 && (
-                  <div
-                    className="lg:hidden absolute left-6 top-full w-px h-6 z-0"
-                    style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.4), transparent)' }}
-                  />
-                )}
+        {/* Steps grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem' }}>
+          {process.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.7, ease }}
+              style={{ padding: '2rem', borderRadius: 16, background: '#141414', border: '1px solid var(--border)', position: 'relative', overflow: 'hidden', transition: 'border-color 0.25s, transform 0.25s' }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = ''; }}
+            >
+              {/* Step number */}
+              <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--gold)', marginBottom: '1.25rem', letterSpacing: '0.04em' }}>{step.step}</div>
 
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  className="rounded-2xl p-6 h-full relative overflow-hidden shine"
-                  style={{
-                    background: 'rgba(5,13,26,0.65)',
-                    border: '1px solid rgba(200,168,152,0.1)',
-                    transition: 'border-color 0.3s, box-shadow 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-                    e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.3), 0 0 30px rgba(200,168,152,0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(200,168,152,0.1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  {/* Step number bubble */}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-bold text-sm mb-5 relative z-10"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(30,64,175,0.4), rgba(200,168,152,0.2))',
-                      border: '1px solid rgba(59,130,246,0.35)',
-                      color: '#C8A898',
-                      boxShadow: '0 0 20px rgba(200,168,152,0.15)',
-                    }}
-                  >
-                    {step.step}
-                  </div>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(1.2rem,1.8vw,1.5rem)', color: 'var(--ink)', letterSpacing: '-0.02em', marginBottom: '0.75rem', lineHeight: 1.1 }}>{step.title}</h3>
 
-                  <h3
-                    className="font-display font-semibold text-lg mb-2 relative z-10"
-                    style={{ color: '#F1F5F9' }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-brand-muted text-sm leading-relaxed relative z-10">
-                    {step.description}
-                  </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--ink-3)', lineHeight: 1.8 }}>{step.description}</p>
 
-                  {/* Background number watermark */}
-                  <div
-                    className="absolute -bottom-3 -right-2 font-display font-bold text-8xl opacity-[0.04] pointer-events-none select-none"
-                    style={{ color: '#C8A898' }}
-                  >
-                    {step.step}
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Watermark */}
+              <div style={{ position: 'absolute', bottom: '-0.5rem', right: '0.5rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '6rem', color: 'var(--gold)', opacity: 0.04, pointerEvents: 'none', userSelect: 'none', lineHeight: 1 }}>{step.step}</div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
