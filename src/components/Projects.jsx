@@ -1,43 +1,61 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { projects } from "../data/portfolioData";
+﻿import { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { projects } from '../data/portfolioData';
 const ease = [0.16,1,0.3,1];
-function ProjectCard({project,index,inView}) {
-  const navigate = useNavigate();
-  const [hov,setHov] = [false,()=>{}];
-  return (
-    <motion.div initial={{opacity:0,y:24}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:index*0.08,duration:0.65,ease}} onClick={()=>navigate(`/project/${project.id}`)} onMouseEnter={e=>{e.currentTarget.querySelector(".card-img").style.transform="scale(1.05)";e.currentTarget.style.borderColor="var(--border-gold)"}} onMouseLeave={e=>{e.currentTarget.querySelector(".card-img").style.transform="scale(1)";e.currentTarget.style.borderColor="var(--border)"}} style={{background:"var(--card)",borderRadius:"var(--radius)",overflow:"hidden",border:"1px solid var(--border)",cursor:"pointer",transition:"border-color 0.3s"}}>
-      <div style={{height:220,overflow:"hidden",position:"relative",background:"#0D0D0D"}}>
-        <img className="card-img" src={project.image} alt={project.title} style={{width:"100%",height:"100%",objectFit:project.objectFit||"cover",display:"block",transition:"transform 0.55s ease"}} onError={e=>{e.currentTarget.style.display="none"}} />
-      </div>
-      <div style={{padding:"1.1rem 1.25rem",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-        <div>
-          <p style={{fontFamily:"var(--font-display)",fontWeight:700,fontSize:"1rem",color:"var(--ink)",letterSpacing:"-0.02em",marginBottom:"0.2rem"}}>{project.title}</p>
-          <p style={{fontFamily:"var(--font-body)",fontWeight:400,fontSize:"0.78rem",color:"var(--ink-3)"}}>{project.tags.slice(0,2).join(" & ")}</p>
-        </div>
-        <div style={{width:32,height:32,borderRadius:"50%",border:"1px solid var(--border-gold)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+
 export default function Projects() {
   const ref = useRef(null);
-  const inView = useInView(ref,{once:true,margin:"-60px"});
+  const inView = useInView(ref,{once:true,margin:'-60px'});
+  const navigate = useNavigate();
+  const [hovered, setHovered] = useState(null);
+  const list = projects.slice(0,6);
   return (
-    <section id="work" style={{padding:"clamp(4rem,7vw,7rem) var(--gutter)",borderTop:"1px solid var(--border)"}}>
-      <div ref={ref} style={{maxWidth:"var(--max-w)",margin:"0 auto"}}>
-        <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.65,ease}} style={{display:"flex",alignItems:"flex-end",justifyContent:"space-between",marginBottom:"2.5rem",flexWrap:"wrap",gap:"1rem"}}>
-          <div>
-            <p style={{fontFamily:"var(--font-body)",fontWeight:600,fontSize:"0.75rem",color:"var(--gold)",letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:"0.5rem"}}>Featured Work</p>
-            <h2 style={{fontFamily:"var(--font-display)",fontWeight:800,fontSize:"clamp(2rem,4vw,3rem)",color:"var(--ink)",letterSpacing:"-0.04em",lineHeight:1}}>Designs That<br/>Speak.</h2>
-          </div>
-          <a href="#" style={{fontFamily:"var(--font-body)",fontWeight:600,fontSize:"0.875rem",color:"var(--ink)",textDecoration:"none",display:"flex",alignItems:"center",gap:8,padding:"0.6rem 1.25rem",background:"var(--card)",border:"1px solid var(--border)",borderRadius:8,transition:"border-color 0.2s"}} onMouseEnter={e=>e.currentTarget.style.borderColor="var(--border-gold)"} onMouseLeave={e=>e.currentTarget.style.borderColor="var(--border)"}>View All Work <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+    <section id="work" style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
+      <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
+        <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:'3.5rem', flexWrap:'wrap', gap:'1rem' }}>
+          <h2 style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'clamp(2.2rem,5vw,3.5rem)', color:'var(--ink)', letterSpacing:'-0.045em', lineHeight:0.95 }}>Selected Work</h2>
+          <p style={{ fontFamily:'var(--font-body)', fontSize:'0.85rem', color:'var(--ink-3)' }}>{list.length} Projects</p>
         </motion.div>
-        <div className="projects-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"1.25rem"}}>
-          {projects.slice(0,6).map((p,i)=><ProjectCard key={p.id} project={p} index={i} inView={inView} />)}
+        <div style={{ position:'relative' }}>
+          {list.map((p,i) => (
+            <motion.div
+              key={p.id}
+              initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.07,duration:0.6,ease}}
+              onMouseEnter={()=>setHovered(p.id)}
+              onMouseLeave={()=>setHovered(null)}
+              onClick={()=>navigate('/project/'+p.id)}
+              style={{ display:'grid', gridTemplateColumns:'3.5rem 1fr auto', alignItems:'center', gap:'2rem', padding:'1.6rem 0', borderBottom:'1px solid var(--border)', cursor:'pointer', transition:'padding 0.25s', position:'relative' }}
+            >
+              {/* hover bg */}
+              <AnimatePresence>
+                {hovered===p.id && (
+                  <motion.div key="bg" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.2}} style={{ position:'absolute', inset:0, background:'rgba(201,168,76,0.04)', borderRadius:8, pointerEvents:'none' }} />
+                )}
+              </AnimatePresence>
+              <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'0.8rem', color: hovered===p.id ? 'var(--gold)' : 'var(--ink-3)', transition:'color 0.2s', letterSpacing:'0.05em' }}>0{i+1}</span>
+              <div>
+                <p style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'clamp(1.1rem,2.2vw,1.5rem)', color:'var(--ink)', letterSpacing:'-0.03em', marginBottom:'0.3rem', transition:'color 0.2s' }}>{p.title}</p>
+                <div style={{ display:'flex', flexWrap:'wrap', gap:'0.4rem' }}>
+                  {p.tags.slice(0,3).map(t=>(
+                    <span key={t} style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:'var(--ink-3)', padding:'0.2rem 0.6rem', border:'1px solid var(--border)', borderRadius:20 }}>{t}</span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display:'flex', alignItems:'center', gap:'1.5rem' }}>
+                <AnimatePresence>
+                  {hovered===p.id && (
+                    <motion.div key="img" initial={{opacity:0,scale:0.9,x:20}} animate={{opacity:1,scale:1,x:0}} exit={{opacity:0,scale:0.9,x:20}} transition={{duration:0.3,ease}} style={{ width:130, height:85, borderRadius:10, overflow:'hidden', flexShrink:0 }}>
+                      <img src={p.image} alt={p.title} style={{ width:'100%', height:'100%', objectFit:'cover' }} onError={e=>e.currentTarget.style.display='none'} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <div style={{ width:40, height:40, borderRadius:'50%', border:'1px solid', borderColor: hovered===p.id ? 'var(--gold)' : 'var(--border)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'border-color 0.2s, background 0.2s', background: hovered===p.id ? 'var(--gold)' : 'transparent' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={hovered===p.id?'#0A0A0A':'var(--ink-3)'} strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
