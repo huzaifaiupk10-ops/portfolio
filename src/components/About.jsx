@@ -11,7 +11,7 @@ export default function About() {
         <div>
           {['The person','behind the work.'].map((line,i)=>(
             <div key={i} style={{ overflow:'hidden' }}>
-              <motion.div initial={{y:'105%'}} animate={inView?{y:'0%'}:{}} transition={{delay:i*0.12,duration:0.9,ease}} style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'clamp(2rem,4.5vw,3.25rem)', color: i===1?'var(--gold)':'var(--ink)', letterSpacing:'-0.045em', lineHeight:0.95, paddingBottom:'0.06em' }}>{line}</motion.div>
+              <motion.div initial={{y:'105%'}} animate={inView?{y:'0%'}:{}} transition={{delay:i*0.12,duration:0.9,ease}} style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.2rem,4.5vw,3.5rem)', color: i===1?'var(--gold)':'var(--ink)', letterSpacing:'-0.02em', lineHeight:0.95, paddingBottom:'0.06em' }}>{line}</motion.div>
             </div>
           ))}
           <motion.p initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:0.35,duration:0.7}} style={{ fontFamily:'var(--font-body)', fontSize:'0.9rem', color:'var(--ink-3)', lineHeight:1.85, marginTop:'2rem', maxWidth:'44ch' }}>{personal.about}</motion.p>

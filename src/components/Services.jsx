@@ -11,7 +11,7 @@ export default function Services() {
     <section id="services" style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
       <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
         <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:'3.5rem', flexWrap:'wrap', gap:'1rem' }}>
-          <h2 style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'clamp(2.2rem,5vw,3.5rem)', color:'var(--ink)', letterSpacing:'-0.045em', lineHeight:0.95 }}>What I Do</h2>
+          <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', color:'var(--ink)', letterSpacing:'-0.02em', lineHeight:0.95 }}>What I Do</h2>
         </motion.div>
         {services.map((s,i) => (
           <motion.div key={s.id} initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.6,ease}}>
@@ -21,7 +21,7 @@ export default function Services() {
             >
               <div style={{ display:'flex', alignItems:'center', gap:'2rem' }}>
                 <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'0.8rem', color:'var(--gold)', letterSpacing:'0.05em', minWidth:'2rem' }}>0{i+1}</span>
-                <h3 style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'clamp(1.2rem,2.5vw,1.75rem)', color: open===s.id ? 'var(--gold)' : 'var(--ink)', letterSpacing:'-0.03em', transition:'color 0.25s' }}>{s.title}</h3>
+                <h3 style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'clamp(1.3rem,2.5vw,1.9rem)', color: open===s.id ? 'var(--gold)' : 'var(--ink)', letterSpacing:'-0.01em', transition:'color 0.25s' }}>{s.title}</h3>
               </div>
               <div style={{ display:'flex', alignItems:'center', gap:'1.5rem' }}>
                 <div style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap', justifyContent:'flex-end' }}>
