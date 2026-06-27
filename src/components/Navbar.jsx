@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav style={{position:'fixed',top:0,left:0,right:0,zIndex:100,height:64,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0 clamp(1.25rem,4vw,3.5rem)',background:scrolled?'rgba(10,10,10,0.92)':'transparent',backdropFilter:scrolled?'blur(20px)':'none',borderBottom:scrolled?'1px solid var(--border)':'none',transition:'all 0.3s ease'}}>
       <a href='/' style={{textDecoration:'none'}}>
-        <span className="metallic" style={{fontFamily:'var(--font-serif)',fontWeight:700,fontSize:'2rem',letterSpacing:'-0.02em',display:'block'}}>H</span>
+        <span className="metallic" style={{fontFamily:'var(--font-serif)',fontWeight:700,fontSize:'1.1rem',letterSpacing:'0.12em',textTransform:'uppercase',display:'block'}}>PORTFOLIO</span>
       </a>
       <div className='nav-links' style={{display:'flex',gap:'2rem'}}>
         {links.map((l,i)=>(

@@ -14,236 +14,150 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#000000' }}>
-        <div className="text-center">
-          <p className="text-brand-muted text-lg mb-4">Project not found.</p>
-          <button onClick={() => navigate('/')} className="btn-primary">Go Back</button>
+      <div style={{ minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center', background:'#0A0A0A' }}>
+        <div style={{ textAlign:'center' }}>
+          <p style={{ color:'var(--ink-3)', fontSize:'1.1rem', marginBottom:'1.5rem' }}>Project not found.</p>
+          <button onClick={() => navigate('/')} style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'1rem', color:'#0A0A0A', padding:'0.72rem 1.6rem', background:'var(--gold)', borderRadius:8, border:'none', cursor:'pointer' }}>Go Back</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div key={id} className="min-h-screen" style={{ background: '#000000' }}>
+    <div key={id} style={{ minHeight:'100vh', background:'#0A0A0A' }}>
 
-      {/* ── Curtain entrance overlay ── */}
+      {/* Curtain entrance */}
       <motion.div
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
+        initial={{ scaleY: 1 }} animate={{ scaleY: 0 }}
         transition={{ duration: 0.9, ease, delay: 0.05 }}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background: '#000000',
-          transformOrigin: 'top',
-          zIndex: 9999,
-          pointerEvents: 'none',
-        }}
+        style={{ position:'fixed', inset:0, background:'#0A0A0A', transformOrigin:'top', zIndex:9999, pointerEvents:'none' }}
       />
 
-      {/* ── Accent color flash strip ── */}
+      {/* Gold accent strip */}
       <motion.div
         initial={{ scaleX: 0, opacity: 1 }}
         animate={{ scaleX: [0, 1, 1, 0], opacity: [1, 1, 1, 0] }}
         transition={{ duration: 0.85, ease, times: [0, 0.4, 0.7, 1] }}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '3px',
-          background: project.accent,
-          transformOrigin: 'left',
-          zIndex: 10000,
-          pointerEvents: 'none',
-        }}
+        style={{ position:'fixed', top:0, left:0, right:0, height:'2px', background:'var(--gold)', transformOrigin:'left', zIndex:10000, pointerEvents:'none' }}
       />
 
-      {/* ── Back bar ── */}
+      {/* Back bar */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.5, ease }}
-        className="sticky top-0 z-50 px-4 md:px-8 h-16 flex items-center"
-        style={{
-          background: 'rgba(5,7,10,0.88)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(200,168,152,0.08)',
-        }}
+        style={{ position:'sticky', top:0, zIndex:50, padding:'0 clamp(1.25rem,4vw,3.5rem)', height:64, display:'flex', alignItems:'center', background:'rgba(10,10,10,0.92)', backdropFilter:'blur(20px)', borderBottom:'1px solid var(--border)' }}
       >
-        <div className="max-w-5xl mx-auto w-full flex items-center justify-between">
+        <div style={{ maxWidth:'var(--max-w)', margin:'0 auto', width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
           <motion.button
-            whileHover={{ x: -3 }}
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-sm font-medium transition-colors"
-            style={{ color: '#64748B' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#F1F5F9')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
+            whileHover={{ x: -3 }} onClick={() => navigate('/')}
+            style={{ display:'flex', alignItems:'center', gap:8, fontFamily:'var(--font-body)', fontSize:'0.875rem', fontWeight:500, color:'var(--ink-3)', background:'none', border:'none', cursor:'pointer', transition:'color 0.2s' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ink)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ink-3)')}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
             Back to Portfolio
           </motion.button>
-          <span className="text-xs text-brand-muted">Project {String(project.id).padStart(2, '0')}</span>
+          <span style={{ fontFamily:'var(--font-body)', fontSize:'0.75rem', color:'var(--ink-3)', letterSpacing:'0.08em' }}>Project {String(project.id).padStart(2, '0')}</span>
         </div>
       </motion.div>
 
-      {/* ── Main content ── */}
-      <div className="max-w-5xl mx-auto px-4 md:px-8 pt-16 pb-10">
+      {/* Main content */}
+      <div style={{ maxWidth:'var(--max-w)', margin:'0 auto', padding:'4rem var(--gutter) 4rem' }}>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-6 overflow-hidden">
+        <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:'1.5rem' }}>
           {project.tags.map((tag, i) => (
             <motion.span
               key={tag}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 + i * 0.06, duration: 0.45, ease }}
-              className="text-xs px-3 py-1 rounded-full font-medium"
-              style={{
-                background: `${project.accent}15`,
-                color: project.accent,
-                border: `1px solid ${project.accent}30`,
-              }}
+              style={{ fontFamily:'var(--font-body)', fontSize:'0.75rem', fontWeight:500, padding:'0.3rem 0.9rem', borderRadius:999, background:`${project.accent}15`, color:project.accent, border:`1px solid ${project.accent}30` }}
             >
               {tag}
             </motion.span>
           ))}
         </div>
 
-        {/* Title — clip-path wipe reveal */}
-        <div style={{ overflow: 'hidden' }}>
+        {/* Title */}
+        <div style={{ overflow:'hidden' }}>
           <motion.h1
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: '0%', opacity: 1 }}
+            initial={{ y: '100%', opacity: 0 }} animate={{ y: '0%', opacity: 1 }}
             transition={{ delay: 0.55, duration: 0.8, ease }}
-            className="font-display font-bold mb-3 leading-tight"
-            style={{
-              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-              background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #DEC0B0 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
+            className="metallic"
+            style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2rem,4vw,3.2rem)', letterSpacing:'-0.02em', lineHeight:1.1, marginBottom:'0.75rem' }}
           >
             {project.title}
           </motion.h1>
         </div>
 
         {/* Subtitle */}
-        <div style={{ overflow: 'hidden' }}>
+        <div style={{ overflow:'hidden' }}>
           <motion.p
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: '0%', opacity: 1 }}
+            initial={{ y: '100%', opacity: 0 }} animate={{ y: '0%', opacity: 1 }}
             transition={{ delay: 0.65, duration: 0.7, ease }}
-            className="text-brand-muted text-lg mb-10"
+            style={{ fontFamily:'var(--font-body)', fontSize:'1.1rem', color:'var(--ink-3)', marginBottom:'2.5rem' }}
           >
             {project.subtitle}
           </motion.p>
         </div>
 
-        {/* ── Preview image — scale + clip reveal ── */}
+        {/* Preview image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.96, y: 30 }} animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.75, duration: 0.8, ease }}
-          className="w-full rounded-2xl overflow-hidden mb-12 relative"
-          style={{
-            border: `1px solid ${project.accent}25`,
-            boxShadow: `0 30px 80px rgba(0,0,0,0.5), 0 0 60px ${project.accent}10`,
-          }}
+          style={{ width:'100%', borderRadius:16, overflow:'hidden', marginBottom:'3rem', border:`1px solid ${project.accent}25`, boxShadow:`0 30px 80px rgba(0,0,0,0.5), 0 0 60px ${project.accent}10`, position:'relative' }}
         >
-          {/* Sweep overlay that wipes left-to-right then disappears */}
           <motion.div
-            initial={{ x: '-100%' }}
-            animate={{ x: ['−100%', '0%', '100%'] }}
+            initial={{ x: '-100%' }} animate={{ x: ['−100%', '0%', '100%'] }}
             transition={{ delay: 0.75, duration: 0.9, ease, times: [0, 0.45, 1] }}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: `linear-gradient(90deg, transparent, ${project.accent}30, transparent)`,
-              zIndex: 2,
-              pointerEvents: 'none',
-            }}
+            style={{ position:'absolute', inset:0, background:`linear-gradient(90deg, transparent, ${project.accent}30, transparent)`, zIndex:2, pointerEvents:'none' }}
           />
-
-          <div className="relative w-full" style={{ paddingBottom: '52%' }}>
+          <div style={{ position:'relative', width:'100%', paddingBottom:'52%' }}>
             <img
-              src={project.image}
-              alt={project.title}
-              className="absolute inset-0 w-full h-full"
-              style={{ objectFit: project.objectFit || 'cover', background: '#0A0A0A' }}
+              src={project.image} alt={project.title}
+              style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit: project.objectFit || 'cover', background:'#0A0A0A' }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.nextSibling.style.display = 'flex';
               }}
             />
-            <div
-              className={`absolute inset-0 hidden items-center justify-center bg-gradient-to-br ${project.gradient}`}
-              style={{ display: 'none' }}
-            >
-              <div className="relative w-full h-full overflow-hidden">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: `radial-gradient(ellipse at 30% 50%, ${project.accent}35 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, ${project.accent}25 0%, transparent 50%)`,
-                  }}
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(45deg, ${project.accent}08 0px, ${project.accent}08 1px, transparent 1px, transparent 24px)`,
-                  }}
-                />
-                <div
-                  className="absolute inset-0 flex items-center justify-center font-display font-bold opacity-10"
-                  style={{ fontSize: 'clamp(6rem, 18vw, 14rem)', color: project.accent }}
-                >
-                  0{project.id}
-                </div>
-              </div>
+            <div style={{ position:'absolute', inset:0, display:'none', alignItems:'center', justifyContent:'center', background:`linear-gradient(135deg, #141414, #1C1C1C)` }}>
+              <div style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(6rem,18vw,14rem)', color:project.accent, opacity:0.1 }}>0{project.id}</div>
             </div>
           </div>
         </motion.div>
 
-        {/* ── Content grid — staggered ── */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {/* Content grid */}
+        <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:'2rem', marginBottom:'3rem' }}>
+
           {/* Description */}
-          <div className="md:col-span-2 space-y-5">
+          <div style={{ display:'flex', flexDirection:'column', gap:'1.25rem' }}>
             <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.0, duration: 0.6, ease }}
-              className="rounded-2xl p-6"
-              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,168,152,0.1)' }}
+              style={{ borderRadius:16, padding:'1.5rem', background:'#141414', border:'1px solid var(--border)' }}
             >
-              <h2 className="font-display font-semibold text-lg mb-3" style={{ color: '#F1F5F9' }}>
-                About This Project
-              </h2>
-              <p className="text-brand-muted leading-relaxed">{project.description}</p>
+              <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'1.15rem', color:'var(--ink)', marginBottom:'0.75rem' }}>About This Project</h2>
+              <p style={{ fontFamily:'var(--font-body)', fontSize:'0.9rem', color:'var(--ink-3)', lineHeight:1.8 }}>{project.description}</p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.6, ease }}
-              className="rounded-2xl p-6"
-              style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,168,152,0.1)' }}
+              style={{ borderRadius:16, padding:'1.5rem', background:'#141414', border:'1px solid var(--border)' }}
             >
-              <h2 className="font-display font-semibold text-lg mb-3" style={{ color: '#F1F5F9' }}>
-                What Was Delivered
-              </h2>
-              <ul className="space-y-2">
+              <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'1.15rem', color:'var(--ink)', marginBottom:'0.75rem' }}>What Was Delivered</h2>
+              <ul style={{ listStyle:'none', display:'flex', flexDirection:'column', gap:'0.6rem' }}>
                 {project.tags.map((tag, i) => (
                   <motion.li
                     key={tag}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.15 + i * 0.06, duration: 0.4, ease }}
-                    className="flex items-center gap-3 text-sm text-brand-muted"
+                    style={{ display:'flex', alignItems:'center', gap:10, fontFamily:'var(--font-body)', fontSize:'0.875rem', color:'var(--ink-3)' }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: project.accent }} />
+                    <span style={{ width:6, height:6, borderRadius:'50%', background:project.accent, flexShrink:0 }} />
                     {tag}
                   </motion.li>
                 ))}
@@ -252,41 +166,27 @@ export default function ProjectPage() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-4">
+          <div style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
             <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.05, duration: 0.6, ease }}
-              className="rounded-2xl p-5"
-              style={{ background: 'rgba(5,13,26,0.65)', border: `1px solid ${project.accent}20` }}
+              style={{ borderRadius:16, padding:'1.25rem', background:'#141414', border:`1px solid ${project.accent}20` }}
             >
-              <h3 className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: project.accent }}>
-                Project Info
-              </h3>
-              <div className="space-y-3">
+              <h3 style={{ fontFamily:'var(--font-body)', fontSize:'0.7rem', fontWeight:600, letterSpacing:'0.14em', textTransform:'uppercase', color:'var(--gold)', marginBottom:'1rem' }}>Project Info</h3>
+              <div style={{ display:'flex', flexDirection:'column', gap:'0.9rem' }}>
                 <div>
-                  <p className="text-xs text-brand-muted mb-0.5">Category</p>
-                  <p className="text-sm font-medium" style={{ color: '#F1F5F9' }}>{project.subtitle}</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:'var(--ink-3)', marginBottom:2 }}>Category</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.875rem', fontWeight:500, color:'var(--ink)' }}>{project.subtitle}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-brand-muted mb-0.5">Type</p>
-                  <p className="text-sm font-medium" style={{ color: '#F1F5F9' }}>Concept / Portfolio</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:'var(--ink-3)', marginBottom:2 }}>Type</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.875rem', fontWeight:500, color:'var(--ink)' }}>Concept / Portfolio</p>
                 </div>
                 <div>
-                  <p className="text-xs text-brand-muted mb-1">Technologies</p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:'var(--ink-3)', marginBottom:6 }}>Technologies</p>
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
                     {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2 py-0.5 rounded-md"
-                        style={{
-                          background: `${project.accent}12`,
-                          color: project.accent,
-                          border: `1px solid ${project.accent}22`,
-                        }}
-                      >
-                        {tag}
-                      </span>
+                      <span key={tag} style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', padding:'0.25rem 0.6rem', borderRadius:6, background:`${project.accent}12`, color:project.accent, border:`1px solid ${project.accent}22` }}>{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -294,60 +194,42 @@ export default function ProjectPage() {
             </motion.div>
 
             <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.15, duration: 0.5, ease }}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/')}
-              className="w-full btn-secondary justify-center text-sm"
+              style={{ width:'100%', fontFamily:'var(--font-serif)', fontWeight:500, fontSize:'0.95rem', color:'var(--ink-2)', padding:'0.75rem 1.5rem', background:'transparent', border:'1px solid var(--border)', borderRadius:10, cursor:'pointer', transition:'border-color 0.2s' }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(201,168,76,0.35)')}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border)')}
             >
               ← View All Projects
             </motion.button>
           </div>
         </div>
 
-        {/* ── Other projects ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6, ease }}
-        >
-          <h2
-            className="font-display font-semibold text-xl mb-6"
-            style={{ color: '#F1F5F9', borderTop: '1px solid rgba(200,168,152,0.08)', paddingTop: '2rem' }}
-          >
+        {/* Other projects */}
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.6, ease }}>
+          <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'1.4rem', color:'var(--ink)', borderTop:'1px solid var(--border)', paddingTop:'2rem', marginBottom:'1.5rem' }}>
             Other Projects
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1rem' }}>
             {projects
               .filter((p) => p.id !== project.id)
               .slice(0, 3)
               .map((p, i) => (
                 <motion.button
                   key={p.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.25 + i * 0.1, duration: 0.5, ease }}
                   whileHover={{ y: -4 }}
-                  onClick={() => {
-                    navigate(`/project/${p.id}`);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="text-left rounded-xl p-4 transition-all"
-                  style={{ background: 'rgba(5,13,26,0.65)', border: '1px solid rgba(200,168,152,0.1)' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = `${p.accent}35`;
-                    e.currentTarget.style.boxShadow = `0 10px 30px rgba(0,0,0,0.3)`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(200,168,152,0.1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+                  onClick={() => { navigate(`/project/${p.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  style={{ textAlign:'left', borderRadius:12, padding:'1rem', background:'#141414', border:'1px solid var(--border)', cursor:'pointer', transition:'border-color 0.2s, box-shadow 0.2s' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${p.accent}35`; e.currentTarget.style.boxShadow = `0 10px 30px rgba(0,0,0,0.3)`; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.boxShadow = 'none'; }}
                 >
-                  <p className="text-xs mb-1" style={{ color: p.accent }}>0{p.id}</p>
-                  <p className="text-sm font-semibold mb-1" style={{ color: '#F1F5F9' }}>{p.title}</p>
-                  <p className="text-xs text-brand-muted">{p.subtitle}</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:p.accent, marginBottom:4 }}>0{p.id}</p>
+                  <p style={{ fontFamily:'var(--font-serif)', fontSize:'0.95rem', fontWeight:600, color:'var(--ink)', marginBottom:4 }}>{p.title}</p>
+                  <p style={{ fontFamily:'var(--font-body)', fontSize:'0.78rem', color:'var(--ink-3)' }}>{p.subtitle}</p>
                 </motion.button>
               ))}
           </div>

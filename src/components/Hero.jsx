@@ -66,22 +66,6 @@ export default function Hero() {
         <div style={{ position:'absolute', left:0, right:0, top:0, height:'20%', background:'linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)', zIndex:2, pointerEvents:'none' }} />
         <div style={{ position:'absolute', left:0, right:0, bottom:0, height:'20%', background:'linear-gradient(to top, #0A0A0A 0%, transparent 100%)', zIndex:2, pointerEvents:'none' }} />
         <img src="/hero-photo.png" alt="Huzaifa Imran" style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center top', display:'block' }} />
-        <motion.div
-          initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:2.2,duration:0.6,ease}}
-          style={{ position:'absolute', bottom:'10%', right:'8%', background:'rgba(20,20,20,0.9)', backdropFilter:'blur(16px)', border:'1px solid var(--border)', borderRadius:14, padding:'0.9rem 1.1rem', minWidth:185, zIndex:4 }}
-        >
-          <p style={{ fontFamily:'var(--font-body)', fontSize:'0.65rem', color:'var(--ink-3)', marginBottom:'0.35rem' }}>Available for</p>
-          <div style={{ display:'flex', alignItems:'center', gap:7, marginBottom:'0.65rem' }}>
-            <span style={{ fontFamily:'var(--font-serif)', fontWeight:600, fontSize:'1rem', color:'var(--ink)' }}>Freelance</span>
-            <span style={{ width:7, height:7, borderRadius:'50%', background:'#4CAF50', boxShadow:'0 0 7px rgba(76,175,80,0.9)' }} />
-          </div>
-          <div style={{ display:'flex', alignItems:'center' }}>
-            {['#C9A84C','#7C6FC4','#4CAF50','#C45C4C'].map((c,i) => (
-              <div key={i} style={{ width:26, height:26, borderRadius:'50%', background:c, border:'2px solid #141414', marginLeft:i>0?-9:0, position:'relative', zIndex:4-i }} />
-            ))}
-            <span style={{ fontFamily:'var(--font-body)', fontSize:'0.72rem', color:'var(--ink-3)', marginLeft:10 }}>+10</span>
-          </div>
-        </motion.div>
       </motion.div>
 
     </section>

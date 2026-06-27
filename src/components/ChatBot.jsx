@@ -32,7 +32,7 @@ function parseInline(text, onNavigate) {
       const url   = inner.slice(pipe + 1);
       return (
         <button key={i} onClick={() => onNavigate(url)}
-          style={{ color: '#C8A898', textDecoration: 'underline', cursor: 'pointer', background: 'none', border: 'none', padding: 0, font: 'inherit', display: 'inline' }}>
+          style={{ color: '#C9A84C', textDecoration: 'underline', cursor: 'pointer', background: 'none', border: 'none', padding: 0, font: 'inherit', display: 'inline' }}>
           {label} →
         </button>
       );
@@ -57,9 +57,9 @@ function RenderText({ text, onNavigate }) {
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1 px-4 py-3 rounded-2xl rounded-bl-sm w-fit"
-      style={{ background: 'rgba(1,6,15,0.85)', border: '1px solid rgba(200,168,152,0.14)' }}>
+      style={{ background: 'rgba(14,14,14,0.85)', border: '1px solid rgba(201,168,76,0.14)' }}>
       {[0, 1, 2].map((i) => (
-        <motion.span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#C8A898' }}
+        <motion.span key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#C9A84C' }}
           animate={{ y: [0, -4, 0] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }} />
       ))}
     </div>
@@ -73,12 +73,12 @@ function Message({ msg, onNavigate }) {
       className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
         <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mr-2 flex-shrink-0 mt-0.5"
-          style={{ background: 'linear-gradient(135deg,#8C6A5E,#C8A898)', color: '#00030A' }}>H</div>
+          style={{ background: 'linear-gradient(135deg,#7A5C10,#C9A84C)', color: '#0A0A0A' }}>H</div>
       )}
       <div className="max-w-[80%] px-4 py-2.5 text-sm leading-relaxed"
         style={isUser
-          ? { background: 'linear-gradient(135deg,#8C6A5E,#C8A898)', color: '#00030A', borderRadius: '1rem 1rem 0.25rem 1rem', fontWeight: 500 }
-          : { background: 'rgba(1,6,15,0.85)', border: '1px solid rgba(200,168,152,0.14)', color: '#DEC0B0', borderRadius: '1rem 1rem 1rem 0.25rem' }
+          ? { background: 'linear-gradient(135deg,#7A5C10,#C9A84C)', color: '#0A0A0A', borderRadius: '1rem 1rem 0.25rem 1rem', fontWeight: 500 }
+          : { background: 'rgba(14,14,14,0.85)', border: '1px solid rgba(201,168,76,0.14)', color: '#DEC0B0', borderRadius: '1rem 1rem 1rem 0.25rem' }
         }>
         <RenderText text={msg.content} onNavigate={onNavigate} />
       </div>
@@ -261,18 +261,18 @@ export default function ChatBot() {
             style={{
               bottom: '88px', right: '1rem', left: '1rem',
               maxWidth: '380px', marginLeft: 'auto',
-              background: '#00030A',
-              border: '1px solid rgba(200,168,152,0.2)',
-              boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(200,168,152,0.06)',
+              background: '#0A0A0A',
+              border: '1px solid rgba(201,168,76,0.2)',
+              boxShadow: '0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.06)',
               maxHeight: 'calc(100dvh - 110px)',
             }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 flex-shrink-0"
-              style={{ background: 'rgba(0,3,10,0.98)', borderBottom: '1px solid rgba(200,168,152,0.1)' }}>
+              style={{ background: 'rgba(10,10,10,0.98)', borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm"
-                  style={{ background: 'linear-gradient(135deg,#8C6A5E,#C8A898)', color: '#00030A' }}>H</div>
+                  style={{ background: 'linear-gradient(135deg,#7A5C10,#C9A84C)', color: '#0A0A0A' }}>H</div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: '#F8F4EE' }}>Huzaifa's Assistant</p>
                   <div className="flex items-center gap-1.5">
@@ -287,7 +287,7 @@ export default function ChatBot() {
                 {booking && (
                   <button onClick={cancelBooking}
                     className="text-xs px-2 py-1 rounded-md mr-1 transition-colors"
-                    style={{ color: '#7A8BA8', border: '1px solid rgba(200,168,152,0.12)' }}
+                    style={{ color: '#7A8BA8', border: '1px solid rgba(201,168,76,0.12)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = '#F8F4EE')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = '#7A8BA8')}>
                     Cancel
@@ -296,7 +296,7 @@ export default function ChatBot() {
                 <button onClick={() => setOpen(false)}
                   className="w-7 h-7 rounded-lg flex items-center justify-center transition-colors"
                   style={{ color: '#7A8BA8' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.1)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.1)')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -312,7 +312,7 @@ export default function ChatBot() {
               {loading && (
                 <div className="flex justify-start">
                   <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mr-2 flex-shrink-0 mt-0.5"
-                    style={{ background: 'linear-gradient(135deg,#8C6A5E,#C8A898)', color: '#00030A' }}>H</div>
+                    style={{ background: 'linear-gradient(135deg,#7A5C10,#C9A84C)', color: '#0A0A0A' }}>H</div>
                   <TypingIndicator />
                 </div>
               )}
@@ -323,9 +323,9 @@ export default function ChatBot() {
                   {SUGGESTIONS.map((s) => (
                     <button key={s} onClick={() => send(s)}
                       className="w-full text-left text-xs px-3 py-2 rounded-xl transition-all"
-                      style={{ background: 'rgba(200,168,152,0.07)', border: '1px solid rgba(200,168,152,0.18)', color: '#C8A898' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.14)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.07)')}>
+                      style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.18)', color: '#C9A84C' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.14)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.07)')}>
                       {s}
                     </button>
                   ))}
@@ -338,9 +338,9 @@ export default function ChatBot() {
                   {PROJECT_TYPE_OPTIONS.map((opt) => (
                     <button key={opt} onClick={() => handleBookingInput(opt)}
                       className="text-xs px-3 py-1.5 rounded-xl transition-all"
-                      style={{ background: 'rgba(200,168,152,0.07)', border: '1px solid rgba(200,168,152,0.18)', color: '#C8A898' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.14)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.07)')}>
+                      style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.18)', color: '#C9A84C' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.14)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.07)')}>
                       {opt}
                     </button>
                   ))}
@@ -352,14 +352,14 @@ export default function ChatBot() {
                 <div className="flex gap-2 pt-1">
                   <motion.button whileTap={{ scale: 0.96 }} onClick={confirmBooking}
                     className="flex-1 text-sm py-2.5 rounded-xl font-medium transition-all"
-                    style={{ background: 'linear-gradient(135deg,#8C6A5E,#C8A898)', color: '#00030A' }}
+                    style={{ background: 'linear-gradient(135deg,#7A5C10,#C9A84C)', color: '#0A0A0A' }}
                     onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.9')}
                     onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}>
                     Confirm & Send ✓
                   </motion.button>
                   <motion.button whileTap={{ scale: 0.96 }} onClick={cancelBooking}
                     className="px-4 text-sm py-2.5 rounded-xl font-medium transition-all"
-                    style={{ background: 'rgba(1,6,15,0.85)', border: '1px solid rgba(200,168,152,0.15)', color: '#7A8BA8' }}>
+                    style={{ background: 'rgba(14,14,14,0.85)', border: '1px solid rgba(201,168,76,0.15)', color: '#7A8BA8' }}>
                     Edit
                   </motion.button>
                 </div>
@@ -373,9 +373,9 @@ export default function ChatBot() {
               <div className="px-3 pb-2 flex-shrink-0">
                 <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }} onClick={startBooking}
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all"
-                  style={{ background: 'rgba(200,168,152,0.08)', border: '1px solid rgba(200,168,152,0.22)', color: '#C8A898' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.15)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(200,168,152,0.08)')}>
+                  style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.22)', color: '#C9A84C' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.15)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(201,168,76,0.08)')}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
                   </svg>
@@ -387,21 +387,21 @@ export default function ChatBot() {
             {/* Input */}
             {!isBookingDone && (
               <div className="flex items-center gap-2 px-3 py-3 flex-shrink-0"
-                style={{ borderTop: '1px solid rgba(200,168,152,0.08)' }}>
+                style={{ borderTop: '1px solid rgba(201,168,76,0.08)' }}>
                 <input ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKey} disabled={loading}
                   placeholder={currentStepMeta ? currentStepMeta.placeholder : 'Ask me anything...'}
                   className="flex-1 px-3 py-2 rounded-xl text-sm outline-none"
-                  style={{ background: 'rgba(1,6,15,0.85)', border: '1px solid rgba(200,168,152,0.14)', color: '#F8F4EE' }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(200,168,152,0.4)')}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(200,168,152,0.14)')} />
+                  style={{ background: 'rgba(14,14,14,0.85)', border: '1px solid rgba(201,168,76,0.14)', color: '#F8F4EE' }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)')}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = 'rgba(201,168,76,0.14)')} />
                 <motion.button whileTap={{ scale: 0.92 }} onClick={handleSend}
                   disabled={!input.trim() || loading}
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all"
                   style={{
-                    background: input.trim() && !loading ? 'linear-gradient(135deg,#8C6A5E,#C8A898)' : 'rgba(1,6,15,0.7)',
-                    color: input.trim() && !loading ? '#00030A' : '#374151',
-                    border: '1px solid rgba(200,168,152,0.14)',
+                    background: input.trim() && !loading ? 'linear-gradient(135deg,#7A5C10,#C9A84C)' : 'rgba(14,14,14,0.7)',
+                    color: input.trim() && !loading ? '#0A0A0A' : '#374151',
+                    border: '1px solid rgba(201,168,76,0.14)',
                   }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -418,10 +418,10 @@ export default function ChatBot() {
         onClick={() => setOpen((o) => !o)}
         className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center"
         style={{
-          background: open ? 'rgba(0,3,10,0.95)' : 'linear-gradient(135deg,#8C6A5E,#C8A898)',
-          border: open ? '1px solid rgba(200,168,152,0.35)' : 'none',
-          boxShadow: open ? '0 8px 30px rgba(0,0,0,0.4)' : '0 8px 30px rgba(200,168,152,0.3)',
-          color: open ? '#C8A898' : '#00030A',
+          background: open ? 'rgba(10,10,10,0.95)' : 'linear-gradient(135deg,#7A5C10,#C9A84C)',
+          border: open ? '1px solid rgba(201,168,76,0.35)' : 'none',
+          boxShadow: open ? '0 8px 30px rgba(0,0,0,0.4)' : '0 8px 30px rgba(201,168,76,0.3)',
+          color: open ? '#C9A84C' : '#0A0A0A',
         }} aria-label="Open chat">
         <AnimatePresence mode="wait">
           {open ? (
