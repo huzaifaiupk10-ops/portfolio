@@ -1,185 +1,50 @@
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { personal, stats } from '../data/portfolioData';
-
-function StatCard({ value, label, i }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: i * 0.1, duration: 0.5 }}
-      className="card-premium p-5 text-center shine"
-    >
-      <div className="font-display font-bold text-2xl mb-1 gradient-text-blue">{value}</div>
-      <div className="text-xs text-brand-muted tracking-wide">{label}</div>
-    </motion.div>
-  );
-}
-
+import { personal } from '../data/portfolioData';
+const ease = [0.16,1,0.3,1];
+const SKILLS = [
+  { name:'Web Development', pct:95 },
+  { name:'UI/UX Design', pct:90 },
+  { name:'AI Systems', pct:85 },
+  { name:'Branding', pct:75 },
+];
 export default function About() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const [imgError, setImgError] = useState(false);
-
+  const inView = useInView(ref, { once:true, margin:'-80px' });
   return (
-    <section id="about" className="section-pad relative">
-      <div className="container-max">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <div className="section-label mb-4 mx-auto">About Me</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
-          >
-            The Mind Behind the Work
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Avatar card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="flex flex-col items-center lg:items-start"
-          >
-            {/* Profile visual */}
-            <div className="relative mb-8">
-              <div
-                className="w-80 h-80 rounded-2xl flex items-center justify-center relative overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg,#0A0A0A,#111827)',
-                  border: '1px solid rgba(192,199,209,0.12)',
-                  boxShadow: '0 0 60px rgba(200,168,152,0.12)',
-                }}
-              >
-                {/* Profile photo — drop your image at public/images/profile.jpg */}
-                {!imgError ? (
-                  <img
-                    src="/images/profile.jpg"
-                    alt="Huzaifa Imran"
-                    className="w-full h-full object-cover"
-                    onError={() => setImgError(true)}
-                  />
-                ) : (
-                  /* Fallback initials if no photo found */
-                  <span
-                    className="font-display font-bold text-5xl"
-                    style={{
-                      background: 'linear-gradient(135deg,#C8A898,#DEC0B0,#C0C7D1)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    HI
-                  </span>
-                )}
-                {/* Shimmer overlay */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)',
-                  }}
-                />
-              </div>
-              {/* Status badge */}
-              <div
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap"
-                style={{
-                  background: 'rgba(5,7,10,0.9)',
-                  border: '1px solid rgba(59,130,246,0.3)',
-                  color: '#C8A898',
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Open to projects
-              </div>
+    <section id="about" style={{ padding:'clamp(4rem,7vw,7rem) var(--gutter)', borderTop:'1px solid var(--border)' }}>
+      <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
+        <motion.div initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.7,ease}} style={{ background:'var(--card)', borderRadius:20, padding:'clamp(2rem,4vw,3rem)', display:'flex', gap:'2.5rem', alignItems:'center', flexWrap:'wrap' }}>
+          <div style={{ flex:'0 0 130px', display:'flex', justifyContent:'center', alignItems:'center' }}>
+            <div style={{ width:120, height:120, borderRadius:'50%', background:'radial-gradient(circle at 35% 35%, #2A2200, #0A0A00)', border:'1px solid rgba(201,168,76,0.2)', display:'flex', alignItems:'center', justifyContent:'center', boxShadow:'0 0 40px rgba(201,168,76,0.08)' }}>
+              <span style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'2.75rem', color:'var(--gold)', letterSpacing:'-0.04em' }}>H</span>
             </div>
-
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
-              {stats.map((s, i) => (
-                <StatCard key={s.label} value={s.value} label={s.label} i={i} />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3
-                className="font-display font-bold mb-3"
-                style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', color: '#F1F5F9' }}
-              >
-                {personal.name}
-              </h3>
-              <p
-                className="text-sm font-medium mb-4"
-                style={{ color: '#C8A898', letterSpacing: '0.04em' }}
-              >
-                {personal.title}
-              </p>
-              <p className="text-brand-muted leading-relaxed">{personal.about}</p>
-            </div>
-
-            {/* Highlight pills */}
-            <div className="space-y-2">
-              {[
-                { icon: '⬡', text: 'Full-stack Web Development & Modern UI/UX' },
-                { icon: '◈', text: 'AI Agents, Prompt Engineering & Automation' },
-                { icon: '◇', text: 'Branding, Identity Design & Visual Systems' },
-              ].map((item) => (
-                <div
-                  key={item.text}
-                  className="flex items-start gap-3 p-3 rounded-xl"
-                  style={{
-                    background: 'rgba(17,24,39,0.5)',
-                    border: '1px solid rgba(200,168,152,0.08)',
-                  }}
-                >
-                  <span className="text-blue-400 text-lg leading-none mt-0.5">{item.icon}</span>
-                  <span className="text-sm text-brand-silver leading-snug">{item.text}</span>
+          </div>
+          <div style={{ flex:'1 1 260px' }}>
+            <p style={{ fontFamily:'var(--font-body)', fontWeight:600, fontSize:'0.75rem', color:'var(--gold)', letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'0.75rem' }}>About Me</p>
+            <h2 style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'clamp(1.5rem,3vw,2.25rem)', color:'var(--ink)', letterSpacing:'-0.03em', lineHeight:1.1, marginBottom:'1rem', maxWidth:'20ch' }}>Crafting digital experiences with passion.</h2>
+            <p style={{ fontFamily:'var(--font-body)', fontWeight:400, fontSize:'0.9rem', color:'var(--ink-3)', lineHeight:1.75, marginBottom:'1.5rem', maxWidth:'42ch' }}>{personal.about.slice(0,200)}...</p>
+            <a href="#contact" style={{ fontFamily:'var(--font-body)', fontWeight:600, fontSize:'0.875rem', color:'var(--ink)', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:8, padding:'0.55rem 1.25rem', border:'1px solid var(--border)', borderRadius:8, transition:'all 0.2s' }} onMouseEnter={e=>{e.currentTarget.style.borderColor='var(--border-gold)';e.currentTarget.style.color='var(--gold)'}} onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--border)';e.currentTarget.style.color='var(--ink)'}}>More About Me <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          </div>
+          <div style={{ flex:'0 0 240px' }}>
+            {SKILLS.map(({name,pct},i) => (
+              <div key={name} style={{ marginBottom:'1.25rem' }}>
+                <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'0.4rem' }}>
+                  <span style={{ fontFamily:'var(--font-body)', fontWeight:500, fontSize:'0.8rem', color:'var(--ink-2)' }}>{name}</span>
+                  <span style={{ fontFamily:'var(--font-body)', fontWeight:600, fontSize:'0.8rem', color:'var(--gold)' }}>{pct}%</span>
                 </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${personal.email}`} target="_blank" rel="noreferrer"
-                className="btn-primary text-sm"
-              >
-                Get in Touch
-              </a>
-              <a
-                href={personal.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-sm"
-              >
-                LinkedIn
-              </a>
-            </div>
-          </motion.div>
-        </div>
+                <div style={{ height:4, background:'rgba(255,255,255,0.07)', borderRadius:4, overflow:'hidden' }}>
+                  <motion.div
+                    initial={{ width:0 }}
+                    animate={inView ? { width: pct + '%' } : { width: 0 }}
+                    transition={{ delay:0.4+i*0.1, duration:0.9, ease }}
+                    style={{ height:'100%', background:'linear-gradient(90deg, var(--gold), #E8C96A)', borderRadius:4 }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

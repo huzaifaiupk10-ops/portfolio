@@ -1,139 +1,30 @@
-import { useRef } from 'react';
+﻿import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { services } from '../data/portfolioData';
-
-const icons = {
-  '⬡': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" />
-      <polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" />
-    </svg>
-  ),
-  '◈': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-    </svg>
-  ),
-  '◇': (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
-    </svg>
-  ),
-};
-
-const accentColors = ['#C8A898', '#06B6D4', '#A855F7'];
-
+const ease = [0.16,1,0.3,1];
+const S = [
+  { icon:'◈', title:'Web Development', desc:'Fast, responsive, modern websites built to perform and convert.' },
+  { icon:'◇', title:'UI/UX Design', desc:'Intuitive interfaces that look premium and feel effortless to use.' },
+  { icon:'⬡', title:'AI Automation', desc:'Intelligent agents and workflows that save time and scale operations.' },
+  { icon:'✦', title:'Brand Identity', desc:'Visual identity systems that make your brand impossible to ignore.' },
+];
 export default function Services() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const navigate = useNavigate();
-
+  const inView = useInView(ref, { once:true, margin:'-60px' });
   return (
-    <section
-      id="services"
-      className="section-pad"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#050d1a 50%,#000000 100%)' }}
-    >
-      <div className="container-max">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <div className="section-label mb-4 mx-auto">Services</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
-          >
-            What I Do
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
-            Focused services that combine design thinking, technical skill, and AI intelligence.
-          </p>
-        </motion.div>
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.map((service, i) => {
-            const accent = accentColors[i];
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 28 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -6 }}
-                onClick={() => navigate(`/service/${service.id}`)}
-                className="group relative rounded-2xl p-6 shine cursor-pointer"
-                style={{
-                  background: 'rgba(5,13,26,0.65)',
-                  border: '1px solid rgba(200,168,152,0.1)',
-                  transition: 'border-color 0.35s ease, box-shadow 0.35s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${accent}35`;
-                  e.currentTarget.style.boxShadow = `0 20px 50px rgba(0,0,0,0.3), 0 0 40px ${accent}15`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(200,168,152,0.1)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {/* Top glow */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `linear-gradient(90deg, transparent, ${accent}60, transparent)` }}
-                />
-
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: `${accent}15`, color: accent, border: `1px solid ${accent}25` }}
-                >
-                  {icons[service.icon]}
-                </div>
-
-                <h3
-                  className="font-display font-semibold text-xl mb-3"
-                  style={{ color: '#F1F5F9' }}
-                >
-                  {service.title}
-                </h3>
-                <p className="text-brand-muted text-sm leading-relaxed mb-5">
-                  {service.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-md font-medium"
-                      style={{
-                        background: `${accent}10`,
-                        color: accent,
-                        border: `1px solid ${accent}20`,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Number watermark */}
-                <div
-                  className="absolute bottom-4 right-5 font-display font-bold text-6xl opacity-5 pointer-events-none select-none"
-                  style={{ color: accent }}
-                >
-                  0{i + 1}
-                </div>
-              </motion.div>
-            );
-          })}
+    <section id="services" style={{ padding:'clamp(4rem,7vw,7rem) var(--gutter)', borderTop:'1px solid var(--border)' }}>
+      <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
+        <motion.h2 initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.65,ease}} style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'clamp(2rem,4vw,3rem)', color:'var(--ink)', letterSpacing:'-0.04em', marginBottom:'2.5rem' }}>What I Do</motion.h2>
+        <div className="services-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:'1.25rem' }}>
+          {S.map(({icon,title,desc},i) => (
+            <motion.div key={title} initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.65,ease}} style={{ background:'var(--card)', borderRadius:'var(--radius)', padding:'1.75rem 1.5rem', border:'1px solid var(--border)', transition:'border-color 0.25s, transform 0.25s' }} onMouseEnter={e=>{e.currentTarget.style.borderColor='var(--border-gold)';e.currentTarget.style.transform='translateY(-4px)'}} onMouseLeave={e=>{e.currentTarget.style.borderColor='var(--border)';e.currentTarget.style.transform=''}}>
+              <div style={{ width:44,height:44,borderRadius:10,background:'var(--gold-dim)',border:'1px solid var(--border-gold)',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'1.25rem' }}>
+                <span style={{ fontFamily:'var(--font-display)',fontSize:'1.1rem',color:'var(--gold)' }}>{icon}</span>
+              </div>
+              <h3 style={{ fontFamily:'var(--font-display)',fontWeight:700,fontSize:'1rem',color:'var(--ink)',letterSpacing:'-0.02em',marginBottom:'0.6rem' }}>{title}</h3>
+              <p style={{ fontFamily:'var(--font-body)',fontSize:'0.83rem',color:'var(--ink-3)',lineHeight:1.7,marginBottom:'1.25rem' }}>{desc}</p>
+              <a href="#contact" style={{ fontFamily:'var(--font-body)',fontWeight:600,fontSize:'0.8rem',color:'var(--gold)',textDecoration:'none',display:'flex',alignItems:'center',gap:6 }}>Learn More <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

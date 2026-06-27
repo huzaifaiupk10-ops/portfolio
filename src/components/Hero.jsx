@@ -1,228 +1,53 @@
-import { motion } from 'framer-motion';
 import { Suspense, lazy } from 'react';
-import { personal } from '../data/portfolioData';
-
+import { motion } from 'framer-motion';
 const ThreeHeroObject = lazy(() => import('./ThreeHeroObject'));
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.25, 0.1, 0.25, 1] },
-  }),
-};
-
-function ScrollIndicator() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.4 }}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-    >
-      <span className="text-xs text-brand-muted tracking-widest uppercase">Scroll</span>
-      <motion.div
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="w-px h-8 rounded-full"
-        style={{ background: 'linear-gradient(to bottom, #C8A898, transparent)' }}
-      />
-    </motion.div>
-  );
-}
-
+const ease = [0.16, 1, 0.3, 1];
 export default function Hero() {
-  const scrollTo = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center"
-      style={{ background: 'linear-gradient(180deg,#00030A 0%,#01060F 60%,#00030A 100%)' }}
-    >
-      {/* Glow blobs — contained in their own clipping layer so they don't affect text */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(200,168,152,0.1) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-        <div
-          className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(200,168,152,0.06) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 container-max w-full px-4 md:px-8 pt-24 pb-20">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-0">
-          {/* Left — text */}
-          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-            {/* Badge */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0}
-              className="section-label mb-6"
-            >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#C8A898' }} />
-              Available for Work
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="font-bold mb-6"
-              style={{
-                fontFamily: '"DM Sans", sans-serif',
-                fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
-                color: '#F1F5F9',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Building Digital{' '}
-              <span className="gradient-text">Experiences</span>
-              <br />
-              That Feel{' '}
-              <span style={{
-                background: 'linear-gradient(135deg,#C8A898,#F8F4EE)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>Smarter</span>
-            </motion.h1>
-
-            {/* Subheading */}
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={2}
-              className="text-brand-muted leading-relaxed mb-8 max-w-xl"
-              style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}
-            >
-              {personal.subtagline}
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={3}
-              className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8"
-            >
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => scrollTo('#projects')}
-                className="btn-primary"
-              >
-                View My Work
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => scrollTo('#contact')}
-                className="btn-secondary"
-              >
-                Contact Me
-              </motion.button>
-            </motion.div>
-
-            {/* Skill badges */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={4}
-              className="flex flex-wrap gap-2 justify-center lg:justify-start"
-            >
-              {['Web Development', 'UI/UX', 'Branding', 'AI Solutions'].map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-3 py-1 rounded-full font-medium"
-                  style={{
-                    background: 'rgba(1,6,15,0.85)',
-                    border: '1px solid rgba(200,168,152,0.15)',
-                    color: '#7A8BA8',
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
+    <section id="hero" style={{ minHeight:'100dvh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'80px var(--gutter) 3rem', position:'relative', overflow:'hidden' }}>
+      <div style={{ maxWidth:'var(--max-w)', margin:'0 auto', width:'100%', display:'flex', alignItems:'center', gap:'2rem' }}>
+        <div style={{ flex:'0 0 52%', maxWidth:'52%' }}>
+          <motion.p initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1.5,duration:0.5,ease}} style={{fontFamily:'var(--font-body)',fontWeight:500,fontSize:'1rem',color:'var(--gold)',marginBottom:'0.75rem'}}>Hello, I am</motion.p>
+          <div style={{marginBottom:'1.25rem'}}>
+            {["Huzaifa","Imran"].map((w,i)=>(
+              <div key={w} style={{overflow:'hidden',lineHeight:0.9}}>
+                <motion.div initial={{y:"110%"}} animate={{y:"0%"}} transition={{delay:1.4+i*0.12,duration:0.85,ease}} style={{fontFamily:'var(--font-display)',fontWeight:800,fontSize:'clamp(3.5rem,8vw,6.5rem)',color:'var(--ink)',letterSpacing:'-0.04em',lineHeight:0.9,paddingBottom:'0.08em',display:'block'}}>{w}</motion.div>
+              </div>
+            ))}
           </div>
-
-          {/* Right — 3D object */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
-            className="flex-shrink-0 w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[480px] lg:h-[480px] relative"
-          >
-            {/* Glow ring behind the orb */}
-            <div
-              className="absolute inset-8 rounded-full pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle, rgba(200,168,152,0.15) 0%, transparent 70%)',
-                filter: 'blur(20px)',
-                animation: 'glowPulse 3s ease-in-out infinite alternate',
-              }}
-            />
-            <Suspense
-              fallback={
-                <div className="w-full h-full flex items-center justify-center">
-                  <div
-                    className="w-40 h-40 rounded-full animate-pulse"
-                    style={{ background: 'radial-gradient(circle,rgba(59,130,246,0.3),transparent)' }}
-                  />
-                </div>
-              }
-            >
-              <ThreeHeroObject />
-            </Suspense>
+          <motion.p initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1.75,duration:0.55,ease}} style={{fontFamily:'var(--font-body)',fontWeight:600,fontSize:'clamp(0.95rem,1.4vw,1.1rem)',color:'var(--ink-2)',marginBottom:'1rem'}}>Web Developer &amp; UI/UX Designer &amp; AI Builder</motion.p>
+          <motion.p initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1.9,duration:0.55,ease}} style={{fontFamily:'var(--font-body)',fontWeight:400,fontSize:'clamp(0.875rem,1.1vw,0.975rem)',color:'var(--ink-3)',maxWidth:'40ch',lineHeight:1.7,marginBottom:'2.25rem'}}>I create immersive digital experiences, refined interfaces, and AI-powered systems that elevate brands and engage users.</motion.p>
+          <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:2.05,duration:0.55,ease}} style={{display:'flex',gap:'0.875rem',flexWrap:'wrap',marginBottom:'2.5rem'}}>
+            <a href="#work" style={{fontFamily:'var(--font-body)',fontWeight:600,fontSize:'0.9rem',color:'#0A0A0A',textDecoration:'none',display:'flex',alignItems:'center',gap:8,padding:'0.7rem 1.5rem',background:'var(--gold)',borderRadius:8,transition:'transform 0.2s ease, box-shadow 0.2s ease'}} onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 24px rgba(201,168,76,0.4)'}} onMouseLeave={e=>{e.currentTarget.style.transform='';e.currentTarget.style.boxShadow=''}}>View My Work <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            <a href="#about" style={{fontFamily:'var(--font-body)',fontWeight:600,fontSize:'0.9rem',color:'var(--ink)',textDecoration:'none',padding:'0.7rem 1.5rem',border:'1px solid var(--border)',borderRadius:8,transition:'border-color 0.2s'}} onMouseEnter={e=>e.currentTarget.style.borderColor='rgba(255,255,255,0.3)'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>About Me</a>
+          </motion.div>
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2.3,duration:0.5}} style={{display:'flex',alignItems:'center',gap:10}}>
+            <div style={{width:22,height:36,borderRadius:12,border:'1.5px solid var(--ink-3)',display:'flex',alignItems:'flex-start',justifyContent:'center',padding:'5px 0'}}>
+              <motion.div animate={{y:[0,10,0]}} transition={{duration:1.8,repeat:Infinity,ease:'easeInOut'}} style={{width:3,height:3,borderRadius:'50%',background:'var(--ink-3)'}} />
+            </div>
+            <span style={{fontFamily:'var(--font-body)',fontSize:'0.8rem',color:'var(--ink-3)'}}>Scroll Down</span>
           </motion.div>
         </div>
-
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.7 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-8"
-          style={{ borderTop: '1px solid rgba(200,168,152,0.1)' }}
-        >
-          {[
-            { value: '20+', label: 'Projects Built' },
-            { value: '3+', label: 'Years Experience' },
-            { value: '100%', label: 'Responsive' },
-            { value: '∞', label: 'AI-Powered' },
-          ].map((s) => (
-            <div key={s.label} className="text-center lg:text-left">
-              <div className="font-display font-bold text-2xl gradient-text-blue">{s.value}</div>
-              <div className="text-xs text-brand-muted mt-0.5 tracking-wide">{s.label}</div>
+        <motion.div className="hero-right" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:1.6,duration:1}} style={{flex:'0 0 48%',maxWidth:'48%',position:'relative',display:'flex',alignItems:'center',justifyContent:'center',minHeight:480}}>
+          <div style={{position:'absolute',width:'75%',paddingBottom:'75%',top:'12%',left:'50%',transform:'translateX(-50%)',borderRadius:'50%',background:'radial-gradient(circle at 40% 40%, #3A2C0A 0%, #1A1200 55%, #0A0A00 100%)',border:'1px solid rgba(201,168,76,0.15)'}} />
+          <div style={{position:'relative',width:'80%',height:420,zIndex:2,animation:'float-y 5s ease-in-out infinite'}}>
+            <Suspense fallback={null}><ThreeHeroObject /></Suspense>
+          </div>
+          <motion.div initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} transition={{delay:2.2,duration:0.6,ease}} style={{position:'absolute',bottom:'8%',right:'-2%',background:'var(--card)',border:'1px solid var(--border)',borderRadius:12,padding:'0.75rem 1rem',minWidth:180,zIndex:3}}>
+            <p style={{fontFamily:'var(--font-body)',fontSize:'0.65rem',color:'var(--ink-3)',marginBottom:'0.3rem'}}>Available for</p>
+            <div style={{display:'flex',alignItems:'center',gap:6,marginBottom:'0.6rem'}}>
+              <span style={{fontFamily:'var(--font-body)',fontWeight:600,fontSize:'0.875rem',color:'var(--ink)'}}>Freelance</span>
+              <span style={{width:7,height:7,borderRadius:'50%',background:'#4CAF50',display:'inline-block',boxShadow:'0 0 6px rgba(76,175,80,0.8)'}} />
             </div>
-          ))}
+            <div style={{display:'flex',alignItems:'center'}}>
+              {['#C9A84C','#8B7FC4','#4CAF50','#C4624C'].map((c,i)=>(
+                <div key={i} style={{width:24,height:24,borderRadius:'50%',background:c,border:'2px solid var(--card)',marginLeft:i>0?-8:0,position:'relative',zIndex:4-i}} />
+              ))}
+              <span style={{fontFamily:'var(--font-body)',fontSize:'0.7rem',color:'var(--ink-3)',marginLeft:10}}>+10</span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
-
-      <ScrollIndicator />
     </section>
   );
 }
