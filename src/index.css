@@ -15,6 +15,7 @@
   --gold-dim: rgba(201,168,76,0.12);
   --font-display: 'Bricolage Grotesque', sans-serif;
   --font-body: 'Manrope', sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   --radius: 16px;
   --max-w: 1240px;
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
