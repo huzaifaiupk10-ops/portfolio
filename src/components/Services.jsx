@@ -11,7 +11,7 @@ export default function Services() {
     <section id="services" style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
       <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
         <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:'3.5rem', flexWrap:'wrap', gap:'1rem' }}>
-          <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', color:'var(--ink)', letterSpacing:'-0.02em', lineHeight:0.95 }}>What I Do</h2>
+          <h2 className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', letterSpacing:'-0.02em', lineHeight:0.95 }}>What I Do</h2>
         </motion.div>
         {services.map((s,i) => (
           <motion.div key={s.id} initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.6,ease}}>

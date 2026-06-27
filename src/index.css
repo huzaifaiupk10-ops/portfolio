@@ -47,6 +47,21 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-body); 
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
+/* Metallic gold gradient text effect */
+.metallic {
+  background: linear-gradient(135deg, #7A5C10 0%, #C9A84C 20%, #F0D878 38%, #FFFAE8 50%, #F0D878 62%, #C9A84C 80%, #7A5C10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.metallic-hover:hover {
+  background: linear-gradient(135deg, #7A5C10 0%, #C9A84C 20%, #F0D878 38%, #FFFAE8 50%, #F0D878 62%, #C9A84C 80%, #7A5C10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.25s;
+}
+
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 @keyframes spin-ccw  { to { transform: rotate(-360deg); } }
 @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }

@@ -8,7 +8,7 @@ export default function Testimonials() {
   return (
     <section style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
       <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
-        <motion.h2 initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', color:'var(--ink)', letterSpacing:'-0.02em', marginBottom:'3.5rem' }}>Kind Words</motion.h2>
+        <motion.h2 initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', letterSpacing:'-0.02em', marginBottom:'3.5rem' }}>Kind Words</motion.h2>
         <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
           {testimonials.map((t,i)=>(
             <motion.div key={t.name} initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.1,duration:0.7,ease}} style={{ background:'var(--card)', borderRadius:'var(--radius)', padding:'2rem', border:'1px solid var(--border)' }}>

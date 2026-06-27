@@ -11,10 +11,10 @@ export default function Contact() {
       <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto', position:'relative', zIndex:1 }}>
         <motion.p initial={{opacity:0}} animate={inView?{opacity:1}:{}} transition={{duration:0.5}} style={{ fontFamily:'var(--font-body)', fontWeight:500, fontSize:'0.8rem', color:'var(--ink-3)', marginBottom:'1.5rem' }}>Available for new projects</motion.p>
         <div style={{ overflow:'hidden', marginBottom:'0.25rem' }}>
-          <motion.div initial={{y:'110%'}} animate={inView?{y:'0%'}:{}} transition={{duration:0.95,ease}} style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(3rem,8vw,7rem)', color:'var(--ink)', letterSpacing:'-0.03em', lineHeight:0.9 }}>Let's build</motion.div>
+          <motion.div initial={{y:'110%'}} animate={inView?{y:'0%'}:{}} transition={{duration:0.95,ease}} className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(3rem,8vw,7rem)', letterSpacing:'-0.03em', lineHeight:0.9 }}>Let's build</motion.div>
         </div>
         <div style={{ overflow:'hidden', marginBottom:'2.5rem' }}>
-          <motion.div initial={{y:'110%'}} animate={inView?{y:'0%'}:{}} transition={{delay:0.1,duration:0.95,ease}} style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(3rem,8vw,7rem)', color:'var(--gold)', letterSpacing:'-0.03em', lineHeight:0.9 }}>something great.</motion.div>
+          <motion.div initial={{y:'110%'}} animate={inView?{y:'0%'}:{}} transition={{delay:0.1,duration:0.95,ease}} className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(3rem,8vw,7rem)', letterSpacing:'-0.03em', lineHeight:0.9 }}>something great.</motion.div>
         </div>
         <motion.a initial={{opacity:0,y:12}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:0.35,duration:0.6}} href={'mailto:'+personal.email} style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'clamp(1rem,2vw,1.4rem)', color:'var(--ink-2)', textDecoration:'none', borderBottom:'1px solid var(--border)', paddingBottom:'0.25rem', display:'inline-block', transition:'color 0.2s, border-color 0.2s', letterSpacing:'-0.02em' }} onMouseEnter={e=>{e.currentTarget.style.color='var(--gold)';e.currentTarget.style.borderColor='var(--gold)'}} onMouseLeave={e=>{e.currentTarget.style.color='var(--ink-2)';e.currentTarget.style.borderColor='var(--border)'}}>
           {personal.email}

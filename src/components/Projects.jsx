@@ -14,7 +14,7 @@ export default function Projects() {
     <section id="work" style={{ padding:'5rem var(--gutter)', borderBottom:'1px solid var(--border)' }}>
       <div ref={ref} style={{ maxWidth:'var(--max-w)', margin:'0 auto' }}>
         <motion.div initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.6,ease}} style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:'3.5rem', flexWrap:'wrap', gap:'1rem' }}>
-          <h2 style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', color:'var(--ink)', letterSpacing:'-0.02em', lineHeight:0.95 }}>Selected Work</h2>
+          <h2 className="metallic" style={{ fontFamily:'var(--font-serif)', fontWeight:700, fontSize:'clamp(2.4rem,5vw,3.75rem)', letterSpacing:'-0.02em', lineHeight:0.95 }}>Selected Work</h2>
           <p style={{ fontFamily:'var(--font-body)', fontSize:'0.85rem', color:'var(--ink-3)' }}>{list.length} Projects</p>
         </motion.div>
         <div style={{ position:'relative' }}>
