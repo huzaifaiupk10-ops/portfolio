@@ -11,7 +11,9 @@ export default function Expertise() {
       <div style={{position:'absolute',left:'30%',top:'50%',transform:'translate(-50%,-50%)',width:600,height:600,borderRadius:'50%',background:'radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%)',pointerEvents:'none'}} />
       <div ref={ref} style={{maxWidth:'var(--max-w)',margin:'0 auto',padding:'0 var(--gutter)',display:'grid',gridTemplateColumns:'1fr 1fr',gap:'4rem',alignItems:'center',width:'100%'}}>
         {/* Left: 3D */}
-        <motion.div initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{duration:1.2,ease}} style={{height:500,position:'relative',borderRadius:16,background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}} />
+        <motion.div initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{duration:1.2,ease}} style={{height:500,position:'relative',borderRadius:16,overflow:'hidden'}}>
+          <img src="/images/expertise-visual.png" alt="Expertise" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block'}} />
+        </motion.div>
         {/* Right: text */}
         <div>
           <motion.p initial={{opacity:0,y:8}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.5}} style={{fontFamily:'var(--font-body)',fontWeight:500,fontSize:'0.72rem',color:'var(--gold)',letterSpacing:'0.14em',textTransform:'uppercase',marginBottom:'1.5rem'}}>Expertise</motion.p>

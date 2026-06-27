@@ -25,8 +25,10 @@ export default function Contact() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </motion.a>
         </div>
-        {/* Right: image placeholder */}
-        <motion.div initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{duration:1.2,ease}} style={{height:500,borderRadius:16,background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}} />
+        {/* Right: image */}
+        <motion.div initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{duration:1.2,ease}} style={{height:500,borderRadius:16,overflow:'hidden'}}>
+          <img src="/images/contact-visual.png" alt="Contact" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block'}} />
+        </motion.div>
       </div>
     </section>
   );
