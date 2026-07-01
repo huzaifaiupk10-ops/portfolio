@@ -11,8 +11,12 @@ export default function Services() {
   const inView = useInView(ref,{once:true,margin:'-60px'});
   const [active,setActive] = useState(null);
   return (
-    <section id="services" style={{padding:'7rem var(--gutter)',borderTop:'1px solid rgba(255,255,255,0.06)'}}>
-      <div ref={ref} style={{maxWidth:'var(--max-w)',margin:'0 auto'}}>
+    <section id="services" style={{padding:'7rem var(--gutter)',borderTop:'1px solid rgba(255,255,255,0.06)',position:'relative',overflow:'hidden'}}>
+      {/* Background image */}
+      <div style={{position:'absolute',inset:0,backgroundImage:'url(/images/services-bg.png)',backgroundSize:'cover',backgroundPosition:'center',opacity:0.18,pointerEvents:'none',zIndex:0}} />
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(to right, #0A0A0A 30%, transparent 70%)',pointerEvents:'none',zIndex:0}} />
+      <div style={{position:'absolute',inset:0,background:'linear-gradient(to bottom, #0A0A0A 0%, transparent 20%, transparent 80%, #0A0A0A 100%)',pointerEvents:'none',zIndex:0}} />
+      <div ref={ref} style={{maxWidth:'var(--max-w)',margin:'0 auto',position:'relative',zIndex:1}}>
         <motion.h2 initial={{opacity:0,y:20}} animate={inView?{opacity:1,y:0}:{}} transition={{duration:0.7,ease}} className="metallic" style={{fontFamily:'var(--font-serif)',fontWeight:700,fontSize:'clamp(3rem,7vw,5.5rem)',letterSpacing:'-0.03em',lineHeight:0.9,marginBottom:'4rem'}}>What I Do.</motion.h2>
         {SERVICES.map((s,i)=>(
           <motion.div key={s.num} initial={{opacity:0,y:16}} animate={inView?{opacity:1,y:0}:{}} transition={{delay:i*0.08,duration:0.7,ease}}
