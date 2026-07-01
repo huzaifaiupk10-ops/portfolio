@@ -1,8 +1,37 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, useSpring, useMotionTemplate } from 'framer-motion';
 import { process } from '../data/portfolioData';
 
 const ease = [0.16, 1, 0.3, 1];
+
+function TiltCard({ children, style }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { stiffness: 280, damping: 22 });
+  const rY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { stiffness: 280, damping: 22 });
+  const sx = useTransform(x, [-0.5, 0.5], [15, 85]);
+  const sy = useTransform(y, [-0.5, 0.5], [15, 85]);
+  const sheen = useMotionTemplate`radial-gradient(circle at ${sx}% ${sy}%, rgba(201,168,76,0.12), transparent 55%)`;
+
+  const move = (e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - r.left) / r.width - 0.5);
+    y.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const leave = () => { x.set(0); y.set(0); };
+
+  return (
+    <div style={{ perspective: 1000, height: '100%' }}>
+      <motion.div
+        onMouseMove={move} onMouseLeave={leave}
+        style={{ rotateX: rX, rotateY: rY, transformStyle: 'preserve-3d', height: '100%', position: 'relative', ...style }}
+      >
+        {children}
+        <motion.div style={{ position: 'absolute', inset: 0, background: sheen, pointerEvents: 'none', zIndex: 5, borderRadius: 'inherit' }} />
+      </motion.div>
+    </div>
+  );
+}
 
 export default function Process() {
   const ref = useRef(null);
@@ -12,7 +41,6 @@ export default function Process() {
     <section id="process" style={{ padding: '7rem var(--gutter)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
 
-        {/* Header */}
         <motion.p
           initial={{ opacity: 0, y: 8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease }}
@@ -40,26 +68,22 @@ export default function Process() {
           A clear, structured workflow from first conversation to final launch.
         </motion.p>
 
-        {/* Steps grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem' }}>
           {process.map((step, i) => (
             <motion.div
               key={step.step}
               initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.7, ease }}
-              style={{ padding: '2rem', borderRadius: 16, background: '#141414', border: '1px solid var(--border)', position: 'relative', overflow: 'hidden', transition: 'border-color 0.25s, transform 0.25s' }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = ''; }}
+              style={{ height: '100%' }}
             >
-              {/* Step number */}
-              <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--gold)', marginBottom: '1.25rem', letterSpacing: '0.04em' }}>{step.step}</div>
-
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(1.2rem,1.8vw,1.5rem)', color: 'var(--ink)', letterSpacing: '-0.02em', marginBottom: '0.75rem', lineHeight: 1.1 }}>{step.title}</h3>
-
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--ink-3)', lineHeight: 1.8 }}>{step.description}</p>
-
-              {/* Watermark */}
-              <div style={{ position: 'absolute', bottom: '-0.5rem', right: '0.5rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '6rem', color: 'var(--gold)', opacity: 0.04, pointerEvents: 'none', userSelect: 'none', lineHeight: 1 }}>{step.step}</div>
+              <TiltCard
+                style={{ padding: '2rem', borderRadius: 16, background: '#141414', border: '1px solid var(--border)', overflow: 'hidden', transition: 'border-color 0.25s' }}
+              >
+                <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--gold)', marginBottom: '1.25rem', letterSpacing: '0.04em' }}>{step.step}</div>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(1.2rem,1.8vw,1.5rem)', color: 'var(--ink)', letterSpacing: '-0.02em', marginBottom: '0.75rem', lineHeight: 1.1 }}>{step.title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--ink-3)', lineHeight: 1.8, position: 'relative', zIndex: 2 }}>{step.description}</p>
+                <div style={{ position: 'absolute', bottom: '-0.5rem', right: '0.5rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '6rem', color: 'var(--gold)', opacity: 0.04, pointerEvents: 'none', userSelect: 'none', lineHeight: 1 }}>{step.step}</div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

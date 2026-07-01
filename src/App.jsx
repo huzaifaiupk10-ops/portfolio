@@ -1,6 +1,7 @@
 ﻿import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cursor from './components/Cursor';
 import Loader from './components/Loader';
+import ScrollLine from './components/ScrollLine';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Expertise from './components/Expertise';
@@ -38,6 +39,7 @@ export default function App() {
       <div style={{ background:'var(--bg)', minHeight:'100vh' }}>
         <Loader />
         <Cursor />
+        <ScrollLine />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectPage />} />

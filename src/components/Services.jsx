@@ -3,9 +3,8 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 const ease = [0.16,1,0.3,1];
 const SERVICES = [
   {num:'01',title:'Web Development',desc:'Fast, responsive, modern websites and web apps built with React. Every project is optimised for performance, accessibility, and conversion.'},
-  {num:'02',title:'UI/UX Design',desc:'Interfaces that feel effortless. I design in Figma — from wireframes to polished, production-ready component systems.'},
-  {num:'03',title:'AI Agents & Automation',desc:'Custom AI agents, prompt engineering, and n8n automation workflows that eliminate manual work and scale your operations intelligently.'},
-  {num:'04',title:'Brand Identity',desc:'Logo design, typography systems, colour palettes, and full brand guidelines. Visual identities that communicate authority and elegance.'},
+  {num:'02',title:'AI Agents & Automation',desc:'Custom AI agents, prompt engineering, and n8n automation workflows that eliminate manual work and scale your operations intelligently.'},
+  {num:'03',title:'Brand Identity',desc:'Logo design, typography systems, colour palettes, and full brand guidelines. Visual identities that communicate authority and elegance.'},
 ];
 export default function Services() {
   const ref = useRef(null);
