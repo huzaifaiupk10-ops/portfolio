@@ -33,8 +33,8 @@ export default function Cursor() {
 
   return (
     <>
-      <div ref={dotRef} style={{ position:'fixed',top:0,left:0,pointerEvents:'none',zIndex:99999,width:5,height:5,borderRadius:'50%',background:'var(--gold)',opacity:0,willChange:'transform',transition:'opacity 0.2s' }} />
-      <div ref={ringRef} className="cursor-ring" style={{ position:'fixed',top:0,left:0,pointerEvents:'none',zIndex:99998,width:28,height:28,borderRadius:'50%',border:'1.5px solid rgba(201,168,76,0.45)',opacity:0,willChange:'transform' }} />
+      <div data-cursor ref={dotRef} style={{ position:'fixed',top:0,left:0,pointerEvents:'none',zIndex:99999,width:5,height:5,borderRadius:'50%',background:'var(--gold)',opacity:0,willChange:'transform',transition:'opacity 0.2s' }} />
+      <div data-cursor ref={ringRef} className="cursor-ring" style={{ position:'fixed',top:0,left:0,pointerEvents:'none',zIndex:99998,width:28,height:28,borderRadius:'50%',border:'1.5px solid rgba(201,168,76,0.45)',opacity:0,willChange:'transform' }} />
     </>
   );
 }

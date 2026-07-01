@@ -1,17 +1,17 @@
 import { useScroll, useSpring, useTransform, motion } from 'framer-motion';
+import { useBreakpoint } from '../hooks/useBreakpoint';
 
 export default function ScrollLine() {
+  const { isMobile } = useBreakpoint();
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const opacity = useTransform(scrollYProgress, [0, 0.04], [0, 1]);
 
+  if (isMobile) return null;
+
   return (
-    <motion.div
-      style={{ opacity, position: 'fixed', left: 20, top: 0, bottom: 0, width: 1, zIndex: 40, pointerEvents: 'none' }}
-    >
-      {/* Track */}
+    <motion.div style={{ opacity, position: 'fixed', left: 20, top: 0, bottom: 0, width: 1, zIndex: 40, pointerEvents: 'none' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'rgba(201,168,76,0.1)', borderRadius: 1 }} />
-      {/* Fill */}
       <motion.div
         style={{
           position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
@@ -21,7 +21,6 @@ export default function ScrollLine() {
           boxShadow: '0 0 6px rgba(201,168,76,0.5)',
         }}
       />
-      {/* Glowing dot at tip */}
       <motion.div
         style={{
           position: 'absolute', left: '50%', translateX: '-50%',

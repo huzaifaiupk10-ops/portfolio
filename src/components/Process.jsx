@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView, useMotionValue, useTransform, useSpring, useMotionTemplate } from 'framer-motion';
 import { process } from '../data/portfolioData';
+import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -36,6 +37,9 @@ function TiltCard({ children, style }) {
 export default function Process() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
+  const { isMobile, isTablet } = useBreakpoint();
+
+  const cols = isMobile ? '1fr' : isTablet ? 'repeat(2,1fr)' : 'repeat(4,1fr)';
 
   return (
     <section id="process" style={{ padding: '7rem var(--gutter)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
@@ -54,7 +58,7 @@ export default function Process() {
             initial={{ y: '108%' }} animate={inView ? { y: '0%' } : {}}
             transition={{ duration: 0.9, ease }}
             className="metallic"
-            style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(3rem,7vw,5.5rem)', letterSpacing: '-0.03em', lineHeight: 0.9 }}
+            style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: isMobile ? 'clamp(2.5rem,10vw,4rem)' : 'clamp(3rem,7vw,5.5rem)', letterSpacing: '-0.03em', lineHeight: 0.9 }}
           >
             How I Work.
           </motion.div>
@@ -68,7 +72,7 @@ export default function Process() {
           A clear, structured workflow from first conversation to final launch.
         </motion.p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: cols, gap: '1.5rem' }}>
           {process.map((step, i) => (
             <motion.div
               key={step.step}
@@ -76,9 +80,7 @@ export default function Process() {
               transition={{ delay: i * 0.1, duration: 0.7, ease }}
               style={{ height: '100%' }}
             >
-              <TiltCard
-                style={{ padding: '2rem', borderRadius: 16, background: '#141414', border: '1px solid var(--border)', overflow: 'hidden', transition: 'border-color 0.25s' }}
-              >
+              <TiltCard style={{ padding: '2rem', borderRadius: 16, background: '#141414', border: '1px solid var(--border)', overflow: 'hidden', transition: 'border-color 0.25s' }}>
                 <div style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '1rem', color: 'var(--gold)', marginBottom: '1.25rem', letterSpacing: '0.04em' }}>{step.step}</div>
                 <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(1.2rem,1.8vw,1.5rem)', color: 'var(--ink)', letterSpacing: '-0.02em', marginBottom: '0.75rem', lineHeight: 1.1 }}>{step.title}</h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: 'var(--ink-3)', lineHeight: 1.8, position: 'relative', zIndex: 2 }}>{step.description}</p>
