@@ -139,7 +139,7 @@ export default function Hero() {
             <motion.div style={{ y: imageY, width:'100%', height:'108%', marginTop:'-4%' }}>
               <img
                 src="/hero-photo.png" alt="Huzaifa Imran"
-                style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center top', display:'block' }}
+                style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'20% top', display:'block' }}
               />
             </motion.div>
           </motion.div>
