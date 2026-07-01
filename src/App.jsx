@@ -4,6 +4,7 @@ import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Expertise from './components/Expertise';
+import Skills from './components/Skills';
 import Work from './components/Work';
 import Services from './components/Services';
 import Process from './components/Process';
@@ -20,6 +21,7 @@ function Home() {
       <main>
         <Hero />
         <Expertise />
+        <Skills />
         <Work />
         <Services />
         <Process />

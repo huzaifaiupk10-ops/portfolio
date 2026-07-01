@@ -1,149 +1,199 @@
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { skills } from '../data/portfolioData';
 
-function SkillPill({ label, i }) {
+const ease = [0.16, 1, 0.3, 1];
+
+const CATEGORIES = [
+  {
+    num: '01', icon: '⬡', title: 'Development & Web', count: 7,
+    dur: 34, dir: 'left',
+    skills: ['Front-End Development','Web Development','Web Design','HTML / CSS','UI/UX Design','Responsive Design','Product Development'],
+  },
+  {
+    num: '02', icon: '◈', title: 'AI & Automation', count: 5,
+    dur: 26, dir: 'right',
+    skills: ['Artificial Intelligence','Agentic AI Development','AI Agents','Prompt Engineering','Workflow Automation'],
+  },
+  {
+    num: '03', icon: '◇', title: 'Branding & Creative', count: 9,
+    dur: 40, dir: 'left',
+    skills: ['Branding & Identity','Brand Identity','Logo Design','Typography','Color Theory','Visual Design','Creative Concept Design','Content Creation','Image Editing'],
+  },
+  {
+    num: '04', icon: '◎', title: 'AI Tools', count: 11,
+    dur: 32, dir: 'right',
+    skills: ['ChatGPT','Claude','Claude Code','Google Gemini','Groq','Perplexity','Midjourney','Leonardo AI','Runway','ElevenLabs','n8n'],
+  },
+];
+
+const TOTAL = CATEGORIES.reduce((a, c) => a + c.count, 0);
+
+function MarqueeRow({ cat, index, inView }) {
+  const [paused, setPaused] = useState(false);
+  const repeated = [...cat.skills, ...cat.skills, ...cat.skills, ...cat.skills];
+  const animName = cat.dir === 'left' ? 'skillsLeft' : 'skillsRight';
+
   return (
-    <motion.span
-      initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: i * 0.04, duration: 0.35 }}
-      whileHover={{ scale: 1.06, y: -2 }}
-      className="inline-block px-3 py-1.5 rounded-lg text-sm font-medium cursor-default"
+    <motion.div
+      initial={{ clipPath: 'inset(0 100% 0 0)' }}
+      animate={inView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
+      transition={{ delay: 0.2 + index * 0.14, duration: 1.0, ease: [0.65, 0, 0.35, 1] }}
+      className="skills-row"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
       style={{
-        background: 'rgba(5,13,26,0.75)',
-        border: '1px solid rgba(200,168,152,0.12)',
-        color: '#CBD5E1',
-        transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(59,130,246,0.35)';
-        e.currentTarget.style.boxShadow = '0 0 14px rgba(200,168,152,0.15)';
-        e.currentTarget.style.color = '#F1F5F9';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(200,168,152,0.12)';
-        e.currentTarget.style.boxShadow = 'none';
-        e.currentTarget.style.color = '#CBD5E1';
+        borderTop: '1px solid var(--border)',
+        display: 'grid',
+        gridTemplateColumns: '260px 1fr',
+        alignItems: 'center',
+        transition: 'background 0.3s',
+        background: paused ? 'rgba(201,168,76,0.03)' : 'transparent',
+        position: 'relative',
+        cursor: 'default',
       }}
     >
-      {label}
-    </motion.span>
+      {/* Gold left accent on hover */}
+      <motion.div
+        animate={{ scaleY: paused ? 1 : 0, opacity: paused ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+        style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 2, background: 'var(--gold)', transformOrigin: 'top', borderRadius: 1 }}
+      />
+
+      {/* Left: category info */}
+      <div style={{ padding: '2rem 2rem 2rem 0', position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', marginBottom: '0.5rem' }}>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', fontWeight: 600, color: 'var(--gold)', letterSpacing: '0.1em' }}>{cat.num}</span>
+          <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.1rem', color: paused ? 'var(--gold)' : 'var(--ink-3)', transition: 'color 0.25s' }}>{cat.icon}</span>
+        </div>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(1rem,1.6vw,1.25rem)', color: paused ? 'var(--ink)' : 'var(--ink-2)', letterSpacing: '-0.01em', lineHeight: 1.2, transition: 'color 0.25s', marginBottom: '0.4rem' }}>{cat.title}</h3>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', color: 'var(--ink-3)', letterSpacing: '0.06em' }}>{cat.count} skills</p>
+      </div>
+
+      {/* Right: marquee */}
+      <div style={{ overflow: 'hidden', position: 'relative', padding: '1.5rem 0' }}>
+        {/* Fade edges */}
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, var(--bg), transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, var(--bg), transparent)', zIndex: 2, pointerEvents: 'none' }} />
+
+        <div
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            width: 'max-content',
+            animation: `${animName} ${cat.dur}s linear infinite`,
+            animationPlayState: paused ? 'paused' : 'running',
+            willChange: 'transform',
+          }}
+        >
+          {repeated.map((skill, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
+              <span
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.85rem',
+                  fontWeight: 500,
+                  color: paused ? 'var(--gold)' : 'var(--ink-2)',
+                  padding: '0.4rem 1.1rem',
+                  border: `1px solid ${paused ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderRadius: 999,
+                  background: paused ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.02)',
+                  transition: 'color 0.3s, border-color 0.3s, background 0.3s',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {skill}
+              </span>
+              <span style={{ width: 3, height: 3, borderRadius: '50%', background: paused ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.15)', flexShrink: 0, transition: 'background 0.3s' }} />
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState(0);
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  const current = skills[activeTab];
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
-    <section
-      id="skills"
-      className="section-pad relative"
-      style={{ background: 'linear-gradient(180deg,#000000 0%,#050d1a 50%,#000000 100%)' }}
-    >
-      <div className="container-max">
+    <section id="skills" style={{ padding: '7rem var(--gutter)', borderTop: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
+
+      <style>{`
+        @keyframes skillsLeft {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes skillsRight {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
+
+      {/* Ambient glow */}
+      <div style={{ position: 'absolute', right: '10%', top: '40%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+
         {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <div className="section-label mb-4 mx-auto">Expertise</div>
-          <h2
-            className="font-display font-bold gradient-text"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', letterSpacing: '-0.02em' }}
-          >
-            Skills & Expertise
-          </h2>
-          <p className="text-brand-muted mt-3 max-w-lg mx-auto">
-            A broad skill set spanning development, design, and artificial intelligence.
-          </p>
-        </motion.div>
-
-        {/* Tab selector */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-wrap justify-center gap-2 mb-10"
-        >
-          {skills.map((cat, i) => (
-            <button
-              key={cat.category}
-              onClick={() => setActiveTab(i)}
-              className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-25"
-              style={{
-                background:
-                  activeTab === i ? 'rgba(200,168,152,0.15)' : 'rgba(5,13,26,0.65)',
-                border:
-                  activeTab === i
-                    ? '1px solid rgba(59,130,246,0.4)'
-                    : '1px solid rgba(200,168,152,0.1)',
-                color: activeTab === i ? '#C8A898' : '#64748B',
-              }}
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '4rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, ease }}
+              style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.72rem', color: 'var(--gold)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '1.5rem' }}
             >
-              <span className="mr-1.5">{cat.icon}</span>
-              {cat.category}
-            </button>
-          ))}
-        </motion.div>
+              Skills
+            </motion.p>
 
-        {/* Skills panel */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="card-premium p-6 md:p-8"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <span
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-              style={{ background: 'rgba(200,168,152,0.12)', border: '1px solid rgba(200,168,152,0.2)' }}
-            >
-              {current.icon}
-            </span>
-            <div>
-              <h3 className="font-display font-semibold text-brand-silver-light text-lg">
-                {current.category}
-              </h3>
-              <p className="text-xs text-brand-muted">{current.items.length} skills</p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {current.items.map((item, i) => (
-              <SkillPill key={item} label={item} i={i} />
+            {['My', 'Expertise.'].map((word, i) => (
+              <div key={word} style={{ overflow: 'hidden' }}>
+                <motion.div
+                  initial={{ y: '110%' }} animate={inView ? { y: '0%' } : {}}
+                  transition={{ delay: i * 0.12, duration: 0.9, ease }}
+                  className="metallic"
+                  style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(3rem,7vw,5.5rem)', letterSpacing: '-0.03em', lineHeight: 0.9, paddingBottom: '0.06em' }}
+                >
+                  {word}
+                </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
 
-        {/* All categories mini overview */}
+          {/* Total count badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }} animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.7, ease }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem' }}
+          >
+            <span className="metallic" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '3.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}>{TOTAL}</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Total Skills</span>
+          </motion.div>
+        </div>
+
+        {/* Category rows */}
+        <div>
+          {CATEGORIES.map((cat, i) => (
+            <MarqueeRow key={cat.num} cat={cat} index={i} inView={inView} />
+          ))}
+          <div style={{ borderTop: '1px solid var(--border)' }} />
+        </div>
+
+        {/* Bottom label row */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6"
+          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          style={{ display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap' }}
         >
-          {skills.map((cat, i) => (
-            <motion.button
-              key={cat.category}
-              onClick={() => setActiveTab(i)}
-              whileHover={{ y: -3 }}
-              className="card-premium p-4 text-left shine"
-            >
-              <span className="text-2xl mb-2 block">{cat.icon}</span>
-              <div className="text-sm font-semibold text-brand-silver mb-1">{cat.category}</div>
-              <div className="text-xs text-brand-muted">{cat.items.length} skills</div>
-            </motion.button>
+          {CATEGORIES.map(cat => (
+            <div key={cat.num} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--gold)' }}>{cat.icon}</span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', color: 'var(--ink-3)' }}>{cat.title}</span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--ink-3)', opacity: 0.5 }}>({cat.count})</span>
+            </div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
