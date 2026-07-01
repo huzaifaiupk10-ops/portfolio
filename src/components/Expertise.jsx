@@ -12,7 +12,7 @@ export default function Expertise() {
       <div ref={ref} style={{maxWidth:'var(--max-w)',margin:'0 auto',padding:'0 var(--gutter)',display:'grid',gridTemplateColumns:'1fr 1fr',gap:'4rem',alignItems:'center',width:'100%'}}>
         {/* Left: 3D */}
         <motion.div initial={{opacity:0,scale:0.9}} animate={inView?{opacity:1,scale:1}:{}} transition={{duration:1.2,ease}} style={{height:500,position:'relative',borderRadius:16,overflow:'hidden'}}>
-          <img src="/images/expertise-visual.png" alt="Expertise" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block'}} />
+          <img src="/images/expertise-visual.png" alt="Expertise" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} />
         </motion.div>
         {/* Right: text */}
         <div>
