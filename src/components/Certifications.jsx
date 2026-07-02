@@ -71,30 +71,26 @@ function CertCard({ cert, index, inView, onClick }) {
       <TiltCard onClick={() => onClick(cert)}>
         <div
           onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-          style={{ borderRadius: 14, border: `1px solid ${hov ? cert.color + '55' : 'rgba(255,255,255,0.07)'}`, position: 'relative', overflow: 'hidden', transition: 'border-color 0.28s', height: 240, cursor: 'pointer' }}
+          style={{ borderRadius: 14, border: `1px solid ${hov ? cert.color + '55' : 'rgba(255,255,255,0.07)'}`, position: 'relative', overflow: 'hidden', transition: 'border-color 0.28s', cursor: 'pointer' }}
         >
-          {/* Full-bleed thumbnail background */}
+          {/* Thumbnail — natural size, no crop */}
           <img
             src={THUMBS[cert.issuerId]} alt={cert.issuer}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.55s ease, opacity 0.3s', transform: hov ? 'scale(1.06)' : 'scale(1)', opacity: hov ? 0.85 : 0.65 }}
+            style={{ display: 'block', width: '100%', height: 'auto', transition: 'transform 0.55s ease', transform: hov ? 'scale(1.04)' : 'scale(1)' }}
           />
 
-          {/* Gradient overlay — dark at bottom for text legibility */}
-          <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.5) 45%, rgba(10,10,10,0.96) 100%)` }} />
-
           {/* Cert number — top right */}
-          <div style={{ position: 'absolute', top: '1rem', right: '1.1rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '0.72rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.08em' }}>{num}</div>
+          <div style={{ position: 'absolute', top: '0.8rem', right: '0.9rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>{num}</div>
 
           {/* Issuer dot — top left */}
-          <div style={{ position: 'absolute', top: '1rem', left: '1.1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ position: 'absolute', top: '0.8rem', left: '0.9rem', display: 'flex', alignItems: 'center', gap: 5 }}>
             <div style={{ width: 6, height: 6, borderRadius: '50%', background: cert.color, boxShadow: `0 0 8px ${cert.color}` }} />
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, color: cert.color, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{cert.issuer}</span>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.63rem', fontWeight: 700, color: cert.color, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{cert.issuer}</span>
           </div>
 
-          {/* Text — bottom */}
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.25rem 1.4rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(0.95rem,1.3vw,1.05rem)', color: '#fff', lineHeight: 1.3, marginBottom: '0.75rem' }}>{cert.title}</h3>
-            {/* Gold reveal line on hover */}
+          {/* Text — below image */}
+          <div style={{ padding: '1rem 1.2rem 1.2rem', background: hov ? '#141414' : '#0E0E0E', transition: 'background 0.25s' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(0.9rem,1.3vw,1rem)', color: hov ? 'var(--ink)' : 'var(--ink-2)', lineHeight: 1.35, marginBottom: '0.6rem', transition: 'color 0.25s' }}>{cert.title}</h3>
             <motion.div animate={{ scaleX: hov ? 1 : 0, opacity: hov ? 1 : 0 }} transition={{ duration: 0.3, ease }} style={{ height: 1, background: `linear-gradient(to right, ${cert.color}, transparent)`, transformOrigin: 'left', borderRadius: 1 }} />
           </div>
         </div>
