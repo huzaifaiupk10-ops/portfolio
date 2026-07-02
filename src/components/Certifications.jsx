@@ -71,14 +71,8 @@ function CertCard({ cert, index, inView, onClick }) {
       <TiltCard onClick={() => onClick(cert)}>
         <div
           onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-          style={{ borderRadius: 14, background: hov ? '#141414' : '#0E0E0E', border: `1px solid ${hov ? cert.color + '55' : 'rgba(255,255,255,0.07)'}`, position: 'relative', overflow: 'hidden', transition: 'background 0.25s, border-color 0.28s' }}
+          style={{ padding: '1.75rem', borderRadius: 14, background: hov ? '#141414' : '#0E0E0E', border: `1px solid ${hov ? cert.color + '55' : 'rgba(255,255,255,0.07)'}`, position: 'relative', overflow: 'hidden', transition: 'background 0.25s, border-color 0.28s', minHeight: 178 }}
         >
-          {/* Thumbnail */}
-          <div style={{ width: '100%', height: 160, overflow: 'hidden', borderBottom: `1px solid ${hov ? cert.color + '30' : 'rgba(255,255,255,0.05)'}`, transition: 'border-color 0.25s' }}>
-            <img src={THUMBS[cert.issuerId]} alt={cert.issuer} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transition: 'transform 0.5s ease', transform: hov ? 'scale(1.04)' : 'scale(1)' }} />
-          </div>
-
-          <div style={{ padding: '1.4rem 1.75rem 1.75rem' }}>
           {/* Watermark */}
           <div style={{ position: 'absolute', bottom: -10, right: 4, fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '5.5rem', color: cert.color, opacity: 0.05, lineHeight: 1, userSelect: 'none', pointerEvents: 'none' }}>{num}</div>
 
@@ -100,7 +94,6 @@ function CertCard({ cert, index, inView, onClick }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <div style={{ width: 5, height: 5, borderRadius: '50%', background: cert.color, flexShrink: 0 }} />
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.68rem', color: cert.color, letterSpacing: '0.09em', textTransform: 'uppercase', fontWeight: 600 }}>{cert.issuer}</span>
-          </div>
           </div>
         </div>
       </TiltCard>
