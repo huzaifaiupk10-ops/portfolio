@@ -79,15 +79,6 @@ function CertCard({ cert, index, inView, onClick }) {
             style={{ display: 'block', width: '100%', height: 'auto', transition: 'transform 0.55s ease', transform: hov ? 'scale(1.04)' : 'scale(1)' }}
           />
 
-          {/* Cert number — top right */}
-          <div style={{ position: 'absolute', top: '0.8rem', right: '0.9rem', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>{num}</div>
-
-          {/* Issuer dot — top left */}
-          <div style={{ position: 'absolute', top: '0.8rem', left: '0.9rem', display: 'flex', alignItems: 'center', gap: 5 }}>
-            <div style={{ width: 6, height: 6, borderRadius: '50%', background: cert.color, boxShadow: `0 0 8px ${cert.color}` }} />
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.63rem', fontWeight: 700, color: cert.color, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{cert.issuer}</span>
-          </div>
-
           {/* Text — below image */}
           <div style={{ padding: '1rem 1.2rem 1.2rem', background: hov ? '#141414' : '#0E0E0E', transition: 'background 0.25s' }}>
             <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(0.9rem,1.3vw,1rem)', color: hov ? 'var(--ink)' : 'var(--ink-2)', lineHeight: 1.35, marginBottom: '0.6rem', transition: 'color 0.25s' }}>{cert.title}</h3>
