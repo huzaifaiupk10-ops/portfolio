@@ -9,6 +9,7 @@ import Skills from './components/Skills';
 import Work from './components/Work';
 import Services from './components/Services';
 import Process from './components/Process';
+import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectPage from './components/ProjectPage';
@@ -26,6 +27,7 @@ function Home() {
         <Work />
         <Services />
         <Process />
+        <Certifications />
         <Contact />
       </main>
       <Footer />
