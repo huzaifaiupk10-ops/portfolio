@@ -23,11 +23,11 @@ function Home() {
       <main>
         <Hero />
         <Expertise />
+        <Certifications />
         <Skills />
         <Work />
         <Services />
         <Process />
-        <Certifications />
         <Contact />
       </main>
       <Footer />
