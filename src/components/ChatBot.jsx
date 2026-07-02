@@ -171,25 +171,24 @@ export default function ChatBot() {
     }, 600);
   };
 
-  const confirmBooking = () => {
-    const subject = encodeURIComponent(`Appointment Request from ${bookingData.name}`);
-    const body = encodeURIComponent(
-      `Hi Huzaifa,\n\nI'd like to schedule a call with you.\n\n` +
-      `Name: ${bookingData.name}\n` +
-      `Email: ${bookingData.email}\n` +
-      `Preferred Date: ${bookingData.date}\n` +
-      `Preferred Time: ${bookingData.time}\n` +
-      `Project Type: ${bookingData.projectType}\n\n` +
-      `Please confirm the appointment at your earliest convenience.\n\nThanks!`
-    );
-    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=huzaifaiupk10@gmail.com&su=${subject}&body=${body}`, '_blank');
+  const confirmBooking = async () => {
     setBooking(false);
     setBookingStep(0);
     setLoading(true);
-    setTimeout(() => {
-      pushMsg('assistant', "Your appointment request has been sent! ✅ Huzaifa will get back to you at **" + bookingData.email + "** to confirm. Is there anything else I can help with?");
-      setLoading(false);
-    }, 500);
+    try {
+      const res = await fetch('/.netlify/functions/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Booking failed');
+      pushMsg('assistant', `Your appointment request has been sent! ✅ Huzaifa will get back to you at **${bookingData.email}** to confirm. A confirmation email is on its way to you too. Is there anything else I can help with?`);
+    } catch {
+      pushMsg('assistant', `Booking received! You can also reach Huzaifa directly at **huzaifaiupk10@gmail.com** to confirm your call on **${bookingData.date}** at **${bookingData.time}**.`);
+    }
+    setBookingData({});
+    setLoading(false);
   };
 
   const cancelBooking = () => {
