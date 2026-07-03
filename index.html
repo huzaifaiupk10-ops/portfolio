@@ -5,36 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ── Primary Meta ─────────────────────────────────────── -->
-    <title>Huzaifa Imran — Web Developer Portfolio</title>
-    <meta name="description" content="A modern animated portfolio showcasing work in web development, UI/UX design, branding, artificial intelligence, prompt engineering, and agentic development." />
+    <title>Huzaifa Imran | AI Builder & Creative Developer</title>
+    <meta name="description" content="I design and build AI-powered products, web experiences, and digital brands. Based in Virginia — available worldwide." />
     <meta name="author" content="Huzaifa Imran" />
-    <meta name="theme-color" content="#05070A" />
-    <link rel="canonical" href="https://huzaifa-portfolio24u.netlify.app/" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="canonical" href="https://myportfolio2026me.netlify.app/" />
 
     <!-- ── Favicon ───────────────────────────────────────────── -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp, Discord, Slack, Telegram) -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:site_name"   content="Huzaifa Portfolio" />
-    <meta property="og:locale"      content="en_US" />
-    <meta property="og:url"         content="https://huzaifa-portfolio24u.netlify.app/" />
-    <meta property="og:title"       content="Huzaifa Imran — Web Developer Portfolio" />
-    <meta property="og:description" content="A modern animated portfolio showcasing work in web development, UI/UX design, branding, artificial intelligence, prompt engineering, and agentic development." />
-    <meta property="og:image"            content="https://raw.githubusercontent.com/huzaifaiupk10-ops/portfolio/main/public/portfolio-preview.png" />
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/huzaifaiupk10-ops/portfolio/main/public/portfolio-preview.png" />
+    <!-- ── Open Graph ───────────────────────────────────────── -->
+    <meta property="og:type"             content="website" />
+    <meta property="og:site_name"        content="Huzaifa Imran" />
+    <meta property="og:locale"           content="en_US" />
+    <meta property="og:url"              content="https://myportfolio2026me.netlify.app/" />
+    <meta property="og:title"            content="Huzaifa Imran | AI Builder & Creative Developer" />
+    <meta property="og:description"      content="I design and build AI-powered products, web experiences, and digital brands. Based in Virginia — available worldwide." />
+    <meta property="og:image"            content="https://myportfolio2026me.netlify.app/portfolio-preview.png" />
+    <meta property="og:image:secure_url" content="https://myportfolio2026me.netlify.app/portfolio-preview.png" />
     <meta property="og:image:type"       content="image/png" />
-    <meta property="og:image:alt"        content="Huzaifa Imran — Web Developer, UI/UX Designer & AI Builder" />
+    <meta property="og:image:alt"        content="Huzaifa Imran — AI Builder & Creative Developer" />
     <meta property="og:image:width"      content="1350" />
     <meta property="og:image:height"     content="632" />
 
     <!-- ── Twitter / X Card ─────────────────────────────────── -->
     <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:url"         content="https://huzaifa-portfolio24u.netlify.app/" />
-    <meta name="twitter:title"       content="Huzaifa Imran — Web Developer Portfolio" />
-    <meta name="twitter:description" content="A modern animated portfolio showcasing work in web development, UI/UX design, branding, artificial intelligence, prompt engineering, and agentic development." />
-    <meta name="twitter:image"       content="https://raw.githubusercontent.com/huzaifaiupk10-ops/portfolio/main/public/portfolio-preview.png" />
-    <meta name="twitter:image:alt"   content="Huzaifa Imran — Web Developer, UI/UX Designer & AI Builder" />
+    <meta name="twitter:url"         content="https://myportfolio2026me.netlify.app/" />
+    <meta name="twitter:title"       content="Huzaifa Imran | AI Builder & Creative Developer" />
+    <meta name="twitter:description" content="I design and build AI-powered products, web experiences, and digital brands. Based in Virginia — available worldwide." />
+    <meta name="twitter:image"       content="https://myportfolio2026me.netlify.app/portfolio-preview.png" />
+    <meta name="twitter:image:alt"   content="Huzaifa Imran — AI Builder & Creative Developer" />
+
+    <!-- ── JSON-LD Structured Data ──────────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Huzaifa Imran",
+      "url": "https://myportfolio2026me.netlify.app/",
+      "image": "https://myportfolio2026me.netlify.app/portfolio-preview.png",
+      "jobTitle": "AI Builder & Creative Developer",
+      "description": "I design and build AI-powered products, web experiences, and digital brands.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Woodbridge",
+        "addressRegion": "VA",
+        "addressCountry": "US"
+      },
+      "email": "huzaifaiupk10@gmail.com",
+      "sameAs": [
+        "https://linkedin.com/in/huzaifaimran",
+        "https://github.com/huzaifaiupk10-ops"
+      ],
+      "knowsAbout": ["AI Development", "Web Development", "UI/UX Design", "Brand Identity", "Prompt Engineering"]
+    }
+    </script>
 
     <!-- ── Google Fonts ─────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,7 +67,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static fallback for crawlers — replaced by React on load -->
+      <noscript>
+        <main style="font-family:sans-serif;max-width:800px;margin:0 auto;padding:2rem;background:#0A0A0A;color:#fff;">
+          <h1>Huzaifa Imran — AI Builder &amp; Creative Developer</h1>
+          <p>I design and build AI-powered products, web experiences, and digital brands. Based in Virginia, available worldwide.</p>
+          <h2>Services</h2>
+          <ul>
+            <li>AI Products &amp; Automation</li>
+            <li>Web Design &amp; Development</li>
+            <li>Brand Identity &amp; Strategy</li>
+            <li>UI/UX Design</li>
+          </ul>
+          <h2>Selected Work</h2>
+          <ul>
+            <li>SOLVRA AI Studio — AI assistant &amp; brand platform</li>
+            <li>AI Lead Dashboard — Agentic sales intelligence tool</li>
+            <li>Brand Oasis — Digital brand system</li>
+            <li>Lumen — Visual identity &amp; web presence</li>
+          </ul>
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:huzaifaiupk10@gmail.com">huzaifaiupk10@gmail.com</a></p>
+          <p>Phone: +1 571 477 4920</p>
+        </main>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
