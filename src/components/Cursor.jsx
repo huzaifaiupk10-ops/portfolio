@@ -1,39 +1,32 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Cursor() {
-  const crossRef = useRef(null);
+  const cursorRef = useRef(null);
+  const [state, setState] = useState('default'); // default | hover | drag
 
   useEffect(() => {
-    const el = crossRef.current;
+    const el = cursorRef.current;
     if (!el) return;
-    const hLine = el.querySelector('.ch-h');
-    const vLine = el.querySelector('.ch-v');
-    const dot   = el.querySelector('.ch-dot');
     let visible = false;
-    let hovering = false;
 
     const onMove = (e) => {
       el.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0) translate(-50%,-50%)`;
       if (!visible) { el.style.opacity = '1'; visible = true; }
     };
+
     const onOver = (e) => {
-      if (e.target.closest('a,button,[role=button]')) {
-        hovering = true;
-        hLine.style.width = '20px';
-        vLine.style.height = '20px';
-        dot.style.transform = 'translate(-50%,-50%) scale(2.5)';
-        dot.style.opacity = '1';
-      }
+      const link = e.target.closest('a,button,[role=button]');
+      const draggable = e.target.closest('[data-drag]');
+      if (draggable) { setState('drag'); return; }
+      if (link) { setState('hover'); return; }
     };
+
     const onOut = (e) => {
-      if (e.target.closest('a,button,[role=button]')) {
-        hovering = false;
-        hLine.style.width = '28px';
-        vLine.style.height = '28px';
-        dot.style.transform = 'translate(-50%,-50%) scale(1)';
-        dot.style.opacity = '0.7';
-      }
+      const link = e.target.closest('a,button,[role=button]');
+      const draggable = e.target.closest('[data-drag]');
+      if (link || draggable) setState('default');
     };
+
     const onLeave = () => { el.style.opacity = '0'; visible = false; };
 
     window.addEventListener('mousemove', onMove);
@@ -48,16 +41,40 @@ export default function Cursor() {
     };
   }, []);
 
-  const line = { position: 'absolute', background: 'var(--gold)', borderRadius: 1, transition: 'width 0.18s ease, height 0.18s ease' };
+  const isHover = state === 'hover';
+  const isDrag  = state === 'drag';
+  const expanded = isHover || isDrag;
+  const label = isDrag ? 'DRAG' : 'VIEW';
 
   return (
-    <div data-cursor ref={crossRef} style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 99999, opacity: 0, willChange: 'transform', transition: 'opacity 0.2s' }}>
-      {/* Horizontal arm */}
-      <div className="ch-h" style={{ ...line, top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 28, height: 1.5 }} />
-      {/* Vertical arm */}
-      <div className="ch-v" style={{ ...line, top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 1.5, height: 28 }} />
-      {/* Center dot */}
-      <div className="ch-dot" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%) scale(1)', width: 4, height: 4, borderRadius: '50%', background: 'var(--gold)', opacity: 0.7, transition: 'transform 0.18s ease, opacity 0.18s' }} />
+    <div
+      data-cursor
+      ref={cursorRef}
+      style={{
+        position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 99999,
+        opacity: 0, willChange: 'transform',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width:  expanded ? (isDrag ? 72 : 64) : 10,
+        height: expanded ? (isDrag ? 72 : 64) : 10,
+        borderRadius: '999px',
+        background: expanded ? 'var(--gold)' : 'var(--gold)',
+        transition: 'width 0.35s cubic-bezier(0.16,1,0.3,1), height 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s',
+      }}
+    >
+      <span style={{
+        fontFamily: 'var(--font-body)',
+        fontWeight: 700,
+        fontSize: '0.6rem',
+        letterSpacing: '0.14em',
+        color: '#0A0A0A',
+        opacity: expanded ? 1 : 0,
+        transform: expanded ? 'scale(1)' : 'scale(0.5)',
+        transition: 'opacity 0.2s 0.1s, transform 0.25s 0.05s cubic-bezier(0.16,1,0.3,1)',
+        userSelect: 'none',
+        whiteSpace: 'nowrap',
+      }}>
+        {label}
+      </span>
     </div>
   );
 }
