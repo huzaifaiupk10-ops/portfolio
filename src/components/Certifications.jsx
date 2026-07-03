@@ -5,20 +5,22 @@ import { useBreakpoint } from '../hooks/useBreakpoint';
 const ease = [0.16, 1, 0.3, 1];
 
 const FILTERS = [
-  { id: 'all',       label: 'All',       count: 11 },
-  { id: 'anthropic', label: 'Anthropic', count: 3  },
-  { id: 'google',    label: 'Google',    count: 4  },
-  { id: 'ibm',       label: 'IBM',       count: 1  },
-  { id: 'maryland',  label: 'Maryland',  count: 1  },
-  { id: 'forage',    label: 'Forage',    count: 2  },
+  { id: 'all',        label: 'All',        count: 12 },
+  { id: 'anthropic',  label: 'Anthropic',  count: 3  },
+  { id: 'google',     label: 'Google',     count: 4  },
+  { id: 'ibm',        label: 'IBM',        count: 1  },
+  { id: 'maryland',   label: 'Maryland',   count: 1  },
+  { id: 'forage',     label: 'Forage',     count: 2  },
+  { id: 'vanderbilt', label: 'Vanderbilt', count: 1  },
 ];
 
 const THUMBS = {
-  anthropic: '/images/certificates/ANTHROPIC.png',
-  google:    '/images/certificates/Google.png',
-  ibm:       '/images/certificates/IBM.png',
-  forage:    '/images/certificates/Forage.png',
-  maryland:  '/images/certificates/University of Maryland - Robert H. Smith School of Business.png',
+  anthropic:  '/images/certificates/ANTHROPIC.png',
+  google:     '/images/certificates/Google.png',
+  ibm:        '/images/certificates/IBM.png',
+  forage:     '/images/certificates/Forage.png',
+  maryland:   '/images/certificates/University of Maryland - Robert H. Smith School of Business.png',
+  vanderbilt: '/images/certificates/Vanderbilt University.png',
 };
 
 const CERTS = [
@@ -32,7 +34,8 @@ const CERTS = [
   { id:  8, issuerId: 'ibm',       issuer: 'IBM',              title: 'IBM Generative AI Engineering',          color: '#0F62FE', image: '/images/certificates/cert-ibm-genai.png'         },
   { id:  9, issuerId: 'maryland',  issuer: 'Univ. of Maryland',title: 'AI and Career Empowerment',              color: '#E21833', image: '/images/certificates/cert-umd-ai-career.png'     },
   { id: 10, issuerId: 'forage',    issuer: 'Forage × Tata',   title: 'GenAI Powered Data Analytics',           color: '#00A3E0', image: '/images/certificates/cert-forage-tata.png'       },
-  { id: 11, issuerId: 'forage',    issuer: 'Forage × Vista',  title: 'AI in Action Job Simulation',            color: '#00A3E0', image: '/images/certificates/cert-forage-vista.png'      },
+  { id: 11, issuerId: 'forage',     issuer: 'Forage × Vista',        title: 'AI in Action Job Simulation',          color: '#00A3E0', image: '/images/certificates/cert-forage-vista.png'         },
+  { id: 12, issuerId: 'vanderbilt', issuer: 'Vanderbilt University', title: 'Agentic AI and AI Agents for Leaders', color: '#C9A84C', image: '/images/certificates/cert-vanderbilt-agentic.png' },
 ];
 
 /* ── Shared TiltCard ───────────────────────────────────────── */
@@ -171,7 +174,7 @@ export default function Certifications() {
 
             {/* Count */}
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.3, duration: 0.7, ease }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.2rem' }}>
-              <span className="metallic" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: isMobile ? '2.5rem' : '3.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}>11</span>
+              <span className="metallic" style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: isMobile ? '2.5rem' : '3.5rem', letterSpacing: '-0.04em', lineHeight: 1 }}>12</span>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.72rem', color: 'var(--ink-3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Certifications</span>
             </motion.div>
           </div>
