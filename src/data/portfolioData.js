@@ -125,15 +125,15 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'SOLVRA AI Studio',
-    subtitle: 'Brand Identity & Website Branding',
+    title: 'JARVIS',
+    subtitle: 'AI Desktop Assistant',
     description:
-      'Created a premium brand identity system for SOLVRA AI Studio, my official AI and web development studio. The branding was designed to match the website\'s luxury-tech aesthetic, combining deep black tones, champagne gold accents, futuristic AI-inspired visuals, elegant typography, and clean UI elements. The brand system includes a refined logo direction, color palette, typography style, brand keywords, UI components, and visual design guidelines. The goal was to build a strong, high-end identity that communicates innovation, trust, elegance, and intelligent digital solutions.',
-    tags: ['Brand Identity', 'Luxury Branding', 'AI Branding', 'Web Design', 'UI/UX Design', 'Visual Identity', 'Logo System', 'Color Palette', 'Typography'],
-    image: '/images/solvra-brand.png',
-    objectFit: 'contain',
-    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#C4965A',
+      'JARVIS is a custom-built AI desktop assistant designed to control everyday computer tasks through natural voice and text commands. The assistant combines real-time voice recognition, text-to-speech, desktop automation, web search, file handling, system controls, and an interactive web-based interface into one productivity-focused AI tool. Built with Python and a Flask + Socket.IO interface, JARVIS can open applications, search the web, check weather and news, manage files, control system settings, run commands, set timers, take screenshots, and respond through a natural voice interface — acting as a real desktop copilot rather than just a chatbot.',
+    tags: ['Python', 'Flask', 'Flask-SocketIO', 'SpeechRecognition', 'Voice AI', 'Desktop Automation', 'Groq API', 'Gemini API', 'Windows Automation', 'edge-tts', 'LLM Tool Calling'],
+    image: '/images/jarvis-1.png',
+    gallery: ['/images/jarvis-1.png', '/images/jarvis-2.png', '/images/jarvis-3.png'],
+    gradient: 'from-cyan-900/60 via-sky-900/40 to-brand-navy',
+    accent: '#00C8FF',
   },
   {
     id: 3,
