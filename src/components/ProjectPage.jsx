@@ -118,37 +118,6 @@ export default function ProjectPage() {
           </p>
         </motion.div>
 
-        {/* Gallery — only shown if project has multiple images */}
-        {project.gallery && project.gallery.length > 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.75, ease }}
-            style={{ marginBottom: isMobile ? '3.5rem' : '5rem' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: project.accent, flexShrink: 0 }}>Gallery</span>
-              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap: '0.75rem' }}>
-              {project.gallery.map((src, i) => (
-                <motion.div
-                  key={src}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.55, ease }}
-                  style={{ borderRadius: 12, overflow: 'hidden', border: `1px solid ${project.accent}18`, aspectRatio: '16/10', position: 'relative' }}
-                >
-                  <img src={src} alt={`${project.title} screenshot ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.45s ease' }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
         {/* Divider with label */}
         <motion.div
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -157,7 +126,7 @@ export default function ProjectPage() {
           style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem' }}
         >
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: project.accent, flexShrink: 0 }}>
-            {project.gallery ? 'Tech Stack' : 'Deliverables'}
+            Deliverables
           </span>
           <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
         </motion.div>
