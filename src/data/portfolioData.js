@@ -16,10 +16,10 @@ export const personal = {
 };
 
 export const stats = [
-  { label: 'Projects Built', value: '20+' },
+  { label: 'Projects Built', value: '14+' },
   { label: 'Design Focus', value: 'UI/UX' },
   { label: 'AI Solutions', value: '10+' },
-  { label: 'Responsive', value: '100%' },
+  { label: 'Responsive', value: '90%' },
 ];
 
 export const skills = [
@@ -119,9 +119,31 @@ export const projects = [
     description:
       'Created the official website for SOLVRA AI Studio, a premium AI and web development studio focused on building modern websites, AI automation systems, AI agents, branding, and digital product experiences. The site was designed to present the brand with a high-end, professional, and futuristic identity while clearly showcasing services, projects, testimonials, and contact options. The goal of this website is to establish SOLVRA AI Studio as a trusted digital partner for businesses looking for elegant design, intelligent automation, and powerful online solutions.',
     tags: ['HTML', 'UI/UX Design', 'React', 'Node.js'],
-    image: '/images/solvra.png',
+    image: '/images/solvra-hero.png',
     gradient: 'from-slate-900/60 via-gray-900/40 to-brand-navy',
-    accent: '#C4965A',
+    accent: '#C99A55',
+  },
+  {
+    id: 7,
+    title: 'UGC Portfolio',
+    subtitle: 'AI UGC & Cinematic Product Visuals',
+    description:
+      'A conversion-focused UGC and cinematic content portfolio for beauty, jewelry, lifestyle, and e-commerce brands. Includes product showcase UGC, testimonial and unboxing videos, cinematic brand films, and premium product visuals — all crafted with intentional lighting, composition, and brand direction to make products impossible to ignore.',
+    tags: ['AI UGC', 'Cinematic Video', 'Product Visuals', 'Social Content', 'E-commerce', 'Creative Direction'],
+    image: '/images/seharvue-ugc.png',
+    gradient: 'from-rose-900/60 via-pink-900/40 to-brand-navy',
+    accent: '#D98CA6',
+  },
+  {
+    id: 9,
+    title: 'Shopify Store',
+    subtitle: 'Eloura World — Client E-commerce Store',
+    description:
+      'Client project: designed and built a complete Shopify e-commerce store for Eloura World, a beauty and wellness brand selling skincare devices, self-care essentials, and everyday rituals. I handled the brand look, store design, and setup — a soft, warm palette with elegant serif typography to feel calm and luxurious, a hero product showcase, a bestsellers collection, product pages, and a fully responsive mobile shopping experience. The goal was a store that feels premium, builds trust with customers, and makes buying simple.',
+    tags: ['Shopify', 'E-commerce', 'Client Work', 'Store Design', 'UI/UX Design', 'Branding', 'Responsive'],
+    image: '/images/eloura-shopify.jpg',
+    gradient: 'from-orange-900/60 via-amber-900/40 to-brand-navy',
+    accent: '#A4502E',
   },
   {
     id: 2,
@@ -142,9 +164,20 @@ export const projects = [
     description:
       'VirginiaWebs AI Assistant is a premium AI chatbot UI designed to capture leads and answer customer questions. It helps visitors explore services, pricing, and bookings through a modern branded automation experience.',
     tags: ['AI', 'AI Agents', 'Chatbot UI', 'UI/UX Design', 'Automation', 'Branding', 'Lead Generation'],
-    image: '/images/project8.png',
+    image: '/images/virginiawebs-assistant.png',
     gradient: 'from-violet-900/60 via-indigo-900/40 to-brand-navy',
     accent: '#8B5CF6',
+  },
+  {
+    id: 8,
+    title: 'Branding',
+    subtitle: 'Product Ad Campaigns & Poster Design',
+    description:
+      'A collection of premium product advertising posters and brand campaign visuals spanning fashion, fragrance, footwear, and lifestyle brands. Each piece is art-directed with intentional composition, typography, and lighting to give products a bold, high-end, editorial presence that sells.',
+    tags: ['Branding', 'Ad Design', 'Poster Design', 'Product Marketing', 'Visual Design', 'Creative Direction'],
+    image: '/images/branding.png',
+    gradient: 'from-neutral-900/60 via-zinc-900/40 to-brand-navy',
+    accent: '#D4A45F',
   },
   {
     id: 4,
@@ -153,7 +186,7 @@ export const projects = [
     description:
       'A premium branding concept for a strategy, design, and growth studio focused on clarity, elegance, and trust. Includes logo design, color palette, typography, brand icons, stationery mockups, brand applications, and social media visuals.',
     tags: ['Brand Identity', 'Visual Design', 'Logo Design', 'Typography', 'Mockups', 'Social Media'],
-    image: '/images/brand-oasis.png',
+    image: '/images/brand-oasis-kit.png',
     gradient: 'from-teal-900/60 via-emerald-900/40 to-brand-navy',
     accent: '#14B8A6',
   },
@@ -164,7 +197,7 @@ export const projects = [
     description:
       'A smart dashboard concept focused on automation, AI workflows, lead generation, and agentic systems for business efficiency.',
     tags: ['AI', 'Automation', 'AI Agents', 'Product Design'],
-    image: '/images/project2.jpg',
+    image: '/images/leadflow-dashboard.png',
     gradient: 'from-cyan-900/60 via-teal-900/40 to-brand-navy',
     accent: '#06B6D4',
   },
@@ -175,53 +208,8 @@ export const projects = [
     description:
       'Designed a clean and modern SaaS dashboard for Lumen, a B2B lead generation platform. The UI helps users discover leads, view contact profiles, track activity, save prospects, and generate AI-powered outreach emails. The design focuses on a professional dashboard experience with clear data cards, organized lead tables, smooth navigation, and a soft purple-accented visual style.',
     tags: ['Figma Design', 'Product Design', 'SaaS', 'UI Design', 'B2B Platform', 'Lead Management'],
-    image: '/images/lumen.png',
+    image: '/images/lumen-ui.png',
     gradient: 'from-violet-900/60 via-purple-900/40 to-brand-navy',
-    accent: '#A855F7',
-  },
-  {
-    id: 7,
-    title: 'Gala Gents',
-    subtitle: 'Luxury Menswear Website Design',
-    description:
-      'Gala Gents is a premium menswear website concept built around elegance, confidence, and high-end tailoring. The design uses a dark cinematic style, gold typography, and strong brand visuals to create a luxurious and memorable first impression. This project showcases my ability to create refined, professional web designs with a strong focus on branding, visual hierarchy, and premium user experience.',
-    tags: ['UI/UX', 'React', 'Node.js', 'Branding', 'Web Design'],
-    image: '/images/gala-gents.png',
-    objectFit: 'contain',
-    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#D4AF37',
-  },
-  {
-    id: 8,
-    title: 'Lumière Visual System',
-    subtitle: 'Luxury Brand Identity Design',
-    description:
-      'A luxury brand identity concept featuring logo design, typography, color systems, and visual branding for a high-end aesthetic.',
-    tags: ['Brand Identity', 'Logo Design', 'Typography', 'Color Theory'],
-    image: '/images/project5.jpg',
-    gradient: 'from-amber-900/60 via-yellow-900/40 to-brand-navy',
-    accent: '#F59E0B',
-  },
-  {
-    id: 9,
-    title: "Gold's Gym Redesign",
-    subtitle: 'Premium Fitness Website Concept',
-    description:
-      "A premium website redesign concept for Gold's Gym Woodbridge/Lake Ridge, focused on improving digital presence, visual branding, and membership conversion with a bold luxury fitness aesthetic.",
-    tags: ['Web Design', 'Website Redesign', 'UI/UX Design', 'React', 'Framer Motion', 'Branding', 'Landing Page'],
-    image: '/images/project7.png',
-    gradient: 'from-yellow-900/60 via-amber-900/40 to-brand-navy',
-    accent: '#EAB308',
-  },
-  {
-    id: 10,
-    title: 'Lumière Editorial',
-    subtitle: 'Fashion Campaign Design',
-    description:
-      'A visually driven fashion campaign concept combining editorial aesthetics, creative direction, and premium digital presentation.',
-    tags: ['Content Creation', 'Creative Direction', 'Visual Design'],
-    image: '/images/project3.jpg',
-    gradient: 'from-purple-900/60 via-pink-900/40 to-brand-navy',
     accent: '#A855F7',
   },
 ];

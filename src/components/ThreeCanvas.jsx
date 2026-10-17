@@ -12,7 +12,7 @@ function Shape({ type }) {
   });
   const mat = (
     <meshPhysicalMaterial
-      color="#C9A84C" metalness={1} roughness={0.02}
+      color="#D4A45F" metalness={1} roughness={0.02}
       envMapIntensity={4} clearcoat={1} clearcoatRoughness={0} reflectivity={1}
     />
   );
@@ -25,7 +25,7 @@ function Shape({ type }) {
         {type === 'knot'    && <torusKnotGeometry args={[0.8, 0.28, 128, 20]} />}
         {mat}
       </mesh>
-      <Sparkles count={24} scale={5} size={1.8} speed={0.2} color="#C9A84C" opacity={0.55} />
+      <Sparkles count={24} scale={5} size={1.8} speed={0.2} color="#D4A45F" opacity={0.55} />
     </Float>
   );
 }

@@ -11,14 +11,14 @@ export default function ScrollLine() {
 
   return (
     <motion.div style={{ opacity, position: 'fixed', left: 20, top: 0, bottom: 0, width: 1, zIndex: 40, pointerEvents: 'none' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'rgba(201,168,76,0.1)', borderRadius: 1 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(212,164,95,0.1)', borderRadius: 1 }} />
       <motion.div
         style={{
           position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
           scaleY, transformOrigin: 'top',
-          background: 'linear-gradient(to bottom, #C9A84C, rgba(201,168,76,0.4))',
+          background: 'linear-gradient(to bottom, #D4A45F, rgba(212,164,95,0.4))',
           borderRadius: 1,
-          boxShadow: '0 0 6px rgba(201,168,76,0.5)',
+          boxShadow: '0 0 6px rgba(212,164,95,0.5)',
         }}
       />
       <motion.div
@@ -26,8 +26,8 @@ export default function ScrollLine() {
           position: 'absolute', left: '50%', translateX: '-50%',
           top: useTransform(scrollYProgress, [0, 1], ['0%', '100%']),
           width: 5, height: 5, borderRadius: '50%',
-          background: '#C9A84C',
-          boxShadow: '0 0 10px 3px rgba(201,168,76,0.7)',
+          background: '#D4A45F',
+          boxShadow: '0 0 10px 3px rgba(212,164,95,0.7)',
           translateY: '-50%',
         }}
       />

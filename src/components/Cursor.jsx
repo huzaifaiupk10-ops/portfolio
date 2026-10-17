@@ -66,7 +66,7 @@ export default function Cursor() {
         fontWeight: 700,
         fontSize: '0.6rem',
         letterSpacing: '0.14em',
-        color: '#0A0A0A',
+        color: '#030812',
         opacity: expanded ? 1 : 0,
         transform: expanded ? 'scale(1)' : 'scale(0.5)',
         transition: 'opacity 0.2s 0.1s, transform 0.25s 0.05s cubic-bezier(0.16,1,0.3,1)',

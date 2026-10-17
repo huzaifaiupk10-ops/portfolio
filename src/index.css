@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0A0A0A;
-  --card: #141414;
-  --card-2: #1C1C1C;
+  --bg: #030812;
+  --card: #08101F;
+  --card-2: #0C1629;
   --border: rgba(255,255,255,0.08);
-  --border-gold: rgba(201,168,76,0.25);
+  --border-gold: rgba(212,164,95,0.25);
   --ink: #FFFFFF;
   --ink-2: rgba(255,255,255,0.58);
   --ink-3: rgba(255,255,255,0.3);
-  --gold: #C9A84C;
-  --gold-dim: rgba(201,168,76,0.12);
+  --gold: #D4A45F;
+  --gold-dim: rgba(212,164,95,0.12);
   --font-display: 'Bricolage Grotesque', sans-serif;
   --font-body: 'Manrope', sans-serif;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -24,7 +24,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
 html { scroll-behavior: smooth; color-scheme: dark; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-::selection { background: rgba(201,168,76,0.2); color: #fff; }
+
+/* Lenis smooth-scroll (let Lenis own the scrolling; avoid CSS smooth fighting it) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+::selection { background: rgba(212,164,95,0.2); color: #fff; }
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-thumb { background: var(--gold); }
 
@@ -46,18 +52,12 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-body); 
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* Metallic gold gradient text effect */
+/* Accent text (solid beige, no metallic gradient) */
 .metallic {
-  background: linear-gradient(135deg, #7A5C10 0%, #C9A84C 20%, #F0D878 38%, #FFFAE8 50%, #F0D878 62%, #C9A84C 80%, #7A5C10 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold);
 }
 .metallic-hover:hover {
-  background: linear-gradient(135deg, #7A5C10 0%, #C9A84C 20%, #F0D878 38%, #FFFAE8 50%, #F0D878 62%, #C9A84C 80%, #7A5C10 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--gold) !important;
   transition: all 0.25s;
 }
 

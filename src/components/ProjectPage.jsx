@@ -23,20 +23,20 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0A0A0A' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#030812' }}>
         <div style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--ink-3)', marginBottom: '1.5rem' }}>Project not found.</p>
-          <button onClick={() => navigate('/')} style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, color: '#0A0A0A', padding: '0.72rem 1.6rem', background: 'var(--gold)', borderRadius: 8, border: 'none', cursor: 'pointer' }}>Go Back</button>
+          <button onClick={() => navigate('/')} style={{ fontFamily: 'var(--font-serif)', fontWeight: 600, color: '#030812', padding: '0.72rem 1.6rem', background: 'var(--gold)', borderRadius: 8, border: 'none', cursor: 'pointer' }}>Go Back</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div key={id} style={{ minHeight: '100vh', background: '#0A0A0A', overflowX: 'hidden' }}>
+    <div key={id} style={{ minHeight: '100vh', background: '#030812', overflowX: 'hidden' }}>
 
       {/* Curtain */}
-      <motion.div initial={{ scaleY: 1 }} animate={{ scaleY: 0 }} transition={{ duration: 0.85, ease, delay: 0.05 }} style={{ position: 'fixed', inset: 0, background: '#0A0A0A', transformOrigin: 'top', zIndex: 9999, pointerEvents: 'none' }} />
+      <motion.div initial={{ scaleY: 1 }} animate={{ scaleY: 0 }} transition={{ duration: 0.85, ease, delay: 0.05 }} style={{ position: 'fixed', inset: 0, background: '#030812', transformOrigin: 'top', zIndex: 9999, pointerEvents: 'none' }} />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: [0, 1, 1, 0] }} transition={{ duration: 0.8, ease, times: [0, 0.4, 0.7, 1] }} style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 2, background: project.accent, transformOrigin: 'left', zIndex: 10000, pointerEvents: 'none' }} />
 
       {/* Floating back button */}
@@ -44,7 +44,7 @@ export default function ProjectPage() {
         initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.4, ease }}
         onClick={() => navigate('/')}
-        style={{ position: 'fixed', top: '1.4rem', left: '1.4rem', zIndex: 200, display: 'flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', background: 'rgba(10,10,10,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.55rem 1.1rem', borderRadius: 999, cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s' }}
+        style={{ position: 'fixed', top: '1.4rem', left: '1.4rem', zIndex: 200, display: 'flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', background: 'rgba(3,8,18,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.55rem 1.1rem', borderRadius: 999, cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s' }}
         onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = `${project.accent}55`; }}
         onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}
       >
@@ -62,7 +62,7 @@ export default function ProjectPage() {
         />
 
         {/* Gradient overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.35) 40%, rgba(10,10,10,0.97) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(3,8,18,0.25) 0%, rgba(3,8,18,0.35) 40%, rgba(3,8,18,0.97) 100%)' }} />
 
         {/* Project number watermark */}
         <div style={{ position: 'absolute', top: '50%', right: isMobile ? '-2rem' : '-1rem', transform: 'translateY(-55%)', fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: isMobile ? '18rem' : '26rem', color: project.accent, opacity: 0.05, lineHeight: 1, userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.05em' }}>
@@ -170,7 +170,7 @@ export default function ProjectPage() {
           transition={{ duration: 0.6, ease }}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.55) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(3,8,18,0.92) 0%, rgba(3,8,18,0.55) 100%)' }} />
 
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', padding: '1rem' }}>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>

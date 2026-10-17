@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1];
 function InputField({ label, type = 'text', value, onChange, placeholder, multiline, required }) {
   const [focused, setFocused] = useState(false);
   const base = {
-    width: '100%', background: 'rgba(255,255,255,0.03)', border: `1px solid ${focused ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.1)'}`,
+    width: '100%', background: 'rgba(255,255,255,0.03)', border: `1px solid ${focused ? 'rgba(212,164,95,0.5)' : 'rgba(255,255,255,0.1)'}`,
     borderRadius: 10, color: 'var(--ink)', fontFamily: 'var(--font-body)', fontSize: '0.9rem',
     outline: 'none', transition: 'border-color 0.2s', resize: 'none', boxSizing: 'border-box',
   };
@@ -26,6 +26,18 @@ export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const { isMobile } = useBreakpoint();
+  const videoRef = useRef(null);
+
+  // React doesn't reliably set the `muted` attribute, which blocks autoplay — set it and
+  // play only while the section is on screen.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.1 });
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
 
   const [form, setForm]     = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
@@ -56,12 +68,18 @@ export default function Contact() {
 
   return (
     <section id="contact" style={{ minHeight: isMobile ? 'auto' : '100vh', padding: isMobile ? '5rem 0' : undefined, display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', right: '20%', top: '50%', transform: 'translate(50%,-50%)', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 70%)', pointerEvents: 'none' }} />
+      {/* Background video + navy overlay (darker on the left where the form sits) */}
+      <video ref={videoRef} src="/videos/contact-bg.mp4" poster="/images/contact-bg-poster.jpg" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: isMobile
+        ? 'rgba(3,8,18,0.78)'
+        : 'linear-gradient(90deg, rgba(3,8,18,0.95) 0%, rgba(3,8,18,0.9) 42%, rgba(3,8,18,0.55) 62%, rgba(3,8,18,0.3) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(to bottom, var(--bg) 0%, transparent 14%, transparent 86%, var(--bg) 100%)' }} />
 
-      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--gutter)', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '2.5rem' : '5rem', alignItems: 'center', width: '100%' }}>
+      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--gutter)', width: '100%', position: 'relative', zIndex: 1 }}>
 
-        {/* Left: heading + form */}
-        <div>
+        {/* Heading + form */}
+        <div style={{ maxWidth: 560 }}>
           <motion.p initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.5 }} style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.72rem', color: 'var(--gold)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
             Available Now
           </motion.p>
@@ -90,13 +108,13 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <motion.div key="btn" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                  <button type="submit" disabled={status === 'loading'} style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: '1rem', color: '#0A0A0A', border: 'none', padding: '0.9rem 2rem', background: status === 'loading' ? 'rgba(201,168,76,0.6)' : 'var(--gold)', borderRadius: 10, letterSpacing: '0.01em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', transition: 'transform 0.2s, box-shadow 0.2s, opacity 0.2s' }}
-                    onMouseEnter={e => { if (status !== 'loading') { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(201,168,76,0.4)'; }}}
+                  <button type="submit" disabled={status === 'loading'} style={{ display: 'inline-flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-serif)', fontWeight: 600, fontSize: '1rem', color: '#030812', border: 'none', padding: '0.9rem 2rem', background: status === 'loading' ? 'rgba(212,164,95,0.6)' : 'var(--gold)', borderRadius: 10, letterSpacing: '0.01em', cursor: status === 'loading' ? 'not-allowed' : 'pointer', transition: 'transform 0.2s, box-shadow 0.2s, opacity 0.2s' }}
+                    onMouseEnter={e => { if (status !== 'loading') { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 36px rgba(212,164,95,0.4)'; }}}
                     onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
                   >
                     {status === 'loading' ? (
                       <>
-                        <motion.span animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} style={{ display: 'block', width: 16, height: 16, border: '2px solid #0A0A0A', borderTopColor: 'transparent', borderRadius: '50%' }} />
+                        <motion.span animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} style={{ display: 'block', width: 16, height: 16, border: '2px solid #030812', borderTopColor: 'transparent', borderRadius: '50%' }} />
                         Sending…
                       </>
                     ) : (
@@ -115,14 +133,6 @@ export default function Contact() {
           </motion.form>
         </div>
 
-        {/* Right: image */}
-        {!isMobile && (
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 1.2, ease }} style={{ height: 560, borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
-            <img src="/images/contact-visual.png" alt="Contact" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
-            {/* Subtle gold overlay */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.4) 0%, transparent 50%)', pointerEvents: 'none' }} />
-          </motion.div>
-        )}
       </div>
     </section>
   );

@@ -28,7 +28,7 @@ export default function About() {
                 <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'0.85rem', color:'var(--gold)' }}>{pct}%</span>
               </div>
               <div style={{ height:3, background:'rgba(255,255,255,0.07)', borderRadius:4, overflow:'hidden' }}>
-                <motion.div initial={{width:0}} animate={inView?{width:pct+'%'}:{}} transition={{delay:0.3+i*0.1,duration:1,ease}} style={{ height:'100%', background:'linear-gradient(90deg,var(--gold),#E8C96A)', borderRadius:4 }} />
+                <motion.div initial={{width:0}} animate={inView?{width:pct+'%'}:{}} transition={{delay:0.3+i*0.1,duration:1,ease}} style={{ height:'100%', background:'linear-gradient(90deg,var(--gold),#E2BC82)', borderRadius:4 }} />
               </div>
             </div>
           ))}

@@ -30,7 +30,7 @@ export default function Projects() {
               {/* hover bg */}
               <AnimatePresence>
                 {hovered===p.id && (
-                  <motion.div key="bg" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.2}} style={{ position:'absolute', inset:0, background:'rgba(201,168,76,0.04)', borderRadius:8, pointerEvents:'none' }} />
+                  <motion.div key="bg" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:0.2}} style={{ position:'absolute', inset:0, background:'rgba(212,164,95,0.04)', borderRadius:8, pointerEvents:'none' }} />
                 )}
               </AnimatePresence>
               <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'0.8rem', color: hovered===p.id ? 'var(--gold)' : 'var(--ink-3)', transition:'color 0.2s', letterSpacing:'0.05em' }}>0{i+1}</span>
@@ -51,7 +51,7 @@ export default function Projects() {
                   )}
                 </AnimatePresence>
                 <div style={{ width:40, height:40, borderRadius:'50%', border:'1px solid', borderColor: hovered===p.id ? 'var(--gold)' : 'var(--border)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, transition:'border-color 0.2s, background 0.2s', background: hovered===p.id ? 'var(--gold)' : 'transparent' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={hovered===p.id?'#0A0A0A':'var(--ink-3)'} strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={hovered===p.id?'#030812':'var(--ink-3)'} strokeWidth="2.5" strokeLinecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                 </div>
               </div>
             </motion.div>

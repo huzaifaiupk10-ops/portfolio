@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useBreakpoint } from '../hooks/useBreakpoint';
+import ExplodedLayers from './ExplodedLayers';
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -11,15 +12,15 @@ export default function Expertise() {
 
   return (
     <section id="about" style={{ padding: isMobile ? '5rem 0' : undefined, minHeight: isMobile ? 'auto' : '100vh', display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(212,164,95,0.07) 0%,transparent 70%)', pointerEvents: 'none' }} />
       <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '0 var(--gutter)', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '2.5rem' : '4rem', alignItems: 'center', width: '100%' }}>
         {/* Image — on mobile comes second (order:2), on desktop first */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }} animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 1.2, ease }}
-          style={{ height: isMobile ? 280 : 500, position: 'relative', borderRadius: 16, overflow: 'hidden', order: isMobile ? 2 : 0 }}
+          style={{ height: isMobile ? 320 : 500, position: 'relative', order: isMobile ? 2 : 0 }}
         >
-          <img src="/images/expertise-visual.png" alt="About" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+          <ExplodedLayers />
         </motion.div>
 
         {/* Text */}

@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
+
+# Local backups of the black-gold theme
+src.backup-black-gold/
+index.html.backup-black-gold

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring, useMotionTemplate } from 'framer-motion';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
@@ -24,9 +25,9 @@ const THUMBS = {
 };
 
 const CERTS = [
-  { id:  1, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'AI Fluency: Framework & Foundations',    color: '#C9A84C', image: '/images/certificates/cert-ai-fluency.png'      },
-  { id:  2, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'Claude 101',                             color: '#C9A84C', image: '/images/certificates/cert-claude-101.png'       },
-  { id:  3, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'Claude Code in Action',                  color: '#C9A84C', image: '/images/certificates/cert-claude-code.png'      },
+  { id:  1, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'AI Fluency: Framework & Foundations',    color: '#D4A45F', image: '/images/certificates/cert-ai-fluency.png'      },
+  { id:  2, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'Claude 101',                             color: '#D4A45F', image: '/images/certificates/cert-claude-101.png'       },
+  { id:  3, issuerId: 'anthropic', issuer: 'Anthropic',        title: 'Claude Code in Action',                  color: '#D4A45F', image: '/images/certificates/cert-claude-code.png'      },
   { id:  4, issuerId: 'google',    issuer: 'Google',           title: 'Google AI',                              color: '#4285F4', image: '/images/certificates/cert-google-ai.png'         },
   { id:  5, issuerId: 'google',    issuer: 'Google',           title: 'Google Prompting Essentials',            color: '#4285F4', image: '/images/certificates/cert-google-prompting.png'  },
   { id:  6, issuerId: 'google',    issuer: 'Google',           title: 'Generative AI Leader',                   color: '#4285F4', image: '/images/certificates/cert-gen-ai-leader.png'     },
@@ -35,7 +36,7 @@ const CERTS = [
   { id:  9, issuerId: 'maryland',  issuer: 'Univ. of Maryland',title: 'AI and Career Empowerment',              color: '#E21833', image: '/images/certificates/cert-umd-ai-career.png'     },
   { id: 10, issuerId: 'forage',    issuer: 'Forage × Tata',   title: 'GenAI Powered Data Analytics',           color: '#00A3E0', image: '/images/certificates/cert-forage-tata.png'       },
   { id: 11, issuerId: 'forage',     issuer: 'Forage × Vista',        title: 'AI in Action Job Simulation',          color: '#00A3E0', image: '/images/certificates/cert-forage-vista.png'         },
-  { id: 12, issuerId: 'vanderbilt', issuer: 'Vanderbilt University', title: 'Agentic AI and AI Agents for Leaders', color: '#C9A84C', image: '/images/certificates/cert-vanderbilt-agentic.png' },
+  { id: 12, issuerId: 'vanderbilt', issuer: 'Vanderbilt University', title: 'Agentic AI and AI Agents for Leaders', color: '#D4A45F', image: '/images/certificates/cert-vanderbilt-agentic.png' },
 ];
 
 /* ── Shared TiltCard ───────────────────────────────────────── */
@@ -46,7 +47,7 @@ function TiltCard({ children, onClick }) {
   const rY = useSpring(useTransform(x, [-0.5, 0.5], [-9,  9]), { stiffness: 300, damping: 26 });
   const sx = useTransform(x, [-0.5, 0.5], [15, 85]);
   const sy = useTransform(y, [-0.5, 0.5], [15, 85]);
-  const sheen = useMotionTemplate`radial-gradient(circle at ${sx}% ${sy}%, rgba(201,168,76,0.11), transparent 55%)`;
+  const sheen = useMotionTemplate`radial-gradient(circle at ${sx}% ${sy}%, rgba(212,164,95,0.11), transparent 55%)`;
   const move  = (e) => { const r = e.currentTarget.getBoundingClientRect(); x.set((e.clientX - r.left) / r.width - 0.5); y.set((e.clientY - r.top) / r.height - 0.5); };
   const leave = () => { x.set(0); y.set(0); };
   return (
@@ -60,22 +61,29 @@ function TiltCard({ children, onClick }) {
 }
 
 /* ── Cert card ─────────────────────────────────────────────── */
-function CertCard({ cert, index, inView, onClick }) {
+function CertCard({ cert, index, onClick }) {
   const [hov, setHov] = useState(false);
-  const num = String(cert.id).padStart(2, '0');
+  const d = (index % 4) * 0.12;
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
       exit={{ opacity: 0, scale: 0.88, transition: { duration: 0.2 } }}
-      transition={{ delay: index * 0.045, duration: 0.65, ease }}
+      transition={{ duration: 0.65, ease }}
     >
       <TiltCard onClick={() => onClick(cert)}>
-        <div
+        <motion.div
+          initial="hide" whileInView="show" viewport={{ once: false, amount: 0.45 }}
           onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
           style={{ borderRadius: 14, border: `1px solid ${hov ? cert.color + '55' : 'rgba(255,255,255,0.07)'}`, position: 'relative', overflow: 'hidden', transition: 'border-color 0.28s', cursor: 'pointer' }}
         >
+          {/* blueprint draw: outline + construction line sketch in, then the card fades up from grey */}
+          <svg width="100%" height="100%" style={{ position: 'absolute', inset: 0, zIndex: 4, pointerEvents: 'none' }}>
+            <motion.rect x="1" y="1" rx="14" style={{ width: 'calc(100% - 2px)', height: 'calc(100% - 2px)' }} fill="none" stroke="var(--gold)" strokeWidth="1.5"
+              variants={{ hide: { pathLength: 0, opacity: 1 }, show: { pathLength: 1, opacity: [1, 1, 0.25], transition: { delay: d, duration: 1.6, ease } } }} />
+            <motion.line x1="0" x2="100%" y1="62%" y2="62%" stroke="var(--gold)" strokeWidth="1" strokeDasharray="4 5"
+              variants={{ hide: { pathLength: 0, opacity: 0.8 }, show: { pathLength: 1, opacity: [0.8, 0.8, 0], transition: { delay: d + 0.3, duration: 1.4 } } }} />
+          </svg>
+          <motion.div variants={{ hide: { opacity: 0, filter: 'grayscale(1) brightness(0.5)' }, show: { opacity: 1, filter: 'grayscale(0) brightness(1)', transition: { delay: d + 0.9, duration: 0.7 } } }}>
           {/* Thumbnail — natural size, no crop */}
           <img
             src={THUMBS[cert.issuerId]} alt={cert.issuer}
@@ -83,11 +91,12 @@ function CertCard({ cert, index, inView, onClick }) {
           />
 
           {/* Text — below image */}
-          <div style={{ padding: '1rem 1.2rem 1.2rem', background: hov ? '#141414' : '#0E0E0E', transition: 'background 0.25s' }}>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(0.9rem,1.3vw,1rem)', color: hov ? 'var(--ink)' : 'var(--ink-2)', lineHeight: 1.35, marginBottom: '0.6rem', transition: 'color 0.25s' }}>{cert.title}</h3>
-            <motion.div animate={{ scaleX: hov ? 1 : 0, opacity: hov ? 1 : 0 }} transition={{ duration: 0.3, ease }} style={{ height: 1, background: `linear-gradient(to right, ${cert.color}, transparent)`, transformOrigin: 'left', borderRadius: 1 }} />
+          <div style={{ padding: '1rem 1.2rem 1.2rem', background: hov ? '#E2BC82' : 'var(--gold)', transition: 'background 0.25s' }}>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(0.9rem,1.3vw,1rem)', color: '#030812', lineHeight: 1.35, marginBottom: '0.6rem', transition: 'color 0.25s' }}>{cert.title}</h3>
+            <motion.div animate={{ scaleX: hov ? 1 : 0, opacity: hov ? 1 : 0 }} transition={{ duration: 0.3, ease }} style={{ height: 1, background: 'linear-gradient(to right, #030812, transparent)', transformOrigin: 'left', borderRadius: 1 }} />
           </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </TiltCard>
     </motion.div>
   );
@@ -100,7 +109,7 @@ function Lightbox({ cert, onClose }) {
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       transition={{ duration: 0.22 }}
       onClick={onClose}
-      style={{ position: 'fixed', inset: 0, background: 'rgba(5,5,5,0.94)', zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}
+      style={{ position: 'fixed', inset: 0, background: 'rgba(2,5,11,0.94)', zIndex: 1000, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}
     >
       <motion.div
         initial={{ scale: 0.86, opacity: 0, y: 24 }}
@@ -127,7 +136,7 @@ function Lightbox({ cert, onClose }) {
         </div>
 
         {/* Close */}
-        <button onClick={onClose} style={{ position: 'absolute', top: -14, right: -14, width: 32, height: 32, borderRadius: '50%', background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.14)', color: 'var(--ink-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '12px', lineHeight: 1, zIndex: 10 }}>✕</button>
+        <button onClick={onClose} style={{ position: 'absolute', top: -14, right: -14, width: 32, height: 32, borderRadius: '50%', background: '#0A1323', border: '1px solid rgba(255,255,255,0.14)', color: 'var(--ink-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', fontSize: '12px', lineHeight: 1, zIndex: 10 }}>✕</button>
       </motion.div>
 
       {/* Keyboard hint */}
@@ -155,7 +164,7 @@ export default function Certifications() {
       <section id="certifications" style={{ padding: '7rem var(--gutter)', borderTop: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
 
         {/* Ambient glow */}
-        <div style={{ position: 'absolute', left: '50%', top: '40%', transform: 'translate(-50%,-50%)', width: 900, height: 900, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', left: '50%', top: '40%', transform: 'translate(-50%,-50%)', width: 900, height: 900, borderRadius: '50%', background: 'radial-gradient(circle, rgba(212,164,95,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
 
@@ -192,7 +201,7 @@ export default function Certifications() {
                 <button
                   key={f.id}
                   onClick={() => setActiveFilter(f.id)}
-                  style={{ position: 'relative', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.78rem', letterSpacing: '0.03em', padding: '0.42rem 1rem', borderRadius: 999, border: `1px solid ${active ? 'transparent' : 'rgba(255,255,255,0.1)'}`, background: 'transparent', color: active ? '#0A0A0A' : 'var(--ink-3)', cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s', overflow: 'hidden' }}
+                  style={{ position: 'relative', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.78rem', letterSpacing: '0.03em', padding: '0.42rem 1rem', borderRadius: 999, border: `1px solid ${active ? 'transparent' : 'rgba(255,255,255,0.1)'}`, background: 'transparent', color: active ? '#030812' : 'var(--ink-3)', cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s', overflow: 'hidden' }}
                 >
                   {active && (
                     <motion.div layoutId="certFilter" style={{ position: 'absolute', inset: 0, background: 'var(--gold)', borderRadius: 999 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} />
@@ -208,7 +217,7 @@ export default function Certifications() {
           <motion.div layout style={{ display: 'grid', gridTemplateColumns: cols, gap: '1.2rem' }}>
             <AnimatePresence mode="popLayout">
               {filtered.map((cert, i) => (
-                <CertCard key={cert.id} cert={cert} index={i} inView={inView} onClick={setSelected} />
+                <CertCard key={cert.id} cert={cert} index={i} onClick={setSelected} />
               ))}
             </AnimatePresence>
           </motion.div>
@@ -222,9 +231,9 @@ export default function Certifications() {
       </section>
 
       {/* ── Lightbox ─────────────────────────────────────────── */}
-      <AnimatePresence>
+      {createPortal(<AnimatePresence>
         {selected && <Lightbox key="lightbox" cert={selected} onClose={() => setSelected(null)} />}
-      </AnimatePresence>
+      </AnimatePresence>, document.body)}
     </>
   );
 }

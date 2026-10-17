@@ -33,7 +33,7 @@ export default function ServicePage() {
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#000000' }}>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#030812' }}>
         <div className="text-center">
           <p className="text-brand-muted text-lg mb-4">Service not found.</p>
           <button onClick={() => navigate('/')} className="btn-primary">Go Back</button>
@@ -43,7 +43,7 @@ export default function ServicePage() {
   }
 
   return (
-    <div key={id} className="min-h-screen" style={{ background: '#000000' }}>
+    <div key={id} className="min-h-screen" style={{ background: '#030812' }}>
 
       {/* ── Curtain entrance overlay ── */}
       <motion.div
@@ -53,7 +53,7 @@ export default function ServicePage() {
         style={{
           position: 'fixed',
           inset: 0,
-          background: '#000000',
+          background: '#030812',
           transformOrigin: 'top',
           zIndex: 9999,
           pointerEvents: 'none',
@@ -137,10 +137,7 @@ export default function ServicePage() {
               className="font-display font-bold mb-4 leading-tight"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-                background: 'linear-gradient(135deg, #E5E7EB 0%, #C0C7D1 50%, #DEC0B0 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: 'var(--gold)',
               }}
             >
               {service.title}

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useBreakpoint } from '../hooks/useBreakpoint';
+import ScrubberBackground from './ScrubberBackground';
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -47,7 +48,7 @@ function MarqueeRow({ cat, index, inView, isMobile }) {
         gridTemplateColumns: isMobile ? '1fr' : '260px 1fr',
         alignItems: 'center',
         transition: 'background 0.3s',
-        background: paused ? 'rgba(201,168,76,0.03)' : 'transparent',
+        background: paused ? 'rgba(212,164,95,0.03)' : 'transparent',
         position: 'relative',
         cursor: 'default',
       }}
@@ -85,10 +86,10 @@ function MarqueeRow({ cat, index, inView, isMobile }) {
         >
           {repeated.map((skill, i) => (
             <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: isMobile ? '0.78rem' : '0.85rem', fontWeight: 500, color: paused ? 'var(--gold)' : 'var(--ink-2)', padding: isMobile ? '0.3rem 0.8rem' : '0.4rem 1.1rem', border: `1px solid ${paused ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 999, background: paused ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.02)', transition: 'color 0.3s, border-color 0.3s, background 0.3s', whiteSpace: 'nowrap' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: isMobile ? '0.78rem' : '0.85rem', fontWeight: 500, color: paused ? 'var(--gold)' : 'var(--ink-2)', padding: isMobile ? '0.3rem 0.8rem' : '0.4rem 1.1rem', border: `1px solid ${paused ? 'rgba(212,164,95,0.35)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 999, background: paused ? 'rgba(212,164,95,0.07)' : 'rgba(255,255,255,0.02)', transition: 'color 0.3s, border-color 0.3s, background 0.3s', whiteSpace: 'nowrap' }}>
                 {skill}
               </span>
-              <span style={{ width: 3, height: 3, borderRadius: '50%', background: paused ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.15)', flexShrink: 0, transition: 'background 0.3s' }} />
+              <span style={{ width: 3, height: 3, borderRadius: '50%', background: paused ? 'rgba(212,164,95,0.5)' : 'rgba(255,255,255,0.15)', flexShrink: 0, transition: 'background 0.3s' }} />
             </span>
           ))}
         </div>
@@ -116,9 +117,12 @@ export default function Skills() {
         }
       `}</style>
 
-      <div style={{ position: 'absolute', right: '10%', top: '40%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', right: '10%', top: '40%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(212,164,95,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+      {/* scroll-scrubbed gold point-cloud, sits behind the content */}
+      {!isMobile && <ScrubberBackground opacity={0.5} align="right" />}
+
+      <div ref={ref} style={{ maxWidth: 'var(--max-w)', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '4rem', flexWrap: 'wrap', gap: '1rem' }}>
